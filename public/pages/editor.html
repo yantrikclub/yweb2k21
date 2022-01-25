@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../css/editor.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href = “https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css” rel = “stylesheet”>
+
+    <link href =
+"https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+			rel = "stylesheet">
+	
+	<script src =
+"https://code.jquery.com/jquery-1.10.2.js">
+	</script>
+	
+	<script src =
+"https://code.jquery.com/ui/1.10.4/jquery-ui.js">
+	</script>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <header>
+                <img src="../data/index/logobgr.png" alt="">
+                <ul class="options">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="blog.html">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="events.html">Events</a>
+                    </li>
+                    <li>
+                        <a href="gallery.html">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="team.html">Team</a>
+                    </li>   
+                </ul>
+            </header>
+            <main>
+                <div class="content">
+                    <div class="head">
+                        <div id="bgimgbox">
+                            <img id="bgimg" alt="Cover Image">
+                        </div>
+                        <input type="file" accept="image/*" id="backgroundimgup" hidden>
+                        <!-- <button id="upbgimg">U</button> -->
+                        <div class="tbar">
+                            <input type="text" id="title" placeholder="Title"></input>
+                            <label for="backgroundimgup"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></label>
+                        
+                        </div>
+                        <textarea id="description" placeholder="Description"></textarea>
+                    </div>
+                    <div class="wrap">
+                        <div id="inputs">
+                            <form>
+                                <button type="button" data-cmd="justifyLeft">
+                                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="justifyCenter">
+                                    <i class="fa fa-align-center" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="justifyFull">
+                                    <i class="fa fa-align-justify" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="justifyRight">
+                                    <i class="fa fa-align-right" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="bold" name="active">
+                                    <i class="fa fa-bold" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="italic" name="active">
+                                    <i class="fa fa-italic" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="underline"  name="active">
+                                    <i class="fa fa-underline" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="insertOrderedList">
+                                    <i class="fa fa-list-ol" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="insertUnorderedList">
+                                    <i class="fa fa-list-ul" aria-hidden="true"></i>
+                                </button>
+                                <!-- <button type="button" data-cmd="insertImage">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                </button> -->
+                                <button type="button" data-cmd="createLink">
+                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                </button>
+                                <!-- <button type="button" data-cmd="showCode" name="active">
+                                    <i class="fa fa-code" aria-hidden="true"></i>
+                                </button> -->
+                                <input type="file" accept="image/*" id="imageadd" hidden>
+                                <button type="button" data-cmd="insertImage">
+                                    <!-- <i class="fa fa-code" aria-hidden="true"></i> -->
+                                    <label for="imageadd">
+                                        <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                    </label>
+                                </button>
+                                
+                                
+                                <input id="fcolor-btn" type="color" class="control-btn">
+                                <button type="button" data-cmd="foreColor">
+                                    <!-- <i class="fa fa-code" aria-hidden="true"></i> -->
+                                    FGC
+                                </button>
+                                <input id="bcolor-btn" type="color" class="control-btn" />
+                                <button type="button" data-cmd="backColor">
+                                    <!-- <i class="fa fa-code" aria-hidden="true"></i> -->
+                                    BGC
+                                </button>
+                                <button type="button" data-cmd="strikeThrough">
+                                    <i class="fa fa-strikethrough" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" data-cmd="formatBlock">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                    
+                                </button>
+                                </form>
+                        </div>
+                        <div class = "data" id = "data">
+                            <div class="stepcard">
+                                <!-- <input id="steptitle" type="text" placeholder="Step Title" />
+                                <div class="imgs">
+                                    <div class="gallerywrap">
+                                            <div class="thumbls" id="thumbls">
+                                                <div class="thumbbx" id = "img1"><i id ="deleteimg1" class="fa fa-window-close" aria-hidden="true"></i><img src="../data/events/CAD.jpg" alt=""></div>
+                                                <div class="thumbbx" id = "img2"><i id ="deleteimg2" class="fa fa-window-close" aria-hidden="true"></i><img src="../data/events/aircraft.jpg" alt=""></div>
+                                                <div class="thumbbx" id = "img3"><i id ="deleteimg3" class="fa fa-window-close" aria-hidden="true"></i><img src="../data/events/s1.jpeg" alt=""></div>
+                                            </div>
+                                    </div>
+                                    <input type="file" accept="image/*" id="stepimgup" hidden>
+                                    <div class="uploadt">
+                                        Upload images 
+                                        <label id="simgaddbtn" for="stepimgup"><i class="fa fa-cloud-upload" aria-hidden="true"></i></label>
+                                    </div>
+                                </div> -->
+                                <div id="content" contenteditable="true" spellcheck="false"></div>
+                                <!-- <div class="fileattach">
+                                    <div class="attachfilels">
+                                        <div class="file" id = "file1">File1.webm <i id ="deletefile1" class="fa fa-window-close" aria-hidden="true"></i></div>
+                                        <div class="file" id = "file2">File2.webs <i id ="deletefile2" class="fa fa-window-close" aria-hidden="true"></i></div>
+                                    </div>
+                                    <input type="file" id="attachmentfile" hidden>
+                                    <div class="uploadt">
+                                        Attach files
+                                        <label id="sfileaddbtn" for="attachmentfile"><i class="fa fa-link" aria-hidden="true"></i></label>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- <div id="addstep">
+                            <button id = "addstepCard">Add Step</button>
+                        </div> -->
+                    </div>
+                    
+                    <div class="author">
+                        <div id="authimgbox">
+                            <img src="" alt="" id="authorimg">
+                            <input type="file" accept="image/*" id="authorimgup" hidden>
+                            <label for="authorimgup">authimg</label>
+                        </div>
+                        <!-- <button id="upauthimg">U</button> -->
+                        <input type="text" id="authorname"></input>
+                        <textarea id="authordesc"></textarea>
+                    </div>
+
+                    <button id="fupload">Upload Blog</button>
+                </div>
+            </main>
+            <footer>
+                <div class="wrap">
+                    <div class="imgbx">
+                        <img src="../data/index/logobgr.png" alt="">
+                    </div>
+                    
+                    <div class="contact">
+                        <p>Reach Us On</p>
+                        <ul>
+                            <li><a href=""><i class="fa fa-discord" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="data">
+                        <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
+                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kammand (H.P.)- 175005</p>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>© 2022. YantrikClub-IIT&nbsp;Mandi. All&nbsp;Rights&nbsp;Reserved</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- <script src="../js/other/iframeResizer.min.js"></script> -->
+    <!-- <script type="text/javascript">
+        // iFrameResize({ log: true }, '#outputx')
+        
+        const iframeobj = document.getElementById("outputx");
+        iframeobj.contentWindow.document.addEventListener("keypress",()=>{
+            console.log(iframeobj.contentWindow.document.body.scrollHeight, iframeobj.contentWindow.document.body.scrollWidth);
+            iframeobj.style.height = `${iframeobj.contentWindow.document.body.scrollHeight}px`;
+            console.log("done")
+        })
+    </script> -->
+        
+    
+
+
+    <script type="module">    
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+        const firebaseConfig = {
+          apiKey: "AIzaSyCo5jZ9wyNSP401q5X8-BH-gM7uxUnhuro",
+          authDomain: "web2k21-99ffd.firebaseapp.com",
+          projectId: "web2k21-99ffd",
+          storageBucket: "web2k21-99ffd.appspot.com",
+          messagingSenderId: "616040662732",
+          appId: "1:616040662732:web:ac36b18f3ccff8c246a469"
+        };
+        const app = initializeApp(firebaseConfig);
+
+        import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
+        import {getDatabase, ref, onValue, set, child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+        
+        // var downloadurls = [[],[],[]];
+        // var filesls = [[],[],[]];
+        var images = {sback:{file:"",lurl:"",uurl:""},sauth:{file:"",lurl:"",uurl:""},sbody:[]};
+        // var url = [];
+        var files = [];
+
+        var bgimage = document.getElementById("bgimg");
+        // var bgupBtn= document.getElementById("upbgimg");
+        var title= document.getElementById("title");
+        var descrip = document.getElementById("description");
+        var data = document.getElementById("data");
+        var authimg = document.getElementById("authorimg");
+        // var authupBtn = document.getElementById("upauthimg");
+        var authnm = document.getElementById("authorname");
+        var authdesc = document.getElementById("authordesc");
+        var commit = document.getElementById("fupload");
+        var tcount = 0;
+                    
+
+        const bgimgup = document.getElementById("backgroundimgup");
+        const authimgup = document.getElementById("authorimgup");
+        const imageadd = document.getElementById("imageadd");
+
+
+
+
+        // const ls = document.getElementById("thumbls");
+        // simgaddbtn.addEventListener('click',getlurl().then((imgscr)=>{
+        //     let code = `
+        //     <div class="thumbbx" id = "img1"><i id ="deleteimg1" class="fa fa-window-close" aria-hidden="true"></i><img src="${imgsrc}" alt=""></div>
+        //     `;
+        //     ls.innerHTML += code;
+        // }))
+        
+
+        // var input1 = document.createElement('input');
+        // var input2 = document.createElement('input');
+        // var input3 = document.createElement('input');
+        // input1.type = 'file';
+        // input2.type = 'file';
+        // input3.type = 'file';
+
+        bgimgup.addEventListener('change',()=>{
+            loadfile(bgimgup,"sback");
+        })
+        authimgup.addEventListener('change',()=>{
+            loadfile(authimgup,"sauth");
+        })
+        imageadd.addEventListener('change',()=>{
+            loadfile(imageadd,"sbody");
+        })
+
+
+        // "sback","sauth","sbody"
+        function loadfile(upfile,nm){
+            var dfile = [];
+            var read = new FileReader();
+            dfile = upfile.files[0];
+            read.readAsDataURL(dfile);
+            read.onload = function(){
+                if (nm == "sback"){
+                    bgimage.src = read.result;
+                    images.sback.file = dfile;
+                    // images.sback.lurl = read.result;
+                }
+                else if (nm == "sauth"){
+                    authimg.src = read.result;
+                    images.sauth.file = dfile;
+                    // images.sauth.lurl = read.result;
+                }
+                else{
+                    const nm = "img"+String(tcount);
+                    images.sbody.push({file:dfile,lurl:read.result,uurl:""});
+                    document.execCommand("insertImage",false,read.result)
+                    console.log(images);
+                    tcount += 1;
+                }
+            }
+ 
+        }
+
+
+
+
+
+
+        const storage = getStorage();
+        
+        
+        
+        function firebaseimg(titnm,name,image,mtdata){
+            return new Promise((resolve,reject)=> {
+
+                const storageRef = sRef(storage,`Blogs/${titnm}/`+name);
+                const uploadTask = uploadBytesResumable(storageRef,image,mtdata);
+                uploadTask.on('state-changed',(snapshot)=>{
+                    var progess = (snapshot.bytesTransferred / snapshot.totalByets) * 100;
+                },(error)=>{
+                    alert("Image failed to upload");
+                },()=>{
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadurl) =>{
+                        // realDBupload(downloadurl);
+                        resolve(downloadurl);
+                    })
+                })
+            })
+               
+        }
+        
+        
+
+        function UploadProcess(){
+            
+                var titlenm = title.value;
+                const keys = Object.keys(images);
+
+                keys.forEach(key =>{
+                    var imgtoUpload = images[key].file;
+                    var imgName = imgtoUpload.name;
+                    const metadata = {contentType:imgtoUpload.type};
+                    firebaseimg(titlenm,imgName,imgtoUpload,metadata).then(url =>{
+                        console.log(key);
+                        images[key].uurl = url;
+                        console.log(images);
+                    })
+                })
+                setTimeout(()=>{
+                    console.log("sending");
+                    realDBupload();
+                },10000);                        
+        }
+
+        function urldict(dict){
+            const keys = Object.keys(dict);
+            var td = {};
+            keys.forEach(key =>{
+                td[key] = dict[key].uurl;
+            });
+            return td
+        }
+        
+
+
+        // Firebase database
+        const realdb = getDatabase();
+
+        function realDBupload(){
+           
+            var vtitlenm = title.value;
+            var desc = descrip.value;
+            var authname = authnm.value;
+            var authdes = authdesc.value;
+            
+            let current = new Date();
+            let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+            let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+            let dateTime = cDate + ' ' + cTime;
+            const tstamp = dateTime;
+
+            var iframe = document.getElementById("outputx");
+            var iframedoc = iframe.contentDocument || iframe.contentWindow.document;
+            var articledata = iframedoc.querySelector("body").innerHTML;
+
+            var idnum = vtitlenm+cTime;
+            const mailid = 
+            console.log(images);
+            set(ref(realdb,"Blogs/"+idnum),{
+                UID: idnum,
+                Title: vtitlenm,
+                // BgImgURL: urll[0][0],
+                ImageURLs:urldict(images),
+                Description: desc,
+                Data: articledata,
+                // AuthImgURL: urll[0][urll[0].length-1],
+                AuthName: authname,
+                Authbio : authdes,
+                Timestamp: tstamp,
+                Mail : authen.currentUser.email
+
+            }).then((msg)=>{
+                    setTimeout(()=>{
+                        location.href = `/blogs/${idnum}`;
+                    },5000);
+                    
+                })
+            
+        }
+        
+        commit.onclick = UploadProcess;
+        
+        import { getAuth, signInWithPopup,setPersistence,browserLocalPersistence, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
+
+        const authen = getAuth();
+        const provider = new GoogleAuthProvider();
+        
+        authen.onAuthStateChanged((user)=>{
+            if (user){
+                if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
+                    // filldata(user);
+                } else{
+                setuplogin();
+                }
+                
+            }
+            else{
+                setuplogin();
+            }
+        })
+        
+        
+        // const signoutbtn = document.getElementById('signout').addEventListener('click',e=>{
+        //     signOut(authen);
+        // })
+
+        
+        // function logout(){
+        //     signOut(authen);
+        // }
+        const setuplogin = ()=>{signInWithPopup(authen, provider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+        
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
+                setPersistence(authen, browserLocalPersistence);
+            } else{
+                setuplogin();
+            }
+            
+            
+            // ...
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+        
+    }
+    // setuplogin();
+
+        
+        
+
+        // var  tfield = document.querySelector("#outputx");
+        // tfield.addEventListener('keypress',e=>{
+        //     tfield.style.height = "auto";
+        //     tfield.style.height = `${tfield.contentDocument.body.scrollHeight}px`;
+        //     console.log(scHeight);
+        //     console.log("datected");
+        // })
+        
+
+        let show = false;
+        const buttons = document.querySelectorAll('#inputs button');
+        console.log(buttons)
+        const foreclrbtn = document.getElementById("fcolor-btn");
+        const bgclrbtn = document.getElementById("bcolor-btn");
+        
+        // textField.document.designMode = "On";
+        for (let i=0; i<buttons.length; i++){
+            buttons[i].addEventListener('click',() =>{
+                let cmd = buttons[i].getAttribute('data-cmd');
+                if (buttons[i].name === "active"){
+                    buttons[i].classList.toggle('active');
+                }
+                if (cmd == "formatBlock"){
+                    document.execCommand('formatBlock', false, '<P>');
+                } else if (cmd == "foreColor" ){
+                    document.execCommand(cmd,false,foreclrbtn.value);
+                }else if(cmd == "backColor"){
+                    document.execCommand(cmd,false,bgclrbtn.value);
+                }else if (cmd === "insertImage"){
+                    setTimeout(() => {
+                        document.execCommand(cmd,false,images.sbody[images.sbody.length-1].lurl);
+                    }, 500);
+                }else{
+                    document.execCommand(cmd,false,null);
+                }
+                
+                console.log(cmd)
+                
+                // if (cmd === "insertImage" || cmd === "createLink"){
+                //     let url = prompt("Enter the URL: ", "");
+                //     textField.document.execCommand(cmd,false,url);
+                //     if (cmd === "insertImage"){
+                //         const imgs = textField.document.querySelectorAll('img');
+                //         imgs.forEach(item => {
+                //             item.style.maxWidth = "500px";
+                //         })
+                //     }else{
+                //         const links = textField.document.querySelectorAll('a');
+                //         links.forEach(item => {
+                //             item.target = "_blank";
+                //             item.addEventListener('mouseover', ()=>{
+                //                 textField.document.designMode = "Off";
+                //             });
+                //             item.addEventListener('out', ()=>{
+                //                 textField.document.designMode = "On";
+                //             });
+                            
+                //         })
+                //     }
+
+                // } else{
+                //     
+                // }
+                // if (cmd === "showCode"){
+                //     const textBody = textField.document.querySelector('body');
+                //     if (show){
+                //         textBody.innerHTML = textBody.textContent;
+                //         show=false;
+                //     }else{
+                //         textBody.textContent = textBody.innerHTML;
+                //         show=true;
+                //     }
+                // }
+                // if (cmd === "pak"){
+                //     // console.log(textField.document.getSelection());
+                //     var range = textField.document.getSelection().getRangeAt(0);
+                //     var selectionContents = range.extractContents();
+                //     var div = document.createElement("div");
+                //     div.style.background = "yellow";
+                //     div.appendChild(selectionContents);
+                //     range.insertNode(div);
+                // }
+                // if (cmd === "pak2"){
+                //     console.log(textField.document.getSelection());
+                //     var oldiv = textField.document.getSelection();
+                    
+                //     var range = oldiv.getRangeAt(0);
+                //     console.log(range);
+                //     var selectionContents = range.extractContents();
+                //     var div = document.createElement("div");
+                //     div.appendChild(selectionContents);
+                //     oldiv.parentNode.replaceChild(div,oldiv);
+                    
+                    
+                // }
+                
+            })
+            
+        }
+        // const addstep = document.querySelector("#addstep");
+        // const datals = document.querySelector("#data");
+        // addstep.addEventListener('click',()=>{
+        //     let code = `
+        //     <div>ih</div>
+        //     `;
+        //     datals.innerHTML += code;
+        //     console.log("hi")
+
+        // })
+      </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js" integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+    <script>
+        $(function() {
+            $( "#thumbls" ).sortable({
+            update: function(event, ui) {
+                getIdsOfImages();
+            }//end update         
+            });
+        });
+        
+        function getIdsOfImages() {
+            var values = [];
+            $('.thumbbx').each(function (index) {
+                values.push($(this).attr("id")
+                        .replace("img", ""));
+            });
+            
+            console.log(values);
+        }
+
+        // Display for input active
+        $(document).ready(
+            function() {
+                $("#content").click(function() {
+                    $("#inputs").show();
+                });
+            });
+        $(document).mouseup(function (e) {
+            if ($(e.target).closest("#content").length === 0 && $(e.target).closest("#inputs").length === 0) {
+                $("#inputs").hide();
+            }
+        });
+
+    </script>
+</body>
+</html>

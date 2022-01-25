@@ -1,0 +1,250 @@
+.content{
+    margin:10vh 0 0 0;
+}
+
+.content .head {
+    display: flex;
+    flex-direction: column;
+}
+.content .head .tbar{
+    display: flex;
+    justify-content: space-between;
+}
+.content .head .tbar label{
+    font-size: 1.5em;
+    padding: 0.3em;
+}
+.content .head .tbar label i{
+    cursor: pointer;
+}
+#bgimgbox{
+    position: relative;
+    overflow: hidden;
+    height:50vh;
+    border: black;
+    border-width: 3px;
+}
+
+#bgimg {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    object-position: top right;
+}
+
+#upbgimg {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    transform: translateX(90vw);
+    cursor: pointer;
+}
+
+#title{
+    font-size: 50px;
+    width: 200px;
+    margin : 1rem 0 0.5rem 1rem;
+}
+
+#description {
+    font-size: 20px;
+    margin: 0 0 0 1rem;
+    min-height: min-content;
+}
+.content .wrap{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Data */
+
+#inputs{
+    position: fixed;
+    z-index: 10;
+    width: fit-content;
+    top: 10vh;
+    display: none;
+}
+
+#inputs form{
+    display: flex;
+    gap: 0.2em;
+}
+#inputs form button{
+    padding: 0.5em;
+}
+
+
+#data .stepcard{
+    border: 1px solid black;
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    border-radius: 1em;
+    margin: 2em 0;
+
+}
+#data .stepcard #steptitle{
+    width: 70vw;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.5em;
+    margin: 1em 0 0 0;
+    border: none;
+}
+#data .stepcard .imgs{
+    background-color: rgb(218, 218, 218);
+    width: 70vw;
+    min-height: 4em;
+    border-radius: 1em;
+}
+#data .stepcard .imgs .gallerywrap{
+    display: flex;
+}
+#data .stepcard .imgs .gallerywrap .imgbx{
+    max-height: 18em;
+    width: 27em;
+    padding: 1em;
+
+}
+#data .stepcard .imgs .gallerywrap .imgbx img{
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+#data .stepcard .imgs .gallerywrap .thumbls{
+    display: flex;
+    flex-wrap: wrap;
+    width: 25em;
+    gap: 1em;
+    padding: 1em 0 0 1em;
+    align-content: flex-start;
+    
+    
+}
+#data .stepcard .imgs .gallerywrap .thumbls .thumbbx{
+    width: 7vw;
+    height: 7vw;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+#data .stepcard .imgs .gallerywrap .thumbls .thumbbx i{
+    position: absolute;
+    padding: 0.3em;
+    opacity: 0;
+}
+#data .stepcard .imgs .gallerywrap .thumbls .thumbbx:hover i{
+    opacity: 1;
+}
+#data .stepcard .imgs .gallerywrap .thumbls .thumbbx img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    
+
+}
+
+
+
+#data .stepcard .imgs .uploadt{
+    width: 100%;
+    text-align: right;
+}
+
+#data .stepcard .imgs .uploadt i{
+    cursor: pointer;
+    padding: 0.3em;
+    font-size: 1.5em;
+}
+#data .stepcard #content{
+    border: solid black 2px;
+    width: 70vw;
+    min-height: 5em;
+    box-sizing: border-box;
+    padding: 2em;
+}
+#data .stepcard .fileattach{
+    width: 70vw;
+    min-height: 2em;
+    /* background-color: gray; */
+    margin-bottom: 0.5em;
+}
+
+
+#data .stepcard .fileattach .attachfilels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+}
+#data .stepcard .fileattach .attachfilels .file{
+    background-color: rgba(220,220,220,1);
+    border: solid black 1px;
+    border-radius: 0.1em;
+    padding: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+#data .stepcard .fileattach .attachfilels .file i{
+    opacity: 0;
+    /* padding: 0.5em; */
+}
+#data .stepcard .fileattach .attachfilels .file:hover i{
+    opacity: 1;
+}
+#data .stepcard .fileattach .uploadt{
+    text-align: right;
+}
+#data .stepcard .fileattach .uploadt i{
+    font-size: 1.5em;
+    padding: 0.3em;
+    cursor: pointer;
+}
+.active{
+    border: 2px solid crimson;
+}
+
+
+
+/* Author */
+.author{
+    display: flex;
+    flex-direction: column;
+    margin : 1rem 2rem 1rem 2rem;
+    gap: 1rem;
+}
+#authorimg {
+    height: 50px;
+    width: 50px;
+}
+
+#upauthimg {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    transform: translateX(10vw);
+    cursor: pointer;
+}
+
+#authorname{
+    width: 200px;
+}
+#authordesc{
+    width: 60vw;
+    /* transform: translateX(10vw); */
+}
+
+#fupload{
+    transform: translateX(50vw);
+    cursor: pointer;
+}

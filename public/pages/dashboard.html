@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs-Dashboard</title>
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <header>
+                <img src="../data/index/logobgr.png" alt="">
+                <ul class="options">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="blog.html">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="events.html">Events</a>
+                    </li>
+                    <li>
+                        <a href="gallery.html">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="team.html">Team</a>
+                    </li>   
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="editor.html">Write a Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">My Account</a>
+                    </li>
+                </ul>
+            </header>
+            <main>
+                <div class="accountmn">
+                    <div class="details">
+                        <div class="imgbx"><img src="../data/gallery/pic2.jpg" alt=""></div>
+                        <h2>Dharma</h2>
+                        <p>gurramdharma925@gmail.com</p>
+                    </div>
+                    <div id="signout">Logout</div>
+                </div>
+                <div class="dummy">
+
+                </div>
+                <div id="blogslist">
+                
+                </div>
+            </main>
+            <footer>
+                <div class="wrap">
+                    <div class="imgbx">
+                        <img src="../data/index/logobgr.png" alt="">
+                    </div>
+                    
+                    <div class="contact">
+                        <p>Reach Us On</p>
+                        <ul>
+                            <li><a href=""><i class="fa fa-discord" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="data">
+                        <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
+                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kammand (H.P.)- 175005</p>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>© 2022. YantrikClub-IIT&nbsp;Mandi. All&nbsp;Rights&nbsp;Reserved</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyCo5jZ9wyNSP401q5X8-BH-gM7uxUnhuro",
+            authDomain: "web2k21-99ffd.firebaseapp.com",
+            projectId: "web2k21-99ffd",
+            storageBucket: "web2k21-99ffd.appspot.com",
+            messagingSenderId: "616040662732",
+            appId: "1:616040662732:web:ac36b18f3ccff8c246a469"
+        };
+        const app = initializeApp(firebaseConfig);
+
+        
+        import { getAuth, signInWithRedirect, getRedirectResult, setPersistence,browserLocalPersistence, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
+
+        const authen = getAuth();
+        const provider = new GoogleAuthProvider();
+        
+        authen.onAuthStateChanged((user)=>{
+            if (user){
+                console.log(user);
+                if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
+                    getdata(user.email);
+                } else{
+                setuplogin();
+                }
+                // const loginmail = user.email;
+            }
+            else{
+                signOut(authen);
+                setuplogin();
+            }
+        })
+        
+        const signoutbtn = document.getElementById('signout').addEventListener('click',e=>{
+            signOut(authen);
+            location.reload();
+        })
+        // function logout(){
+        //     signOut(authen);
+        // }
+        const setuplogin = ()=>{
+            signInWithRedirect(authen,provider);
+            getRedirectResult(authen)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            console.log(result);
+            if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
+                setPersistence(authen, browserLocalPersistence);
+                getdata(user.email);
+            } else{
+                setuplogin();
+            }
+            // setPersistence(authen, browserLocalPersistence);
+            
+            // ...
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+    }
+        
+    import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
+    import {getDatabase, ref, onValue, set, child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+        
+    //Firebase database
+    const realdb = getDatabase();
+    const storage = getStorage();
+
+    
+        
+        function createBlcard(uid,bgimg,title,descrip,author){
+            const container = document.getElementById("blogslist");
+            let code = 
+                `<div class="card" id = "blogcard">
+                    <div class="cardcontent">
+                        <div class="imgBx">
+                            <img src="${bgimg}" alt="pic">
+                        </div>
+                        <div class="contentBx">
+                            <h3>${title}</h3>
+                            <p>${descrip}</p>
+                            <h1> <span> By- </span> ${author}</h1>
+                        </div>
+                        <div class="controls">
+                            <a href='/blogs/${uid}' target="_blank">
+                                    Preview
+                            </a>
+                            <a href="/edit/${uid}" target="_blank">
+                                    Edit
+                            </a>
+                            <a  onclick="deleteblog(${uid,title})">
+                                    Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            if (container.innerHTML.indexOf(`${uid}`)!= -1){
+                console.log("present");
+            }else{
+                container.innerHTML += code;
+            }
+            
+            
+        }
+        
+        
+        function Addallblogs(b){
+            b.forEach(bl =>{
+                createBlcard(bl.UID,bl.ImageURLs.sback,bl.Title,bl.Description,bl.AuthName)
+            });
+
+        }
+        function getdata(mail){
+            const dbref = ref(realdb,"Blogs");
+            onValue(dbref, (snapshot) => {
+                var blogs = [];
+                snapshot.forEach(childSanpshot => {
+                    if (childSanpshot.val().Mail == mail){
+                        blogs.push(childSanpshot.val());
+                    } else{
+                        console.log("no bro")
+                    }
+                    
+                });
+                Addallblogs(blogs);
+            });          
+            
+        }
+        const deleteblog = (id,tit)=>{
+            const desref = sref(storage, "Blogs/"+tit); desref.listAll().then((result)=>{result.forEach((fil)=>{console.log(fil);})})
+            // deleteObject(desref).then(()=>{
+            //     location.reload();
+            // })
+        }
+        // window.onload = getdata;
+       
+    </script>
+    
+    <!-- <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js" type="module"></script> -->
+
+</body>
+</html>
