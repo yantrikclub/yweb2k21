@@ -7,7 +7,7 @@ function createcard([event,data]){
     const l = document.querySelectorAll(".container");
     let code = `
     <div class="card" id="${event}">
-        <div class="title"><h2>${event}</h2></div>
+        <div class="title"><p>${event}</p></div>
         <hr class="tit">
         <div class="gal">
         </div>

@@ -14,23 +14,27 @@
 <body>
     <script>
         function showmenu(){
-            var menbar = document.getElementsByClassName(".options");
-            const cs = window.getComputedStyle(menubar).display;
+            var menbar = document.querySelector(".mnoptions");
+            const cs = window.getComputedStyle(menbar).display;
             if (cs === "flex"){
                 menbar.style.display = "none";
+                const btn = document.querySelector(".ham");
+                btn.innerHTML = `<a onclick="showmenu()"><i class="fa fa-bars" aria-hidden="true"></i></a>`
             }
             else if (cs === "none"){
                 menbar.style.display = "flex";
+                const btn = document.querySelector(".ham");
+                btn.innerHTML = `<a onclick="showmenu()"><i class="fa fa-times" aria-hidden="true"></i></a>`
             }
 
         }
-
+        
     </script>
     <div class="wrapper">
         <div class="innerwrapper">
             <header>
                 <img src="data/index/logobgr.png" alt="">
-                <ul class="options">
+                <ul class="mnoptions">
                     <li>
                         <a href="index.html">Home</a>
                     </li>
@@ -60,7 +64,7 @@
                                   Yantrik is growing with the contribution of new members with each coming year.</p>
                             <div class="box"></div>
                         </div>
-                        <h1>Yantrik Club <span>IIT Mandi</span></h1>
+                        <h1>Yantrik Club <br><span>IIT Mandi</span></h1>
                     </div>
 
 
@@ -313,7 +317,7 @@
             // TweenMax.to('#light', 1, {opacity: 1, y: 0, delay: 1, ease: Back.easeOut.config(1.7)});
             TweenMax.to('.glass p', 1, {opacity: 1, delay: 1.4});
             TweenMax.to('.glass h2', 1, {opacity: 1, delay: 1.4});
-            TweenMax.to('.box', 3, {opacity: 1, scale: 1, ease: Elastic.easeOut.config(1, 0.3)});
+            TweenMax.to('.box', 1, {opacity: 1,scale:1, delay:1.5});
         }
         window.onload = introreveal;
         document.getElementById('intro').focus();
