@@ -46,11 +46,13 @@ main .content{
   color: azure;
   line-height: 1em;
   padding: 10%;
-  z-index: 10;
+  z-index: 8;
+  margin-top: 25vh;
 }
-/* #intro h1 span{
- 
-} */
+#intro h1 span{
+  font-size: 2rem;
+  margin-left: 70%;
+}
 
 #intro .glass{
     position: relative;
@@ -300,3 +302,95 @@ main .content{
     background-color: black;
     height: 1px;
 }
+
+
+@media screen and (max-width:900px){
+  
+    #intro{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    #intro h1{
+      font-size: 5em;
+      color: azure;
+      line-height: 1em;
+      /* padding: 10%; */
+      z-index: 8;
+      margin-top: 10vh;
+      margin-left: 10vw;
+    }
+    /* #intro h1 span{
+
+    } */
+
+    #intro .glass{
+        position: relative;
+        width: 38%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        /* background: #0000004d; */
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.3);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255,255,255,0.18);
+        /* display: flex;
+        flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      padding: 15% 7%;
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      -webkit-transform-origin: bottom;
+              transform-origin: bottom;
+
+    }
+
+    #intro .glass h2 {
+      color: #fff;
+      transform: translate(8em,-3em);
+      opacity: 0;
+      
+      
+    }
+
+    #intro .glass p{
+      font-size: 1em;
+      width: 80%;
+      color: azure;
+      opacity: 0;
+      transform: translate(10em,-3em);
+
+    }
+
+    #intro .glass .box{
+      border: 5px solid lightgray;
+      width: 65%;
+      height: 40%;
+      position: absolute;
+      right: -7%;
+      top: 15%;
+      z-index: -1;
+      opacity: 0;
+      -webkit-transform: scale(0);
+              transform: scale(0);
+
+    }
+
+
+
+
+    #info marquee{
+        width: 100%;
+        height: 10vh;
+        direction: left;
+      
+    }
+    #info marquee p{
+        color: black;
+        padding-top: 2em;
+    }
+  
+  }

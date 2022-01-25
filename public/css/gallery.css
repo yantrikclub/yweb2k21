@@ -1,5 +1,5 @@
 main {
-    /* background-image: url("../data/gallery/pic1.jpg"); */
+    /* background-image: url("../data/gallery/"); */
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% ;
@@ -36,23 +36,25 @@ main .content .container{
 main .content .container .card{
     background-color: rgba(255, 255, 255, 0.1);
     margin: 1rem;
-    border-radius: 1em;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    /* border-radius: 1em; */
+    /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
 }
 
-main .content .container .card .title h2 {
+main .content .container .card .title p {
     color: rgb(19, 19, 19);
-    font-size: 3em;
+    font-size: 2em;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     padding: 0.5em;
     stroke: black;
     stroke-width: 2px;
-    text-shadow: 0 0 3px rgb(0 0 0 / 50%)
+    /* text-shadow: 0 0 3px rgb(0 0 0 / 50%); */
+    text-transform: uppercase;
 }
 main .content .container .card .tit{
-    height: 5px;
-    background-color: #966447b7;;
+    height: 2px;
+    background-color: black;
+    border-radius: 1px;
 }
 
 main .content .container .card .gal{
@@ -103,7 +105,7 @@ main .content .popup {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: 10;
     backdrop-filter: blur(2px);
     height: 100%;
     width: 100%;
