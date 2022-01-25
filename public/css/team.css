@@ -1,0 +1,175 @@
+body{
+    
+    background-color: rgb(255, 255, 255);
+}
+body .container h1{
+    text-align: center;
+}
+
+main .dummy{
+    height: 25vh;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3em 1em 1em 1em;
+    font-size: 1.5em;
+}
+
+
+#teamcards .tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: black;
+    cursor: pointer;
+}
+
+#teamcards {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    flex-direction: row;
+    align-items: center;    
+    
+}
+#teamcards .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#teamcards .container .tit{
+    background: black;
+    width: 50%;
+    align-self: center;
+    height: 2px;
+    margin: 0.5em;
+}
+
+#teamcards .container .mem {
+
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 5vh 10vw 10vh 10vw;
+    display: flex;
+    width: 80vw;
+    justify-content: center;
+    
+}
+
+
+#teamcards .container .mem .card {
+    position: relative;
+    width: 250px;
+    height: 320px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 1.4em;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    justify-content: center;
+
+}
+
+#teamcards .mem .card .cardcontent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#teamcards .mem .card:hover .cardcontent {
+    opacity: 1;
+    transition: 1s;
+    transform: translateY(-20px);
+}
+
+#teamcards .mem .card:hover {
+    transition: 1s;
+    transform: scaleZ(1.2);
+}
+
+#teamcards .mem .card:hover::before {
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+
+#teamcards .mem .card .cardcontent .imgBx {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* border: 10px solid rgba(0, 0, 0, 0.25); */
+    border: 10px solid #411e1ead;
+    background-color: white;
+}
+
+
+/* Image adjustments has to be done beforehand (resize to width)*/
+
+#teamcards .mem .card .cardcontent .imgBx img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    object-position: top right;
+}
+
+#teamcards .mem .card .cardcontent .contentBx h3 {
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0 10px;
+    line-height: 1.1em;
+}
+
+#teamcards .mem .card .cardcontent .contentBx h3 span {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: initial;
+}
+
+#teamcards .mem .card .sci {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+}
+
+#teamcards .mem .card .sci li {
+    list-style: none;
+    margin: 0 10px;
+    transform: translateY(30px);
+    transition: 0.5s;
+    opacity: 0;
+    transition-delay: calc(0.1s * var(--i));
+}
+
+#teamcards .mem .card:hover .sci li {
+    transform: translateY(0px);
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#teamcards .mem .card .sci li a {
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 24px;
+}
+

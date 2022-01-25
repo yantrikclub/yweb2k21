@@ -1,0 +1,46 @@
+#blogcard .cardcontent .controls ul,#blogcard .cardcontent .controls ul li, #blogcard .cardcontent .controls ul li a{
+    text-decoration: none;
+}
+
+#blogcard .cardcontent .controls ul{
+    flex-direction: row;
+}
+
+.wrapper{
+    min-width: 100vh;
+}
+
+main .accountmn{
+    position: absolute;
+    width: 15em;
+    right: 0;
+    height: 20em;
+    /* background-color: blue; */
+    overflow:hidden;
+}
+main .accountmn .imgbx{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+main.accountmn .imgbx img{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#signout{
+    cursor: pointer;
+}
+
+main .dummy{
+    height: 25vh;
+}
+
+#blogslist{
+    min-height: 100vh;
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yantrik Blogs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <header>
+                <img src="../data/index/logobgr.png" alt="">
+                <ul class="options">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="blog.html">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="events.html">Events</a>
+                    </li>
+                    <li>
+                        <a href="gallery.html">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="team.html">Team</a>
+                    </li>   
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="dashboard.html">DashBoard</a>
+                    </li>
+                </ul>
+            </header>
+            <main>
+                <div class="content">
+                    
+                    <div id="blogpage">
+                        <div id="blogslist">
+                            
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <div class="wrap">
+                    <div class="imgbx">
+                        <img src="../data/index/logobgr.png" alt="">
+                    </div>
+                    
+                    <div class="contact">
+                        <p>Reach Us On</p>
+                        <ul>
+                            <li><a href=""><i class="fa fa-discord" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="data">
+                        <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
+                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kammand (H.P.)- 175005</p>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>© 2022. YantrikClub-IIT&nbsp;Mandi. All&nbsp;Rights&nbsp;Reserved</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script type="module">    
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyCo5jZ9wyNSP401q5X8-BH-gM7uxUnhuro",
+            authDomain: "web2k21-99ffd.firebaseapp.com",
+            projectId: "web2k21-99ffd",
+            storageBucket: "web2k21-99ffd.appspot.com",
+            messagingSenderId: "616040662732",
+            appId: "1:616040662732:web:ac36b18f3ccff8c246a469"
+        };
+        const app = initializeApp(firebaseConfig);
+        
+        
+        import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
+        import {getDatabase, ref, onValue, set, child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+        
+        
+        // Firebase database
+        const realdb = getDatabase();
+        // onclick="location.href='/blogs/${uid}'" 
+        function createBlcard(uid,bgimg,title,descrip,author){
+            const container = document.getElementById("blogslist");
+            let code = 
+            `<a href='/blogs/${uid}' target="_blank" id="blogcard">
+                <div class="card" >
+                    <div class="cardcontent">
+                        <div class="imgBx">
+                            <img src="${bgimg}" loading="lazy" alt="pic">
+                        </div>
+                        <div class="contentBx">
+                            <h3>${title}</h3>
+                            <p>${descrip}</p>
+                            <h1> <span> By- </span> ${author}</h1>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            `;
+            if (container.innerHTML.indexOf(`${uid}`)!= -1){
+                console.log("present");
+            }else{
+                container.innerHTML += code;
+            }
+            
+            
+        }
+        
+        function Addallblogs(b){
+            b.forEach(bl =>{
+                createBlcard(bl.UID,bl.ImageURLs.sback,bl.Title,bl.Description,bl.AuthName)
+            });
+
+        }
+        function getdata(){
+            const dbref = ref(realdb,"Blogs");
+            onValue(dbref, (snapshot) => {
+                var blogs = [];
+                snapshot.forEach(childSanpshot => {
+                    blogs.push(childSanpshot.val());
+                });
+                Addallblogs(blogs);
+            });          
+            
+        }
+
+        // window.onload = getdata;
+        // function listener(){
+        //     const cards = document.getElementById("blogcard");
+        //     console.log(cards.length);
+        //     cards.forEach((blog)=>{
+        //         blog.addEventListener('click',function(){
+        //             console.log("hi"+blog.blogidd.innerHTML);
+        //         });
+        //     });
+            
+        // }
+
+        function proc(){
+            getdata();
+            
+            // let a = await getdata();
+            // if (a === "done"){ 
+            //     listener();
+            // }
+            // console.log(a);
+            // getdata().then(function(e){
+            //     listener();
+            // });
+        }
+        window.onload = proc;
+
+        
+      </script>
+    
+      
+</body>
+</html>

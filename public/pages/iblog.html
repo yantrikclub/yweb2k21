@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yantrik Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../css/iblog.css">
+    <link rel="stylesheet" href="../css/editor.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <header>
+                <img src="../data/index/logobgr.png" alt="">
+                <ul class="options">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="blog.html">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="events.html">Events</a>
+                    </li>
+                    <li>
+                        <a href="gallery.html">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="team.html">Team</a>
+                    </li>   
+                </ul>
+            </header>
+            <main>
+                <div class="content">
+                    <div class="head">
+                        <div id="bgimgbox">
+                            <img id="bgimg" alt="Background Image">
+                        </div>
+                        <h1 id="title"></h1>
+                        <p id="description"></p>
+                    </div>
+
+                    <div class = "data" id = "data">
+                    </div>
+                    <div class="author">
+                        <div id="authimgbox">
+                            <img src="" alt="" id="authorimg">
+                        </div>
+                        <h1 id="authorname"></h1>
+                        <p id="authordesc"></p>
+                        <div id="timestamp"></div>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <div class="wrap">
+                    <div class="imgbx">
+                        <img src="../data/index/logobgr.png" alt="">
+                    </div>
+                    
+                    <div class="contact">
+                        <p>Reach Us On</p>
+                        <ul>
+                            <li><a href=""><i class="fa fa-discord" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="data">
+                        <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
+                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kammand (H.P.)- 175005</p>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>© 2022. YantrikClub-IIT&nbsp;Mandi. All&nbsp;Rights&nbsp;Reserved</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+        const firebaseConfig = {
+          apiKey: "AIzaSyCo5jZ9wyNSP401q5X8-BH-gM7uxUnhuro",
+          authDomain: "web2k21-99ffd.firebaseapp.com",
+          projectId: "web2k21-99ffd",
+          storageBucket: "web2k21-99ffd.appspot.com",
+          messagingSenderId: "616040662732",
+          appId: "1:616040662732:web:ac36b18f3ccff8c246a469"
+        };
+        const app = initializeApp(firebaseConfig);
+
+        import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
+        import {getDatabase, ref, onValue, set, child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+        const realdb = getDatabase();
+
+
+        let blogid = decodeURI(location.pathname.split("/").pop());
+
+        var bgimg = document.getElementById("bgimg");
+        var blogtitle = document.getElementById("title");
+        var desc = document.getElementById("description");
+        var mdata = document.getElementById("data");
+        var authimg = document.getElementById("authorimg");
+        var authnm = document.getElementById("authorname");
+        var authdesc = document.getElementById("authordesc");
+        var tstamp = document.getElementById("timestamp");
+        
+        var dbref = ref(realdb);
+
+        var parser = new DOMParser();
+
+        function loaddata(){
+            
+            console.log(blogid);
+            get(child(dbref,"Blogs/"+blogid)).then((snapshot) =>{
+                console.log(snapshot);
+            if (snapshot.exists()){
+                // console.log("hi");
+                const urldata = snapshot.val().ImageURLs;
+                bgimg.src = urldata.sback;
+                blogtitle.innerHTML = snapshot.val().Title;
+                document.title = snapshot.val().Title;
+                desc.innerHTML = snapshot.val().Description;
+
+                console.log(parser.parseFromString(snapshot.val().Data, "text/html").body);
+
+                mdata.innerHTML = parser.parseFromString(snapshot.val().Data, "text/html").body.innerHTML;
+                authimg.src = urldata.sauth;
+                authnm.innerHTML = snapshot.val().AuthName;
+                authdesc.innerHTML = snapshot.val().Authbio;
+                tstamp.innerHTML = snapshot.val().Timestamp;
+
+            }
+        })
+        }
+
+        window.onload = loaddata;
+        
+
+    </script>
+</body>
+</html>
