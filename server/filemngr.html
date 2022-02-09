@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB manager</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        section{
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            align-items: center;
+            justify-content: center;
+        }
+
+        section .card{
+            border: gray solid 1px;
+            width: 90vw;
+            height: fit-content;
+        }
+        section .card .format{
+            border: black 2px solid;
+            border-radius: .2em;
+            height: 12vh;
+            width: 90%;
+            margin:0.2em 5%;
+            padding: 0.2em;
+            display: flex;
+
+        }
+        section .card .format .fwrap1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6em;
+            width: 20%;
+        }
+        section .card .format .fwrap2{
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+        }
+        section .card .format .fwrap2 .code{
+            background: black;
+            color: white;
+            border-radius: 0.2em;
+            text-align: center;
+            padding: 0.5em 0;
+        }
+        section .card .wrap{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        section .card .wrap form{
+            margin: 0.5em 1em;
+        }
+        section .card .wrap a{
+            margin: 0.5em 1em;
+        }
+        form{
+            margin: 40% 1em 1em 1em;
+        }
+    </style>
+    
+    <section>
+        <div class="card">
+            <div class="format">
+                <div class="fwrap1">
+                    Upcoming Events <br>
+                    Filename : upevents.csv<br>
+                    Delimiter : ,
+                </div>
+                <div class="fwrap2">
+                    <div>Rows format:</div>
+                    <div class="code">&lt;../data/index/<span>filenm(with ext)</span>&gt;,&lt;Event Title&gt;,&lt;DD/MM/YYYY&gt;,&lt;HRS:MIN:SEC&gt;</div>
+                </div>
+            </div>
+            <div class="wrap">
+                <form method="POST" action="/single/upeve" enctype="multipart/form-data">
+                    <input type="file" name="file" id="upeve" />
+                    <button type="submit">Upload</button>
+                </form>
+                <a href="/" target="_blank" rel="noopener noreferrer">View</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="format">
+                <div class="fwrap1">
+                    Events <br>
+                    Filename : events.csv <br>
+                    Delimiter : ;
+                </div>
+                <div class="fwrap2">
+                    <div>Rows format:</div>
+                    <div class="code">&lt;category&gt;;&lt;Event Title&gt;;&lt;../data/events/<span>filenm(with ext)</span>&gt;;&lt;description&gt;;&lt;0 or 1&gt;</div>
+                    Categories: events,workshops,talks (spell and case sensitive)
+                </div>
+            </div>
+            <div class="wrap">
+                <form method="POST" action="/single/eve" enctype="multipart/form-data">
+                    <input type="file" name="file"  id="eve" />
+                    <button type="submit">Upload</button>
+                </form>
+                <a href="/pages/events.html" target="_blank" rel="noopener noreferrer">View</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="format">
+                <div class="fwrap1">
+                    Gallery <br>
+                    Filename : gallery.csv<br>
+                    Delimiter : ;
+                </div>
+                <div class="fwrap2">
+                    <div>Rows format:</div>
+                    <div class="code">&lt;Title&gt;;&lt;image_../data/gallery/<span>filenm(with ext)</span>&gt;;&lt;video_../data/gallery/<span>filenm(with ext)</span>&gt;;&lt;youtube_<span>YTvideo code</span>&gt;</div>
+                    For yt video "https://www.youtube.com/watch?v=1gH98MopyXg" the code is 1gH98MopyXg . Add items acc to codes in a row seperated by ";"
+                </div>                
+            </div>
+            <div class="wrap">
+                <form method="POST" action="/single/gal" enctype="multipart/form-data">
+                    <input type="file" name="file" id="gal" />
+                    <button type="submit">Upload</button>
+                </form>
+                <a href="/pages/gallery.html" target="_blank" rel="noopener noreferrer">View</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="format">
+                <div class="fwrap1">
+                    Team <br>
+                    Filename : team.csv <br>
+                    Delimiter : ,
+                </div>
+                <div class="fwrap2">
+                    <div>Rows format:</div>
+                    <div class="code">&lt;Category&gt;,&lt;../data/team/<span>filenm(with ext)</span>&gt;,&lt;Person Name&gt;,&lt;Designation&gt;,&lt;fb url&gt;,&lt;insta url&gt;,&lt;linked in&gt;,&lt;Mobile number&gt; </div>
+                    Categories: volunteer,senioradv,facultyadv,coremem (spell and case sensitive)
+                </div>
+            </div>
+            <div class="wrap">
+                <form method="POST" action="/single/team" enctype="multipart/form-data">
+                    <input type="file" name="file" id="team" />
+                    <button type="submit">Upload</button>
+                </form>
+                <a href="/pages/team.html" target="_blank" rel="noopener noreferrer">View</a>
+            </div>
+        </div>
+    </section>
+    <form action="/logout?_method=DELETE" method="POST">
+        <button type="submit">Log out</button>
+    </form>
+</body>
+</html>

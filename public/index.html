@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="data/index/logobgr.png" type="image/icon type">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,12 +29,12 @@
             }
 
         }
-        
+          
     </script>
     <div class="wrapper">
         <div class="innerwrapper">
             <header>
-                <img src="data/index/logobgr.png" alt="">
+                <a href="index.html"><img src="data/index/logobgr.png" alt=""></a>
                 <ul class="mnoptions">
                     <li>
                         <a href="index.html">Home</a>
@@ -62,9 +63,9 @@
                             <p>Yantrik is one of the major clubs of IIT Mandi. It comes under the Science and Technology Council.
                                  Yantrik conducts various events like junkyard wars, RC races, and even mechatronics workshop.
                                   Yantrik is growing with the contribution of new members with each coming year.</p>
-                            <div class="box"></div>
+                            <!-- <div class="box"></div> -->
                         </div>
-                        <h1>Yantrik Club <br><span>IIT Mandi</span></h1>
+                        <h1>Yantrik Club <br><span>IIT&nbsp;Mandi</span></h1>
                     </div>
 
 
@@ -77,6 +78,84 @@
                     <div class = "cont1" id="glimpse">
                         <h1>Activities at Yantrik</h1>
                         <hr class="tit">
+                        <div class="activitywrap">
+                            <section id="activitiesslider">
+                                <div class="slideShow">
+                                    <div class="butns">
+                                        <div id="leftcnt"></div>
+                                    </div>
+                                    <div id="control">
+                                        <div id="actimg">
+                                            <img src="data/index/pic1.jpg" alt="">
+                                        </div>
+                                        <h1 id="activitytit">Activity1</h1>
+                                        <p id="activityinfo">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis,
+                                             debitis ipsum! Inventore fuga ducimus illo! Nulla, provident quas. 
+                                             Quo, magnam quos corporis nobis omnis delectus eligendi ducimus voluptatibus
+                                              labore accusamus?
+                                            <a href="pages/blog.html" target="_blank" rel="noopener noreferrer" >Explore</a>
+                                        </p>
+                                    </div>
+                                    <div class="butns">
+                                        <div id="rightcnt"></div>
+                                    </div>
+                                </div>
+                                <div class="slideShow">
+                                    <div class="butns">
+                                        <div id="leftcnt"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                                    </div>
+                                    <div id="control">
+                                        <div id="actimg">
+                                            <img src="data/index/pic2.jpg" alt="">
+                                        </div>
+                                        <h1 id="activitytit">Activity2</h1>
+                                        <p id="activityinfo">two bro
+                                            <a href="pages/events.html" target="_blank" rel="noopener noreferrer" >Explore</a>
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="butns">
+                                        <div id="rightcnt"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                                <div class="slideShow">
+                                    <div class="butns">
+                                        <div id="leftcnt"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                                    </div>
+                                    <div id="control">
+                                        <div id="actimg">
+                                            <img src="data/index/pic3.jpg" alt="">
+                                        </div>
+                                        <h1 id="activitytit">Activity3</h1>
+                                        <p id="activityinfo">I think this is activity 3, welcome to day
+                                            <a href="pages/gallery.html" target="_blank" rel="noopener noreferrer" >Explore</a>
+                                        </p>
+                                    </div>
+                                    <div class="butns">
+                                        <div id="rightcnt"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                                <div class="slideShow">
+                                    <div class="butns">
+                                        <div id="leftcnt"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                                    </div>
+                                    <div id="control">
+                                        <div id="actimg">
+                                            <img src="data/index/pic4.jpg" alt="">
+                                        </div>
+                                        <h1 id="activitytit">Activity 4</h1>
+                                        <p id="activityinfo">This is activity 4, welcome to day
+                                            <a href="pages/team.html" target="_blank" rel="noopener noreferrer" >Explore</a>
+                                        </p>
+                                    </div>
+                                    <div class="butns">
+                                        <div id="rightcnt"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+ <!-- ----------------------------------------------------------------------------------------------------------------------------- -->
                         <h1>Club Projects</h1>
                         <hr class="tit">
                         <div class="projects">
@@ -140,14 +219,6 @@
                     <h1 id="upeve">Upcoming Events</h1>
                     <hr class="tit">
                     <div class="upevents" id="upevents">
-                        <div class="card">
-                            <div class="imgbx"><img src="data/blogs/stronics.jpg" alt=""></div>
-                            <div class="info">
-                                <div class="name">Tech talk</div>
-                                <p><i class="fa fa-calendar" aria-hidden="true"></i> Date: 2004/04/97999
-                                <br><i class="fa fa-clock-o" aria-hidden="true"></i> Time: 32:99 </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </main>
@@ -313,15 +384,20 @@
         new VerticalMouseDrivenCarousel();
 
         function introreveal(){
-            TweenMax.to('.glass', 1.5, {scaleY: 1, height:'100vh', ease: Circ.easeOut });
+            TweenMax.to('.glass', 2, {scaleY: 1, height:'100vh', ease: Circ.easeOut });
             // TweenMax.to('#light', 1, {opacity: 1, y: 0, delay: 1, ease: Back.easeOut.config(1.7)});
             TweenMax.to('.glass p', 1, {opacity: 1, delay: 1.4});
             TweenMax.to('.glass h2', 1, {opacity: 1, delay: 1.4});
-            TweenMax.to('.box', 1, {opacity: 1,scale:1, delay:1.5});
+            // TweenMax.to('.box', 1, {opacity: 1,scale:1, delay:1.5});
         }
-        window.onload = introreveal;
+        window.onload = e=>{
+            introreveal();
+            swapshow();
+            upeveload();
+        }
         document.getElementById('intro').focus();
     </script>
+    <script src="js/index.js"></script>
 </body>
 </html>
 

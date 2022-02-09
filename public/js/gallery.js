@@ -51,8 +51,11 @@ function createcard([event,data]){
 
 
 
+
+
+
 var promise = new Promise(function(resolve, reject) {
-    onload = fetch("../data/gallery/gallerydb.csv").then(res =>{
+    onload = fetch("../data/gallery/gallery.csv").then(res =>{
         return res.text()
     }).then(data => {
         let result = data.split(/\r?\n|\r/).map(

@@ -1,11 +1,11 @@
 
-        function createCard([id,img,name,designition,fb,insta,linkedin,whatsapp]){
+        function createCard([id,img,name,designition,fb,insta,linkedin,mobile]){
             const mem = document.getElementById(id);
             let code = `
             <div class="card">
                 <div class="cardcontent">
                     <div class="imgBx">
-                        <img src="../data/team/${img}" alt="pic">
+                        <img src="${img}" alt="pic">
                     </div>
                     <div class="contentBx">
                         <h3>
@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <li style="--i:4">
-                        <a target="_blank" rel="noopener noreferrer" href="tel:${whatsapp}">
+                        <a target="_blank" rel="noopener noreferrer" href="tel:${mobile}">
                             <i class="fa fa-phone-square" aria-hidden="true"></i>
                         </a>
                     </li>

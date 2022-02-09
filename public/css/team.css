@@ -1,7 +1,12 @@
 body{
     
-    background-color: rgb(255, 255, 255);
+    
+    background-attachment: fixed;
+    background-image: url("../data/photos/bg1.jfif");
+    background-size: cover;
 }
+
+
 body .container h1{
     text-align: center;
 }

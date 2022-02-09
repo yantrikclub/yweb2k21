@@ -14,6 +14,11 @@ main .content .bloghead{
     justify-content: center;
 
 }
+#projectslist{
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+}
 #blogcard{
     text-decoration: none;
 }
@@ -42,7 +47,7 @@ main .content .bloghead{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    opacity: 0.6;
+    opacity: 0.7;
     transition: 0.5s;
 }
 
@@ -122,4 +127,135 @@ main .content .bloghead{
     text-align: right;
     bottom: 0%;
     margin-right: 1em;
+}
+
+
+.dummy{
+    height: 25vh;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3em 1em 1em 1em;
+    font-size: 1.5em;
+}
+
+@media screen and (max-width:350px) {
+    .card{
+        width: 80vw;
+    }
+}
+hr{
+    width: 50vw;
+    margin-left: 25vw;
+}
+#blogpage h1{
+    padding: 1em;
+    text-align: center;
+}
+#blogpage .selector{
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    gap: 1em;
+}
+#blogpage .selector button{
+    padding: 0.5em;
+    font-size: 20px;
+    width: 5em;
+    
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0/14%),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+    direction: ltr;
+    border: none;
+}
+
+#blogpage .selector .active{
+    background: black;
+    color: white;
+}
+
+
+/* Preloader css */
+#preloader{
+    margin: 0;
+    width: 100vw;
+    height: 93vh;
+    margin-top: 7vh;
+    display: flex;
+    place-items: center;
+    position: fixed;
+    z-index: 5;
+    background: white;
+    padding: 5vw;
+    justify-content: space-evenly;
+}
+#preloader .text{
+    text-transform: uppercase;
+    font-size: 3.4em;
+    z-index: 4;
+    
+}
+
+#preloader .container{
+    perspective: 200px;
+    /* transform: ; */
+}
+#preloader .box{
+    --size: 12vmin;
+    width: var(--size); 
+    height: var(--size); 
+    background-color: hsla(170, 50%, 50%, 0.3);
+    transform: rotateZ(30deg) skew(-35deg);
+    position: relative;
+    animation: animate 800ms infinite ease-in-out both alternate;
+}
+#preloader .box:nth-of-type(1){
+    animation-delay: 0.1s;
+}
+#preloader .box:nth-of-type(2){
+    animation-delay: 0.2s;
+}
+#preloader .box:nth-of-type(3){
+    animation-delay: 0.3s;
+}
+#preloader .box:nth-of-type(4){
+    animation-delay: 0.4s;
+}
+
+#preloader .box::after, #preloader .box::before{
+    content: "";
+    width: inherit;
+    height: 5px;
+    position: absolute;
+    left: 0; 
+    bottom: 0; 
+}
+#preloader .box::before{
+    transform-origin: left bottom;
+    background-color: hsla(170, 50%, 50%, 0.7);
+    transform: translateX(var(--size)) rotateZ(180deg) skew(45deg);
+}
+#preloader .box::after{
+    background-color: hsla(170, 50%, 50%, 0.5);
+    transform-origin: right bottom;
+    transform: translateX(0) rotateZ(90deg) skew(-45deg);
+}
+
+/* bring them all togehter */
+#preloader .box + #preloader .box{
+    top: 0;
+    position: absolute;
+    transform: translateY(0) rotateZ(30deg) skew(-35deg);
+}
+
+@keyframes animate{
+    from{
+        transform: translateY(0) rotateZ(30deg) skew(-35deg);
+    }
+    to{
+        transform: translateY(calc(-1.2 * var(--size))) rotateZ(30deg) skew(-35deg);
+    }
 }

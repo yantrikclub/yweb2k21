@@ -170,15 +170,16 @@ footer .wrap .data a{
     color: inherit;
 }
 footer .copyright{
-    background-color: rgba(0, 0, 5, 0.1);
+    /* background-color: rgba(0, 0, 5, 0.1); */
+    background-color: rgb(231 243 247);
     color: rgb(119, 119, 119);
-    height: 6vh;
+    height: fit-content;
     text-align: center;
     align-items: center;
     width: 100vw;
 }
 footer .copyright p{
-    padding: 2.5vh 0  0 0;
+    padding: 2.5vh;
     font-size: 0.8em;
     
 }
@@ -214,6 +215,9 @@ footer .copyright p{
     }
     header ul li a {
         font-size: 1.2em;
+        border-radius: 0.2em;
+        padding: 1vh 2vw;
+        border-radius: 0.2em!important;
     }
     footer .wrap .contact ul li a{
         font-size: 2rem;

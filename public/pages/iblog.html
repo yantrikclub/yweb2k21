@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="../data/index/logobgr.png" type="image/icon type">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
     
     <link rel="stylesheet" href="../css/iblog.css">
-    <link rel="stylesheet" href="../css/editor.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+
     <script>
         function showmenu(){
             var menbar = document.querySelector(".mnoptions");
@@ -34,48 +35,87 @@
     <div class="wrapper">
         <div class="innerwrapper">
             <header>
-                <img src="../data/index/logobgr.png" alt="">
+                <a href="../index.html"><img src="../data/index/logobgr.png" alt=""></a>
+                
                 <ul class="mnoptions">
                     <li>
                         <a href="../index.html">Home</a>
                     </li>
                     <li>
-                        <a href="blog.html">Blogs</a>
+                        <a href="/pages/blog.html">Blogs</a>
                     </li>
                     <li>
-                        <a href="events.html">Events</a>
+                        <a href="/pages/events.html">Events</a>
                     </li>
                     <li>
-                        <a href="gallery.html">Gallery</a>
+                        <a href="/pages/gallery.html">Gallery</a>
                     </li>
                     <li>
-                        <a href="team.html">Team</a>
+                        <a href="/pages/team.html">Team</a>
                     </li>   
                 </ul>
                 <div class="ham"><a onclick="showmenu()"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
             </header>
             <main>
+
+                <div id="preloader">
+                    <div class="text">Just a moment</div>
+                    <div class="boxes">
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+
                 <div class="content">
                     <div class="head">
+                        <p id="title"></p>
                         <div id="bgimgbox">
                             <img id="bgimg" alt="Background Image">
                         </div>
-                        <h1 id="title"></h1>
-                        <p id="description"></p>
+                        <blockquote id="description"></blockquote>
+                        <!-- <p id="description"></p> -->
                     </div>
 
                     <div class = "data" id = "data">
                     </div>
                     <div class="author">
                         <div id="authimgbox">
-                            <img src="" alt="" id="authorimg">
+                            <img src="../data/blogs/profile.png" alt="" id="authorimg">
                         </div>
-                        <h1 id="authorname"></h1>
-                        <p id="authordesc"></p>
-                        <div id="timestamp"></div>
+                        <div id="authdata">
+                            <h1 id="authorname"></h1>
+                            <p id="authordesc"></p>
+                        </div>
                     </div>
+                    <div id="timestamp"></div>
                 </div>
+                <!-- <button id="pdfgen">Save pdf</button> -->
             </main>
+            
             <footer>
                 <div class="wrap">
                     <div class="imgbx">
@@ -118,9 +158,9 @@
         };
         const app = initializeApp(firebaseConfig);
 
-        import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
-        import {getDatabase, ref, onValue, set, child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
-        const realdb = getDatabase();
+        import {getFirestore,query, where, doc, getDoc,getDocs , setDoc, collection, addDoc,updateDoc, deleteDoc, deleteField} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+        
+        const db = getFirestore();
 
 
         let blogid = decodeURI(location.pathname.split("/").pop());
@@ -134,38 +174,50 @@
         var authdesc = document.getElementById("authordesc");
         var tstamp = document.getElementById("timestamp");
         
-        var dbref = ref(realdb);
 
         var parser = new DOMParser();
 
-        function loaddata(){
-            
-            console.log(blogid);
-            get(child(dbref,"Blogs/"+blogid)).then((snapshot) =>{
-                console.log(snapshot);
-            if (snapshot.exists()){
-                // console.log("hi");
-                const urldata = snapshot.val().ImageURLs;
-                bgimg.src = urldata.sback;
-                blogtitle.innerHTML = snapshot.val().Title;
-                document.title = snapshot.val().Title;
-                desc.innerHTML = snapshot.val().Description;
-
-                console.log(parser.parseFromString(snapshot.val().Data, "text/html").body);
-
-                mdata.innerHTML = parser.parseFromString(snapshot.val().Data, "text/html").body.innerHTML;
-                authimg.src = urldata.sauth;
-                authnm.innerHTML = snapshot.val().AuthName;
-                authdesc.innerHTML = snapshot.val().Authbio;
-                tstamp.innerHTML = snapshot.val().Timestamp;
-
+        async function loaddata(){
+            const data = query(collection(db,"Blogs"),where("UID","==",blogid));
+            const docSnap = await getDocs(data);
+            if (docSnap.size >0){
+                docSnap.forEach(chsnap=>{
+                const csnap = chsnap.data();
+                bgimg.src = csnap.ImageURLs.sback;
+                blogtitle.innerHTML = csnap.Title;
+                document.title = csnap.Title;
+                desc.innerHTML = csnap.Description;
+                mdata.innerHTML = csnap.Data;
+                authimg.src = csnap.ImageURLs.sauth;
+                authnm.innerHTML = csnap.AuthName;
+                authdesc.innerHTML = csnap.Authbio;
+                tstamp.innerHTML = csnap.Timestamp;
+            })
+            }else{
+                location.href = "/pages/missing.html";
             }
-        })
         }
 
         window.onload = loaddata;
         
+        
+        // const pdfbtn = document.getElementById("pdfgen");
+        // pdfbtn.addEventListener("click",()=>{
+        //     const content = document.getElementById("content");
+        //     var opt = {
+        //     margin:       1,
+        //     filename:     'myfile.pdf',
+        //     image:        { type: 'jpeg', quality: 0.98 },
+        //     html2canvas:  { scale: 2 },
+        //     jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        //     };
+
+        //     // New Promise-based usage:
+        //     html2pdf().set(opt).from(content).save();
+
+        // })
 
     </script>
+    <script src="../js/iblog.js"></script>
 </body>
 </html>

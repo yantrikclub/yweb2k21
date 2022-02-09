@@ -1,8 +1,9 @@
 main {
-    /* background-image: url("../data/gallery/"); */
+    /* background-image: url("../data/photos/bgrocket.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 100% ;
+    background-size: cover; */
+    /* background-size: 100% ; */
     min-height: 300vh;
 }
 main .content{
@@ -26,8 +27,9 @@ main .dummy{
 main .content .container{
     
     display: flex;
-    max-width: 64em;
+    /* max-width: 64em; */
     flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.1);
     
 }
 
@@ -55,6 +57,8 @@ main .content .container .card .tit{
     height: 2px;
     background-color: black;
     border-radius: 1px;
+    width: 50%;
+    margin-left: 25%;
 }
 
 main .content .container .card .gal{

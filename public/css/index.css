@@ -7,18 +7,14 @@ body{
 
 
 #intro{
-    height: 100vh;
+    min-height: 100vh;
     background: url("../data/index/1.jpg") center no-repeat fixed;
     /* background-color: black; */
     background-size: cover;
 
     position: relative;
     overflow: hidden;
-    /* display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-     */
+    display: flex;
     
 }
 
@@ -37,10 +33,6 @@ body{
 main .content{
     align-items: center;
 }
-#intro{
-  display: flex;
-  
-}
 #intro h1{
   font-size: 5em;
   color: azure;
@@ -56,7 +48,7 @@ main .content{
 
 #intro .glass{
     position: relative;
-    width: 38%;
+    width: 30%;
     height: 100%;
     top: 0;
     left: 0;
@@ -71,7 +63,7 @@ main .content{
     align-items: center;
     -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 15% 7%;
+  padding: 15% 6%;
   -webkit-transform: scaleY(0);
           transform: scaleY(0);
   -webkit-transform-origin: bottom;
@@ -81,8 +73,9 @@ main .content{
 
 #intro .glass h2 {
   color: #fff;
-  transform: translate(8em,-3em);
+  /* transform: translate(8em,-3em); */
   opacity: 0;
+  padding-bottom: 0.8em;
   
   
 }
@@ -92,7 +85,7 @@ main .content{
   width: 80%;
   color: azure;
   opacity: 0;
-  transform: translate(10em,-3em);
+  /* transform: translate(10em,-3em); */
 
 }
 
@@ -127,6 +120,9 @@ main .content{
 .content .upevents{
     display: flex;
     padding: 2em;
+    justify-content: center;
+    gap: 2em;
+    flex-wrap: wrap;
 }
 
 .content .upevents .card{
@@ -303,55 +299,112 @@ main .content{
     height: 1px;
 }
 
+#activitiesslider{
+  display: flex;
+  justify-content: center;
+}
+
+.slideShow{
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#actimg{
+  width: 50vw;
+  height: 50vh;
+  overflow: hidden;
+}
+
+#actimg img{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+#control{
+  width: 70vw;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+#control h1{
+  color: rgb(255, 0, 179);
+  text-align: left;
+  margin: 0;
+}
+#control p{
+  text-align: left;
+  height: 20vh;
+  width: 50%;
+}
+.slideShow .butns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.slideShow .butns div{
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
+  height: 2em;
+  width: 2em;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.slideShow .butns div:hover{
+  transition: 0.2s ease-in;
+  transform: scale(1.2);
+
+}
+#leftcnt{
+  clip-path: polygon(50% 50%,100% 0,100% 100%);
+}
+
+#rightcnt{
+  clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
+}
 
 @media screen and (max-width:900px){
   
     #intro{
+      background: url("../data/index/mb1.jpg") center no-repeat fixed;
       display: flex;
       flex-direction: column-reverse;
+      background-size: cover;
     }
     #intro h1{
-      font-size: 5em;
+      font-size: 3em;
       color: azure;
       line-height: 1em;
       /* padding: 10%; */
       z-index: 8;
-      margin-top: 10vh;
-      margin-left: 10vw;
+      margin-top: 15vh;
+      /* margin-left: 10vw; */
     }
-    /* #intro h1 span{
-
-    } */
+    #intro h1 span{
+      margin-left: 50%;
+    }
 
     #intro .glass{
-        position: relative;
-        width: 38%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        /* background: #0000004d; */
-        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.3);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255,255,255,0.18);
-        /* display: flex;
-        flex-direction: column; */
-        justify-content: center;
-        align-items: center;
-        -webkit-box-sizing: border-box;
-              box-sizing: border-box;
-      padding: 15% 7%;
-      -webkit-transform: scaleY(0);
-              transform: scaleY(0);
-      -webkit-transform-origin: bottom;
-              transform-origin: bottom;
-
+        width: 100%;
+        height: auto!important;
     }
 
     #intro .glass h2 {
       color: #fff;
-      transform: translate(8em,-3em);
+      /* transform: translate(8em,-3em); */
       opacity: 0;
+      padding-bottom: 0.8em;
       
       
     }
@@ -361,36 +414,54 @@ main .content{
       width: 80%;
       color: azure;
       opacity: 0;
-      transform: translate(10em,-3em);
+      /* transform: translate(10em,-3em); */
 
     }
 
-    #intro .glass .box{
-      border: 5px solid lightgray;
-      width: 65%;
-      height: 40%;
-      position: absolute;
-      right: -7%;
-      top: 15%;
-      z-index: -1;
-      opacity: 0;
-      -webkit-transform: scale(0);
-              transform: scale(0);
-
+    
+    .projects{
+      min-height: 60vh;
+    }
+    .projects .wrap{
+      height: auto;
     }
 
-
-
-
-    #info marquee{
-        width: 100%;
-        height: 10vh;
-        direction: left;
-      
+    .c-mouse-vertical-carousel {
+      height: 60vh;
+      width: 100vw;
     }
-    #info marquee p{
-        color: black;
-        padding-top: 2em;
+
+    .c-mouse-vertical-carousel__list .dum{
+      padding-left: 40%;
     }
-  
+    .c-mouse-vertical-carousel__list{
+      top: 10%;
+    }
+    .u-a5 {
+      font-size: 1.3em;
+      line-height: 2em;
+      letter-spacing: 4px;
+    }
+    
+    .u-b4 {
+      font-size: 0.75em;
+    }
+    
+    .slideShow{
+      width: 100vw;
+    }
+    
+    #actimg{
+      height: 55vw;
+      width: 80vw;
+    }
+    #control{
+      width: 80vw;
+      height: 150vw;
+    }
+    #control p{
+      width: 70%;
+      height: 80vw;
+    }
+
   }
