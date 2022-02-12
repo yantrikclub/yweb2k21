@@ -1,10 +1,12 @@
-require("dotenv").config();
-
+// require("dotenv").config();
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
+
+
 // const fs = require('fs');
 const multer = require('multer');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const flash = require("express-flash");
 const session = require("express-session");
@@ -26,9 +28,11 @@ let initial_path = path.join(__dirname, "public");
 
 const app = express();
 app.use(express.urlencoded({extended:false}));
+app.use(compression())
 app.use(flash())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    // secret: process.env.SESSION_SECRET,
+    secret : "iloveyantrik",
     resave:false,
     saveUninitialized:false
 }))
@@ -38,7 +42,6 @@ app.use(methodOverride('_method'));
 
 app.use(express.static(initial_path));
 app.use(express.static(path.join(__dirname,"server")));
-
 app.get('/webauthlogin',checkNotAuthenticated,(req,res)=>{
     res.sendFile(path.join(__dirname,"server/login.html"));
 })

@@ -13,6 +13,11 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TimelineMax.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;1,400&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <script>
@@ -34,6 +39,246 @@
         
     </script>
     <style>
+        /* @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap"); */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+body {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    
+    width: 100%;
+}
+
+
+
+
+header {
+    /* background-color: #333; */
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 4em;
+    box-sizing: border-box;
+    /* background: rgba(0, 0, 0, 0.3); */
+    background-color: #f8f9fa!important;
+    border-bottom: 0.1em solid #fff;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+header img{
+    margin-left: 5vw;
+    /* margin-top: 1.2vh; */
+    height: 3em;
+    
+}
+header .ham{
+    display: none;
+    color: black;
+}
+
+header ul {
+    list-style-type: none;
+    float: right;
+    height: 8vh;
+    padding: 0 3em 0 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-self: right;
+
+}
+
+header ul li {
+    text-align: center;
+    display: inline-block;
+    
+}
+
+
+
+header ul li a {
+    line-height: 1vh;
+    /* color: #fff; */
+    color: blueviolet;
+    padding: 1.5vh 2vw;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+
+header li a:hover {
+    /* background: rgba(0, 0, 0, 0.7); */
+    background-color: #bcc1e25c;
+    border-radius: 0.5em;
+    color: black;
+}
+
+
+body .wrapper .innerwrapper{
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+
+/* calc(100vh - header+footer height) */
+main .content{
+    min-height: calc(100vh - (50px));
+
+}
+main .content .cont1{
+    min-height: 100vh;
+}
+
+
+
+
+
+footer {
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: 20px 0 0 0;
+}
+
+footer .wrap{
+    display: flex;
+    background-color: #f4fbfe;
+    min-height: 25vh;
+}
+footer .wrap .imgbx{
+    width: 9em;
+    height: 6em;
+    
+
+}
+footer .wrap .imgbx img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5vh 0;
+}
+footer .wrap .contact ul{
+    bottom: 40px;
+    display: flex;
+}
+footer .wrap .contact{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1em;
+    /* padding: 1em 0 0 11em; */
+}
+
+footer .wrap .contact ul li{
+    list-style: none;
+    margin: 0 10px;
+}
+footer .wrap .contact ul li a{
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 1.5rem;
+}
+footer .wrap .data{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+    padding: 1em;
+    font-size: 1rem;
+    max-width: 100vw;
+}
+footer .wrap .data a{
+    text-decoration: none;
+    color: inherit;
+}
+footer .copyright{
+    /* background-color: rgba(0, 0, 5, 0.1); */
+    background-color: rgb(231 243 247);
+    color: rgb(119, 119, 119);
+    height: fit-content;
+    text-align: center;
+    align-items: center;
+    width: 100vw;
+}
+footer .copyright p{
+    padding: 2.5vh;
+    font-size: 0.8em;
+    
+}
+
+@media screen and (min-width:901px){
+    header .mnoptions{
+        display: flex!important;
+    }
+    header .ham{
+        display: none;
+    }
+}
+
+@media (max-width:900px){
+    header{
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+    }
+    header .mnoptions{
+        display: none;
+        flex-direction: column;
+        gap: 0.8em;
+        background-color: inherit;
+        position: absolute;
+        width: -webkit-fill-available;
+        height: auto;
+        align-items: baseline;
+        padding: 2em;
+        transition: 1.2s ease-in;
+        margin: 4em 0 0 0;
+        top: 0;
+    }
+    header .ham{
+        display: block;
+        float: right;
+        margin-right: 8vw;
+        font-size: 1.2em;
+    }
+    header ul li a {
+        font-size: 1.2em;
+        border-radius: 0.2em;
+        padding: 1vh 2vw;
+        border-radius: 0.2em!important;
+    }
+    footer .wrap .contact ul li a{
+        font-size: 2rem;
+    }
+}
+
+
+        body{
+            font-family: 'Noto Sans JP', sans-serif ;
+
+        }
         main{
             display: flex;
         }
@@ -181,7 +426,7 @@
                     </div>
                     <div class="data">
                         <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
-                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kammand (H.P.)- 175005</p>
+                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kamand (H.P.)- 175005</p>
                     </div>
                 </div>
 

@@ -2,10 +2,15 @@ main .content{
     max-width: 100vw;
 }
 #title{
-    font-size: 3em;
+	font-size: 40px;
     padding: 20vh 1em 0 0;
     margin-left: 15vw;
+    width: 70vw;
     text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1.2em;
+    text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
 }
 #bgimgbox{
     width: 100vw;
@@ -24,11 +29,14 @@ main .content{
     border-left: 4px solid #ff20da;
     padding: 0 20px;
     font-style: italic;
+	font-size: 18px;
+	font-family: 'Merriweather Sans', sans-serif;
     color: rgba(0, 0, 0, .5);
     margin-left: 15vw;
-    width: 60vw;
+    width: 70vw;
     min-height: 3em;
     justify-content: center;
+	line-height: 25px;
 }
 
 #data blockquote{
@@ -45,13 +53,17 @@ main .content .head p{
 }
 
 main .content .data{
-    width: 60vw;
-    margin: 3em 20vw;
-
+    width: 70vw;
+    margin: 3em 15vw;
+	font-family: 'Merriweather Sans', sans-serif !important;
+	font-weight: 300 !important;
+	font-size: 1.1em;
+	line-height: 1.3em;
 }
 
+
 main .content .data img{
-    width: 30em;
+    width: 40em;
     height: auto;
 }
 
@@ -59,35 +71,37 @@ main .content .author{
     display: flex;
     margin: 1em 0 1em 15vw;
     gap: 2em;
+	font-family: 'Merriweather Sans', sans-serif !important;
+	flex-wrap: wrap;
 }
 main .content .author .authdata{
     gap: 2em;
 }
-
-#authimgbox{
-    height: 5em;
-    width: 5em;
+#authimgbox {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
     overflow: hidden;
-    
 }
+#authorimg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 #authorname{
     font-weight: normal;
     font-size: 1em;
 }
 
-#authimgbox img{
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+
 
 #timestamp{
     font-size: 1em;
     text-align: right;
     width: 90vw;
     margin-bottom: 1em;
+	font-family: inherit;
 }
 #authdata{
     display: flex;
@@ -145,6 +159,7 @@ main .content .author .authdata{
     text-transform: uppercase;
     width: 40vw;
     padding-top: 2em;
+	font-family: 'Noto Sans JP', sans-serif;
 }
 .boxes {
 	--size: 32px;

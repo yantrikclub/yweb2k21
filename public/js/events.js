@@ -37,7 +37,11 @@ onload = fetch("../data/events/events.csv").then(res =>{
         }
     )
     result.forEach(e =>{
-        createCard(e);
+        if(e.length>2){
+            createCard(e);
+        }else{
+            
+        }
     })
 }).then(()=>{
     const evels = Array.prototype.slice.call(events.querySelectorAll(".event")).slice(4);
@@ -64,7 +68,6 @@ moreeve.addEventListener("click",()=>{
             eve.style.display = "none";
         });
         moreeve.innerHTML = "Load More";
-        moreeve.scrollIntoView();
         show = !show;
     }
     

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/editor.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link href = “https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css” rel = “stylesheet”>
 
     <link href =
@@ -26,6 +26,10 @@
 	<script src =
 "https://code.jquery.com/ui/1.10.4/jquery-ui.js">
 	</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;1,400&family=Noto+Sans+JP&display=swap" rel="stylesheet">
 </head>
 <body>
     <script>
@@ -79,16 +83,14 @@
                 <div class="content">
                     <div class="head">
                         <div id="bgimgbox">
-                            <img id="bgimg" alt="" src="../data/blogs/coverpicplace-02-01.jpg">
+                            <img id="bgimg" alt="" src="../data/blogs/coverpic.jpg">
+                            <label for="backgroundimgup"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></label>
                         </div>
                         <input type="file" accept="image/*" id="backgroundimgup" hidden>
-                        <!-- <button id="upbgimg">U</button> -->
 
                         <div class="tbar">
                             <input type="text" id="title" placeholder="Title"></input>
-
-                            <label for="backgroundimgup"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></label>
-                        
+                            <!-- <label for="backgroundimgup"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></label> -->
                         </div>
                         <textarea id="description" placeholder="Description"></textarea>
                     </div>
@@ -139,23 +141,7 @@
                                 </button>
                                 <button type="button" data-cmd="insertUnorderedList">
                                     <i class="fa fa-list-ul" aria-hidden="true"></i>
-                                </button>
-                                <!-- <button type="button" data-cmd="insertImage">
-                                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
-                                </button> -->
-                                <!-- <button type="button" data-cmd="createLink">
-                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                </button> -->
-                                <!-- <button type="button" data-cmd="showCode" name="active">
-                                    <i class="fa fa-code" aria-hidden="true"></i>
-                                </button> -->
-                                <input type="file" accept="image/*" id="imageadd" hidden>
-                                <button type="button" data-cmd="insertImage" id="imginsertbtn">
-                                    <label for="imageadd" id = "insertimglabel">
-                                        <i class="fa fa-file-image-o" aria-hidden="true"></i>
-                                    </label>
-                                </button>
-                                
+                                </button>                             
                                 
                                 <input id="color-btn" type="color" class="control-btn" value="#ff0000">
                                 <button type="button" data-cmd="foreColor"  >
@@ -173,50 +159,36 @@
                                 <button type="button" data-cmd="formatBlock">
                                     <i class="fa fa-quote-right" aria-hidden="true"></i>
                                 </button>
+                                <input type="file" accept="image/*" id="imageadd" hidden>
+                                <button type="button" data-cmd="insertImage" id="imginsertbtn">
+                                    <label for="imageadd" id = "insertimglabel">
+                                        <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                    </label>
+                                </button>
+                                <button type="button" id="embedlink">
+                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                </button>
                                 </form>
+                                <div class="urlwrap">
+                                    <input type="text" id="linkurl">
+                                    <button id="linkurlok">Embed</button>
+                                </div>
+                                
+
                         </div>
                         <div class = "data" id = "data">
                             <div class="stepcard">
-                                <!-- <input id="steptitle" type="text" placeholder="Step Title" />
-                                <div class="imgs">
-                                    <div class="gallerywrap">
-                                            <div class="thumbls" id="thumbls">
-                                                <div class="thumbbx" id = "img1"><i id ="deleteimg1" class="fa fa-window-close" aria-hidden="true"></i><img src="../data/events/CAD.jpg" alt=""></div>
-                                                <div class="thumbbx" id = "img2"><i id ="deleteimg2" class="fa fa-window-close" aria-hidden="true"></i><img src="../data/events/aircraft.jpg" alt=""></div>
-                                                <div class="thumbbx" id = "img3"><i id ="deleteimg3" class="fa fa-window-close" aria-hidden="true"></i><img src="../data/events/s1.jpeg" alt=""></div>
-                                            </div>
-                                    </div>
-                                    <input type="file" accept="image/*" id="stepimgup" hidden>
-                                    <div class="uploadt">
-                                        Upload images 
-                                        <label id="simgaddbtn" for="stepimgup"><i class="fa fa-cloud-upload" aria-hidden="true"></i></label>
-                                    </div>
-                                </div> -->
                                 <div id="content" contenteditable="true" name="field"></div>
-                                <!-- <div class="fileattach">
-                                    <div class="attachfilels">
-                                        <div class="file" id = "file1">File1.webm <i id ="deletefile1" class="fa fa-window-close" aria-hidden="true"></i></div>
-                                        <div class="file" id = "file2">File2.webs <i id ="deletefile2" class="fa fa-window-close" aria-hidden="true"></i></div>
-                                    </div>
-                                    <input type="file" id="attachmentfile" hidden>
-                                    <div class="uploadt">
-                                        Attach files
-                                        <label id="sfileaddbtn" for="attachmentfile"><i class="fa fa-link" aria-hidden="true"></i></label>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
-                        <!-- <div id="addstep">
-                            <button id = "addstepCard">Add Step</button>
-                        </div> -->
                     </div>
                     
                     <div class="author">
                         <div id="authimgbox">
                             <img src="../data/blogs/profile.png" alt="" id="authorimg">
                             <input type="file" accept="image/*" id="authorimgup" hidden>
-                            <label for="authorimgup"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></label>
                         </div>
+                        <label for="authorimgup"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></label>
                         <div class="wrap">
                             <input type="text" id="authorname" placeholder="Author Name" ></input>
                             <textarea id="authordesc" placeholder="About author"></textarea>
@@ -231,8 +203,9 @@
                         </select>
                     </div>
                     
-
-                    <button id="fupload">Upload Blog</button>
+                    <div class="buttonwrap">
+                        <button id="fupload">Upload Blog</button>
+                    </div>
                 </div>
             </main>
             <footer>
@@ -242,19 +215,19 @@
                     </div>
                     
                     <div class="contact">
-                        <p>Reach Us On</p>
+                        <p>Reach Us On </p>
                         <ul>
-                            <li><a href=""><i class="fa fa-discord" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                            <li><a href="https://discord.com/invite/7HxRhM5wFF"><i class="fa fa-discord" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/yantrik_club/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.facebook.com/groups/1643392312602100"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UChsq9TRLeyPJwahs9x3EzUA"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href="https://github.com/YantrikIITMandi"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                            <li><a href="https://wiki.iitmandi.co.in/p/Yantrik_Club"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                     <div class="data">
                         <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
-                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kammand (H.P.)- 175005</p>
+                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kamand (H.P.)- 175005</p>
                     </div>
                 </div>
 
@@ -281,10 +254,8 @@
         const app = initializeApp(firebaseConfig);
 
         import {getStorage,deleteObject,listAll, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
-        // import {getDatabase, ref, onValue, set, child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
         import {getFirestore, doc, getDoc, setDoc, collection, addDoc,updateDoc, deleteDoc, deleteField} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
         const db = getFirestore();
-        // const realdb = getDatabase();
         const storage = getStorage();
        
 
@@ -307,9 +278,55 @@
         const authimgup = document.getElementById("authorimgup");
         const imageadd = document.getElementById("imageadd");
         const poploader = document.getElementById("popup");
+        const lembed = document.getElementById("embedlink");
+
         var content = document.getElementById("content");
         let blogid = decodeURI(location.pathname.split("/").pop());
-        
+        var turl = document.getElementById("linkurl");
+        const turlok = document.getElementById("linkurlok");
+        lembed.addEventListener("click",()=>{
+            turl.style.display = "block";
+            turlok.style.display = "block";
+        })
+        turlok.addEventListener("click",()=>{
+            var tturl = turl.value;
+            content.focus();
+            if (tturl.length > 0){
+                if (tturl.indexOf("youtu") == -1){
+                    document.execCommand("createLink",false,tturl);
+                }else{
+                    let fcodels = tturl.split("=");
+                    if (fcodels.length >1){
+                        var tyls = tturl.split("=");
+                        var fsrc = tyls[tyls.length-1];
+                    } else {
+                        var tyls = tturl.split("/");
+                        var fsrc = tyls[tyls.length-1];
+                    }
+                    var embedcode = `<iframe src="https://www.youtube.com/embed/${fsrc}?rel=0" id="ytembed" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen  id="youtubevid"></iframe>`
+                    document.execCommand("insertHTML",false,embedcode);
+                    try{
+                        
+                        
+                    }catch(err){
+                        console.log(err);
+                        document.execCommand("createLink",false,tturl);
+                    }
+                    
+                }
+                
+            }else{
+
+            }
+            
+            turl.style.display = "none";
+            turlok.style.display = "none";
+            setTimeout(() => {
+                turl.value = ""
+            }, 1000);
+        })
+
+
         bgimgup.addEventListener('change',()=>{
             loadfile(bgimgup,"sback");
         })
@@ -361,7 +378,6 @@
                             const imgs = field.querySelectorAll('img');
                             imgs.forEach(item => {
                                 // item.style.maxWidth = "80vw";
-
                             })
                             
                         }).then(e=>{
@@ -383,6 +399,77 @@
  
         }
         
+        let show = false;
+        const buttons = document.querySelectorAll('#inputs button');
+        // console.log(buttons)
+        let field = document.getElementById("content");
+        const clrbtn = document.getElementById("color-btn");
+        const fsize = document.getElementById("fsize");
+
+        const fclr = document.getElementById("foregnd");
+        const bclr = document.getElementById("backgnd");
+        fsize.addEventListener('change',()=>{
+            document.execCommand("fontSize",false,fsize.value);
+            
+        })
+        clrbtn.addEventListener('change',()=>{
+            fclr.style.color = clrbtn.value;
+            bclr.style.background = clrbtn.value;
+        })
+        // textField.document.designMode = "On";
+        for (let i=0; i<buttons.length; i++){
+            buttons[i].addEventListener('click',() =>{
+                let cmd = buttons[i].getAttribute('data-cmd');
+                if (buttons[i].name === "active"){
+                    buttons[i].classList.toggle('active');
+                }
+                if (cmd == "formatBlock"){
+                    document.execCommand('formatBlock', false, '<blockquote>');
+                    document.execCommand("insertHTML", false, '<br>');
+                    
+                }else if (cmd == "insertImage"){
+
+                }else if (cmd == "foreColor" ){
+                    document.execCommand(cmd,false,clrbtn.value);
+                }else if(cmd == "backColor"){
+                    document.execCommand(cmd,false,clrbtn.value);
+                }else if (cmd=="fontSize"){
+                    document.execCommand(cmd,false,fsize.value);
+                }else if(cmd=="createLink"){
+
+                }else if(cmd == "null"){
+
+                }else{
+                    document.execCommand(cmd,false,null);
+                }
+                
+                // console.log(cmd)
+            })
+        }
+
+
+        content.addEventListener("paste",function(e){
+            
+            setTimeout(() => {
+                content.childNodes.forEach(e =>{
+                    try {let lss = e.classList;
+                    if (lss.contains("fcng")){
+                        
+                    }else{
+                        const s = window.getComputedStyle(e).getPropertyValue("font-size");
+                        e.style.lineHeight = `calc(0.4em + ${s})`;
+                        e.style.margin = "0.5em 0";
+                        e.style.fontFamily = "'Merriweather Sans', sans-serif";
+                        lss.add("fcng")
+                    }}catch{
+
+                    }
+                    
+                })
+            }, 2000);
+
+        })
+
 
         function firebaseimg(titnm,name,image,mtdata){
             return new Promise((resolve,reject)=> {
@@ -476,25 +563,42 @@
                 })
             })                       
         }
+        function shorten(txt){
+            var ls1 = txt.split(".");
+            var dtxt = "";
+            if (ls1[0].split(" ").length < 19){
+                dtxt += ls1[0];
+            }
+            else{
+                const tls = ls1[0].split(" ").slice(0,19);
+                tls.forEach(e=>{
+                    dtxt += e+" ";
+                })
+                
+            }
+            return dtxt+" ...";
+        }
+        function fontclean(txt){
+            const ttxt = txt.replaceAll("font-family","y-family");
+            return ttxt
+        }
 
 
         async function DBupload(idnum,urldata){
-           console.log("trig");
-           console.log(urldata);
+        //    console.log("trig");
+        //    console.log(urldata);
             var vtitlenm = title.value;
             var desc = descrip.value;
             var authname = authnm.value;
             var authdes = authdesc.value;
-            
+            var shortdesc = shorten(desc);
             let current = new Date();
             let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
             let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
             let dateTime = cDate + ' ' + cTime;
             const tstamp = dateTime;
             
-            // var iframe = document.getElementById("outputx");
-            // var iframedoc = iframe.Document || iframe.Window.document;
-            // var articledata = iframedoc.querySelector("body").innerHTML;
+
             var articaldata = field.innerHTML;
 
             var reference = doc(db,"Blogs",idnum);
@@ -504,21 +608,21 @@
                 Title: vtitlenm,                
                 ImageURLs:urldata,
                 Description: desc,
-                Data: articaldata,
+                Data: fontclean(articaldata),
                 AuthName: authname,
                 Authbio : authdes,
                 Timestamp: tstamp,
                 Mail : authen.currentUser.email,
                 Category: cat.value
             }).then(()=>{
-                location.href = `/blogs/${idnum}`;
+                location.href = `/dashboard.html`;
                 })
             var reff = doc(db,"Blogsthumb",idnum);
             const docReff = await setDoc( reff,{
                 UID: idnum,
                 Title: vtitlenm,                
                 ImageURLs:urldata,
-                Description: desc,
+                Description: shortdesc,
                 AuthName: authname,
                 Mail : authen.currentUser.email,
                 Category: cat.value
@@ -546,53 +650,7 @@
 
 
 
-
-
-
-        let show = false;
-        const buttons = document.querySelectorAll('#inputs button');
-        console.log(buttons)
-        let field = document.getElementById("content");
-        const clrbtn = document.getElementById("color-btn");
-        const fsize = document.getElementById("fsize");
-
-        const fclr = document.getElementById("foregnd");
-        const bclr = document.getElementById("backgnd");
-        fsize.addEventListener('change',()=>{
-            document.execCommand("fontSize",false,fsize.value);
-            
-        })
-        clrbtn.addEventListener('change',()=>{
-            fclr.style.color = clrbtn.value;
-            bclr.style.background = clrbtn.value;
-        })
-        // textField.document.designMode = "On";
-        for (let i=0; i<buttons.length; i++){
-            buttons[i].addEventListener('click',() =>{
-                let cmd = buttons[i].getAttribute('data-cmd');
-                if (buttons[i].name === "active"){
-                    buttons[i].classList.toggle('active');
-                }
-                if (cmd == "formatBlock"){
-                    document.execCommand('formatBlock', false, '<blockquote>');
-                }else if (cmd == "insertImage"){
-
-                }else if (cmd == "foreColor" ){
-                    document.execCommand(cmd,false,clrbtn.value);
-                }else if(cmd == "backColor"){
-                    document.execCommand(cmd,false,clrbtn.value);
-                }else if (cmd=="fontSize"){
-                    document.execCommand(cmd,false,fsize.value);
-                }else{
-                    document.execCommand(cmd,false,null);
-                }
-                
-                console.log(cmd)
-            })
-        }
-
-
-
+        
 
 
 
@@ -603,7 +661,7 @@
         }
         let obgurls = {}
         function loaddata(){
-            console.log("loading");
+            // console.log("loading");
 
             var dbref = ref(realdb);
             get(child(dbref,"Blogs/"+blogid)).then((snapshot) =>{
@@ -624,37 +682,6 @@
         })
         }
 
-        // const ls = document.getElementById("thumbls");
-        // simgaddbtn.addEventListener('click',getlurl().then((imgscr)=>{
-        //     let code = `
-        //     <div class="thumbbx" id = "img1"><i id ="deleteimg1" class="fa fa-window-close" aria-hidden="true"></i><img src="${imgsrc}" alt=""></div>
-        //     `;
-        //     ls.innerHTML += code;
-        // }))
-        
-
-        // var input1 = document.createElement('input');
-        // var input2 = document.createElement('input');
-        // var input3 = document.createElement('input');
-        // input1.type = 'file';
-        // input2.type = 'file';
-        // input3.type = 'file';
-
-        
-
-        
-
-        
-
-        
-        
-        
-
-        
-        
-
-
-        // Firebase database
         
         
         import { getAuth, signInWithRedirect, getRedirectResult, setPersistence,browserLocalPersistence, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
@@ -666,7 +693,7 @@
             if (user){
                 if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
                     // filldata(user);
-                    console.log("present");
+                    // console.log("present");
                 } else{
                 setuplogin();
                 }
@@ -677,14 +704,6 @@
         })
         
         
-        // const signoutbtn = document.getElementById('signout').addEventListener('click',e=>{
-        //     signOut(authen);
-        // })
-
-        
-        // function logout(){
-        //     signOut(authen);
-        // }
         const setuplogin = ()=>{
             signInWithRedirect(authen,provider);
             getRedirectResult(auth)
@@ -692,7 +711,7 @@
 
                     // The signed-in user info.
                     const user = result.user;
-                    console.log(result);
+                    // console.log(result);
                     if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
                         setPersistence(authen, browserLocalPersistence);
                         getdata(user.email);
@@ -712,91 +731,6 @@
                     
                 });
         }
-        
-        
-
-        // var  tfield = document.querySelector("#outputx");
-        // tfield.addEventListener('keypress',e=>{
-        //     tfield.style.height = "auto";
-        //     tfield.style.height = `${tfield.contentDocument.body.scrollHeight}px`;
-        //     console.log(scHeight);
-        //     console.log("datected");
-        // })
-        
-
-        
-
-                // if (cmd === "insertImage" || cmd === "createLink"){
-                //     let url = prompt("Enter the URL: ", "");
-                //     textField.document.execCommand(cmd,false,url);
-                //     if (cmd === "insertImage"){
-                //         const imgs = textField.document.querySelectorAll('img');
-                //         imgs.forEach(item => {
-                //             item.style.maxWidth = "500px";
-                //         })
-                //     }else{
-                //         const links = textField.document.querySelectorAll('a');
-                //         links.forEach(item => {
-                //             item.target = "_blank";
-                //             item.addEventListener('mouseover', ()=>{
-                //                 textField.document.designMode = "Off";
-                //             });
-                //             item.addEventListener('out', ()=>{
-                //                 textField.document.designMode = "On";
-                //             });
-                            
-                //         })
-                //     }
-
-                // } else{
-                //     
-                // }
-                // if (cmd === "showCode"){
-                //     const textBody = textField.document.querySelector('body');
-                //     if (show){
-                //         textBody.innerHTML = textBody.textContent;
-                //         show=false;
-                //     }else{
-                //         textBody.textContent = textBody.innerHTML;
-                //         show=true;
-                //     }
-                // }
-                // if (cmd === "pak"){
-                //     // console.log(textField.document.getSelection());
-                //     var range = textField.document.getSelection().getRangeAt(0);
-                //     var selectionContents = range.extractContents();
-                //     var div = document.createElement("div");
-                //     div.style.background = "yellow";
-                //     div.appendChild(selectionContents);
-                //     range.insertNode(div);
-                // }
-                // if (cmd === "pak2"){
-                //     console.log(textField.document.getSelection());
-                //     var oldiv = textField.document.getSelection();
-                    
-                //     var range = oldiv.getRangeAt(0);
-                //     console.log(range);
-                //     var selectionContents = range.extractContents();
-                //     var div = document.createElement("div");
-                //     div.appendChild(selectionContents);
-                //     oldiv.parentNode.replaceChild(div,oldiv);
-                    
-                    
-                // }
-                
-        //     })
-            
-        // }
-        // const addstep = document.querySelector("#addstep");
-        // const datals = document.querySelector("#data");
-        // addstep.addEventListener('click',()=>{
-        //     let code = `
-        //     <div>ih</div>
-        //     `;
-        //     datals.innerHTML += code;
-        //     console.log("hi")
-
-        // })
       </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js" integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -817,7 +751,7 @@
                         .replace("img", ""));
             });
             
-            console.log(values);
+            // console.log(values);
         }
 
         // Display for input active
@@ -832,7 +766,7 @@
                 $("#inputs").hide();
             }
         });
-
+        
     </script>
 </body>
 </html>

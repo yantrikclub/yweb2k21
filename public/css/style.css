@@ -10,9 +10,8 @@
 
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    /* background-color: #fff; */
-    /* overflow-x: hidden; */
+    /* font-family: Arial, Helvetica, sans-serif; */
+    
     width: 100%;
 }
 
@@ -21,25 +20,29 @@ body {
 
 header {
     /* background-color: #333; */
+    font-family: 'Noto Sans JP', sans-serif;
     color: #fff;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: auto;
-    z-index: 3;
+    height: 4em;
     box-sizing: border-box;
     /* background: rgba(0, 0, 0, 0.3); */
     background-color: #f8f9fa!important;
     border-bottom: 0.1em solid #fff;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
     z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     
 }
+
 header img{
     margin-left: 5vw;
-    margin-top: 1.2vh;
-    height: 6.4vh;
+    /* margin-top: 1.2vh; */
+    height: 3em;
     
 }
 header .ham{
@@ -106,7 +109,7 @@ main .content .cont1{
 
 
 footer {
-    
+    font-family: 'Noto Sans JP', sans-serif;
     padding: 20px 0 0 0;
 }
 
@@ -194,6 +197,11 @@ footer .copyright p{
 }
 
 @media (max-width:900px){
+    header{
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+    }
     header .mnoptions{
         display: none;
         flex-direction: column;
@@ -205,12 +213,13 @@ footer .copyright p{
         align-items: baseline;
         padding: 2em;
         transition: 1.2s ease-in;
+        margin: 4em 0 0 0;
+        top: 0;
     }
     header .ham{
         display: block;
         float: right;
         margin-right: 8vw;
-        margin-top: 1.2em;
         font-size: 1.2em;
     }
     header ul li a {

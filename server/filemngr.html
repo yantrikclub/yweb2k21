@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DB manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <style>
@@ -13,6 +19,7 @@
             padding: 0;
             box-sizing: border-box;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
@@ -24,6 +31,7 @@
             gap: 2em;
             align-items: center;
             justify-content: center;
+            margin: 5em;
         }
 
         section .card{
@@ -73,11 +81,82 @@
             margin: 0.5em 1em;
         }
         form{
-            margin: 40% 1em 1em 1em;
+            margin: 1em 1em 1em 80vw;
         }
+
+        #statuslist{
+            display: flex;
+            flex-direction: column;
+            margin: 5em;
+            gap: 1em;
+        }
+        #statuslist .card{
+            width: 600px;
+            height: 150px;
+            overflow: hidden ;
+            border: black solid 1px;
+            display: flex;
+        }
+        #statuslist .card a{
+            text-decoration: none;
+            color: black;
+            display: flex;
+            cursor: pointer;
+        }
+        #statuslist .card a .imgBx{
+            height: 150px;
+            width: 225px;
+            
+        }
+        #statuslist .card a .imgBx img{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+        #statuslist .card a .contentBx{
+            width: 250px;
+        }
+        #statuslist .card a .contentBx h3{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+        }
+        #statuslist .card a .contentBx p{
+            text-align: center;
+        }       
+        #statuslist .card .uid{
+            display: none;
+        }
+        #statuslist .card .control{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 10px;
+        }
+        #statuslist .card .control .statuscode{
+            font-weight: bold;
+            padding: 2px;
+            border: black 1px solid;
+        }
+
+        hr{
+            width: 100vw;
+            height: 1px;
+            background-color: black;
+            border: solid black 1px;
+            margin: 5em 0;
+        }
+        
+
     </style>
-    
-    <section>
+    <form action="/logout?_method=DELETE" method="POST">
+        <button type="submit">Log out</button>
+    </form>
+    <div class="selector">
+        <button id="selcsv" class="btn active">CSV Files DB</button>
+        <button id="selblog" class="btn">Blogs Approval</button>
+    </div>
+    <section id="filelist">
         <div class="card">
             <div class="format">
                 <div class="fwrap1">
@@ -150,7 +229,7 @@
                 <div class="fwrap2">
                     <div>Rows format:</div>
                     <div class="code">&lt;Category&gt;,&lt;../data/team/<span>filenm(with ext)</span>&gt;,&lt;Person Name&gt;,&lt;Designation&gt;,&lt;fb url&gt;,&lt;insta url&gt;,&lt;linked in&gt;,&lt;Mobile number&gt; </div>
-                    Categories: volunteer,senioradv,facultyadv,coremem (spell and case sensitive)
+                    Categories: volunteer,senioradv,facultyadv,mem,alumni (spell and case sensitive). "javascript:void(0)" as url for no action.
                 </div>
             </div>
             <div class="wrap">
@@ -162,8 +241,247 @@
             </div>
         </div>
     </section>
-    <form action="/logout?_method=DELETE" method="POST">
-        <button type="submit">Log out</button>
-    </form>
+    
+
+    <!-- Blog approval ---------------------------------------------------------------------------------------------------->
+    
+    <section id="bloglist">
+            
+        <h1>Blog approvals</h1>
+        <div class="filter">
+            <label for="filter">
+                Filter &nbsp;<i class="fa fa-filter" aria-hidden="true"></i>
+            </label>
+            <select name="filter" id="filter">
+                <option value="approved">Approved</option>
+                <option value="waiting">Waiting</option>
+                <option value="rejected">Rejected</option>
+                <option value="all" selected>All</option>
+            </select>
+            
+        </div>
+
+        <div id ="statuslist">
+
+        </div>
+    </section>
+
+
+    <script type="module">
+            
+        import {getFirestore ,getDocs , doc, getDoc, setDoc, collection, addDoc,updateDoc, deleteDoc, deleteField} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+        import { getAuth, signInWithRedirect, getRedirectResult, setPersistence,browserLocalPersistence, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyCo5jZ9wyNSP401q5X8-BH-gM7uxUnhuro",
+            authDomain: "web2k21-99ffd.firebaseapp.com",
+            projectId: "web2k21-99ffd",
+            storageBucket: "web2k21-99ffd.appspot.com",
+            messagingSenderId: "616040662732",
+            appId: "1:616040662732:web:ac36b18f3ccff8c246a469"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore();
+
+        const authen = getAuth();
+        const provider = new GoogleAuthProvider();
+        const mailid = [];
+        authen.onAuthStateChanged((user)=>{
+            if (user){
+                
+                if (user.email == "yantrik.web@gmail.com" || user.email == "yantrik_club@students.iitmandi.ac.in"){
+                    getdata(user.email);
+                    mailid.push(user.email);
+                
+
+                } else{
+                signOut(authen);
+                setuplogin();
+                }
+            }
+            else{
+                setuplogin();
+            }
+        })
+        
+        
+        const setuplogin = ()=>{
+            signInWithRedirect(authen,provider);
+            getRedirectResult(auth)
+                .then((result) => {
+                    // The signed-in user info.
+                    const user = result.user;
+                    // console.log(result);
+                    if (user.email == "yantrik.web@gmail.com" || user.email == "yantrik_club@students.iitmandi.ac.in"){
+                        getdata()
+                    } else{
+                        setuplogin();
+                    }
+                }).catch((error) => {
+                    setuplogin();                    
+                });
+        }
+        
+        
+
+        const container = document.getElementById("statuslist");
+        async function getdata(){
+            const docSnap = await getDocs(collection(db,"Blogsthumb"));
+            docSnap.forEach(chsnap=>{
+                let csnap = chsnap.data();
+
+                var Status;
+                if (csnap.Status == "approved" || csnap.Status == "rejected"){
+                    Status = csnap.Status;
+                }else{
+                    Status = "waiting"
+                }
+
+
+                let code = 
+                    `<div class="card" >
+                        <a href='/blogs/${csnap.UID}' target="_blank" id="blogcard">
+                            <div class="imgBx">
+                                <img src="${csnap.ImageURLs.sback}" loading="lazy" alt="">
+                            </div>
+                            <div class="contentBx">
+                                <h3>${csnap.Title}</h3>
+                                <p> <span> By- </span> ${csnap.AuthName}</p>
+                            </div>                
+                        </a>
+                        <div class="uid">${csnap.UID}</div>
+                        <div class="control">
+                            <div class="statuscode">${Status}</div>
+                            <button id="approve" >Approve</button>
+                            <button id="reject" >Reject</button>
+                            <button id="wait" >Halt</button>
+                        </div>            
+                    </div>
+                    `;
+                container.innerHTML = code + container.innerHTML;
+                
+            })
+        }
+        async function setstatus(uid,val){
+            var reff = doc(db,"Blogsthumb",uid);
+            const docReff = await setDoc( reff,{
+                Status : val
+            }, {merge:true});
+            return val;
+        }
+        setTimeout(() => {
+            addlisteners();
+        }, 3000);
+        function addlisteners(){
+            const approve = document.querySelectorAll("#approve");
+            const reject = document.querySelectorAll("#reject");
+            const wait = document.querySelectorAll("#wait");
+            approve.forEach(ea =>{
+                ea.addEventListener("click",()=>{
+                    ea.parentNode.parentNode.querySelector(".statuscode").innerHTML = "approved";
+                    let tid = ea.parentNode.parentNode.querySelector(".uid").innerHTML;
+                    setstatus(tid,"approved").then(msg=>{
+                        ea.parentNode.parentNode.querySelector(".statuscode").innerHTML = msg;
+                        if (filter.value == "all" || filter.value == msg){
+
+                        }else{
+                            ea.parentNode.parentNode.style.display = "none";
+                        }
+                    })
+
+                })
+            })
+            reject.forEach(ea =>{
+                ea.addEventListener("click",()=>{
+                    let tid = ea.parentNode.parentNode.querySelector(".uid").innerHTML;
+                    setstatus(tid,"rejected").then(msg=>{
+                        ea.parentNode.parentNode.querySelector(".statuscode").innerHTML = msg;
+                        if (filter.value == "all" || filter.value == msg){
+
+                        }else{
+                            ea.parentNode.parentNode.style.display = "none";
+                        }
+                    })
+                })
+            })
+            wait.forEach(ea =>{
+                ea.addEventListener("click",()=>{
+                    let tid = ea.parentNode.parentNode.querySelector(".uid").innerHTML;
+                    setstatus(tid,"waiting").then(msg=>{
+                        ea.parentNode.parentNode.querySelector(".statuscode").innerHTML = msg;
+                        if (filter.value == "all" || filter.value == msg){
+
+                        }else{
+                            ea.parentNode.parentNode.style.display = "none";
+                        }
+                    })
+                })
+            })
+        }
+
+
+        const filter = document.getElementById("filter");
+        filter.addEventListener('change',()=>{
+            setfilter()
+            
+        })
+        function setfilter(){
+            var val = filter.value;
+            if (val == "all"){
+                container.querySelectorAll(".card").forEach(card=>{
+                    card.style.display = "flex";
+                })
+            } else {
+                container.querySelectorAll(".card").forEach(card =>{
+                    if (card.querySelector(".statuscode").innerHTML == val){
+                        card.style.display = "flex";
+                    }else{
+                        card.style.display = "none";
+                    }
+                })
+            }
+        }
+
+        window.onload = function(){blogsel.click()};
+
+        const csvsel = document.getElementById("selcsv");
+        const blogsel = document.getElementById("selblog");
+        const csvcontainer = document.getElementById("filelist");
+        const blogcontainer = document.getElementById("bloglist");
+        csvsel.addEventListener("click",()=>{
+            
+            if (csvcontainer.style.display == "none"){
+                [csvsel,blogsel].forEach(btn =>{
+                    let ls = btn.className;
+                    if(ls.indexOf("active") == -1){
+                        btn.className = ls+" active";
+                    }else{
+                        btn.className = ls.replace("active","")
+                    }
+                })
+            }
+            csvcontainer.style.display = "flex";
+            blogcontainer.style.display = "none";
+        })
+        blogsel.addEventListener("click",()=>{
+            
+            if (blogcontainer.style.display == "none"){
+                [csvsel,blogsel].forEach(btn =>{
+                    let ls = btn.className;
+                    if(ls.indexOf("active") == -1){
+                        btn.className = ls+" active";
+                    }else{
+                        btn.className = ls.replace("active","");
+                    }
+                })
+            }
+            csvcontainer.style.display = "none";
+            blogcontainer.style.display = "flex";
+
+        })
+        
+
+    </script>
 </body>
 </html>

@@ -21,11 +21,11 @@ function createcard([event,data]){
         let icode = "";
     
         if (format == "video"){
-            console.log(format,fsrc);
-            icode = `<div class="item"><video preload muted src="${fsrc}"></video></div>`;
+            // console.log(format,fsrc);
+            icode = `<div class="item"><div class="overlay"></div><video preload muted src="${fsrc}"></video></div>`;
         }
         else if(format == "image") {
-            console.log(format,fsrc);
+            // console.log(format,fsrc);
             icode = `<div class="item"><img src="${fsrc}" alt=""></div>`;
         }
         else if (format == 'youtube'){
@@ -34,7 +34,7 @@ function createcard([event,data]){
         }
     
         const galdata = document.getElementById(event).getElementsByClassName("gal")[0];
-        console.log(icode);
+        // console.log(icode);
         galdata.innerHTML += icode;
     }
 
@@ -42,7 +42,7 @@ function createcard([event,data]){
     const list = data.split(",");
     for (let i of list){
         i = i.split("_");
-        console.log(i);
+        // console.log(i);
         createElement(i);
     };
     return don2 = true;
@@ -64,12 +64,16 @@ var promise = new Promise(function(resolve, reject) {
             }
         )
         result.forEach(e =>{
-            console.log(e);
-            createcard(e);
+            if (e[0].length >1){
+                createcard(e);
+            }
+            else{
+                
+            }
         })
 
         done = true;
-        console.log(done);
+        // console.log(done);
         resolve()
     }).catch( e =>{
         reject()
@@ -79,7 +83,7 @@ var promise = new Promise(function(resolve, reject) {
   promise.
       then(function () {
 
-        console.log('listening');
+        // console.log('listening');
         document.querySelectorAll('.item video').forEach(vid =>{
     
             vid.onclick = () =>{
@@ -97,7 +101,7 @@ var promise = new Promise(function(resolve, reject) {
                 document.querySelector('.popup').style.display = 'block';
                 document.querySelector('.popup img').src = im.getAttribute('src');
                 document.querySelector('.popup video').src = "";
-                console.log("detected esc");
+                // console.log("detected esc");
                 
         
             }
@@ -123,60 +127,5 @@ var promise = new Promise(function(resolve, reject) {
       
       }).
       catch(function () {
-          console.log('Some error has occurred');
+        //   console.log('Some error has occurred');
       });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.querySelectorAll('.item video').forEach(vid =>{
-
-//     vid.onclick = () =>{
-//         document.querySelector('.popup').style.display = 'block';
-//         document.querySelector('.popup video').disablePictureInPicture = true;
-//         document.querySelector('.popup video').src = vid.getAttribute('src');
-//         document.querySelector('.popup img').src = "";
-//     }
-
-// });
-
-// document.querySelectorAll('.item img').forEach(im =>{
-
-//     im.onclick = () =>{
-//         document.querySelector('.popup').style.display = 'block';
-//         document.querySelector('.popup img').src = im.getAttribute('src');
-//         document.querySelector('.popup video').src = "";
-        
-
-//     }
-
-// });
-
-// document.querySelector('.popup span').onclick = () => {
-//     document.querySelector('.popup').style.display = 'none';
-//     document.querySelector('.popup video').src = "";
-//     document.querySelector('.popup img').src = "";
-// }
-
-
-// window.onkeyup = function (event) {
-//     if (event.keyCode == 27) {
-//         document.querySelector('.popup').style.display = 'none';
-//         document.querySelector('.popup video').src = "";
-//         document.querySelector('.popup img').src = "";
-//     }
-// }
-

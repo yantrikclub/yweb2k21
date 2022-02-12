@@ -11,6 +11,10 @@
     
     <link rel="stylesheet" href="../css/blog.css">
     <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 </head>
 <body>
     <script>
@@ -76,6 +80,7 @@
                             <button id="selblog" class="btn active">Blogs</button>
                             <button id="selproj" class="btn">Projects</button>
                         </div>
+
                         <hr>
                         <div id="blogslist">
                             
@@ -95,17 +100,17 @@
                     <div class="contact">
                         <p>Reach Us On</p>
                         <ul>
-                            <li><a href=""><i class="fa fa-discord" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                            <li><a href="https://discord.com/invite/7HxRhM5wFF"><i class="fa fa-discord" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/yantrik_club/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.facebook.com/groups/1643392312602100"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UChsq9TRLeyPJwahs9x3EzUA"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href="https://github.com/YantrikIITMandi"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                            <li><a href="https://wiki.iitmandi.co.in/p/Yantrik_Club"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                     <div class="data">
                         <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
-                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kammand (H.P.)- 175005</p>
+                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kamand (H.P.)- 175005</p>
                     </div>
                 </div>
 
@@ -129,45 +134,10 @@
         const app = initializeApp(firebaseConfig);
         
         
-        import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
-        // import {getDatabase, ref, onValue, set, child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
-        import {getFirestore, doc, getDoc,getDocs , setDoc, collection, addDoc,updateDoc, deleteDoc, deleteField} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+        import {getFirestore ,getDocs , collection} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
         
         const db = getFirestore();
         
-        // Firebase database
-        // const realdb = getDatabase();
-        // onclick="location.href='/blogs/${uid}'" 
-        // function createBlcard(uid,bgimg,title,descrip,author){
-        //     const container = document.getElementById("blogslist");
-        //     let code = 
-        //     `<a href='/blogs/${uid}' target="_blank" id="blogcard">
-        //         <div class="card" >
-        //             <div class="cardcontent">
-        //                 <div class="imgBx">
-        //                     <img src="${bgimg}" loading="lazy" alt="pic">
-        //                 </div>
-        //                 <div class="contentBx">
-        //                     <h3>${title}</h3>
-        //                     <p>${descrip}</p>
-        //                     <h1> <span> By- </span> ${author}</h1>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </a>
-        //     `;
-        //     if (container.innerHTML.indexOf(`${uid}`)!= -1){
-        //         console.log("present");
-        //     }else{
-        //         container.innerHTML += code;
-        //     }
-            
-        // }
-        
-        // function Addallblogs(b){
-            
-
-        // }
         const blogcontainer = document.getElementById("blogslist");
         const projcontainer = document.getElementById("projectslist");
 
@@ -175,21 +145,22 @@
             const docSnap = await getDocs(collection(db,"Blogsthumb"));
             docSnap.forEach(chsnap=>{
                 let csnap = chsnap.data();
-                // console.log(csnap.data());
                 if ((blogcontainer.innerHTML.indexOf(`${csnap.UID}`)!= -1)||(projcontainer.innerHTML.indexOf(`${csnap.UID}`)!= -1)){
-                    console.log("present");
+                    // console.log("present");
                 }else{
+                    if (csnap.Status == "approved"){
                     let code = 
                     `<a href='/blogs/${csnap.UID}' target="_blank" id="blogcard">
                         <div class="card" >
                             <div class="cardcontent">
                                 <div class="imgBx">
-                                    <img src="${csnap.ImageURLs.sback}" loading="lazy" alt="pic">
+                                    <img src="${csnap.ImageURLs.sback}" loading="lazy" alt="">
                                 </div>
                                 <div class="contentBx">
                                     <h3>${csnap.Title}</h3>
-                                    <p>${csnap.Description}</p>
                                     <h1> <span> By- </span> ${csnap.AuthName}</h1>
+                                    <p>${csnap.Description}</p>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -201,21 +172,8 @@
                         blogcontainer.innerHTML += code;
                     }
                 }
+                }
             })
-
-            // const dbref = ref(realdb,"Blogs");
-            // onValue(dbref, (snapshot) => {
-            //     var blogs = [];
-            //     snapshot.forEach(childSanpshot => {
-            //         blogs.push(childSanpshot.val());
-            //     });
-            //     blogs.forEach(bl =>{
-            //         // createBlcard(bl.UID,bl.ImageURLs.sback,bl.Title,bl.Description,bl.AuthName)
-                    
-                    
-            //     });
-            // });          
-            
         }
 
         
@@ -238,9 +196,6 @@
             }
             blogcontainer.style.display = "flex";
             projcontainer.style.display = "none";
-            
-            
-            
         })
         projsel.addEventListener("click",()=>{
             
@@ -258,7 +213,6 @@
             projcontainer.style.display = "flex";
 
         })
-
       </script>
     <script src="../js/blog.js"></script>
       

@@ -17,6 +17,10 @@
     <script src =
 "https://code.jquery.com/jquery-1.10.2.js">
 	</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 </head>
 <body>
     <script>
@@ -40,14 +44,12 @@
         function accountmenu(){
             const accountmn = document.querySelector("#acmn");
             const csacc = window.getComputedStyle(accountmn).display;
-            if (csacc === "flex" || "block"){
-                accountmn.style.display = "none";
-            }
-            else if (csacc === "none"){
-                accountmn.style.display = "flex";
+            // console.log(csacc)
+            if (csacc == "none"){
+                accountmn.style.display = "block";
             }
             else{
-                console.log(csacc)
+                accountmn.style.display = "none";
             }
         }
         
@@ -118,17 +120,17 @@
                     <div class="contact">
                         <p>Reach Us On</p>
                         <ul>
-                            <li><a href=""><i class="fa fa-discord" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                            <li><a href="https://discord.com/invite/7HxRhM5wFF"><i class="fa fa-discord" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/yantrik_club/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.facebook.com/groups/1643392312602100"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UChsq9TRLeyPJwahs9x3EzUA"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href="https://github.com/YantrikIITMandi"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                            <li><a href="https://wiki.iitmandi.co.in/p/Yantrik_Club"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                     <div class="data">
                         <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
-                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kammand (H.P.)- 175005</p>
+                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kamand (H.P.)- 175005</p>
                     </div>
                 </div>
 
@@ -141,8 +143,6 @@
     
     <script type="module">
         
-
-
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
         const firebaseConfig = {
             apiKey: "AIzaSyCo5jZ9wyNSP401q5X8-BH-gM7uxUnhuro",
@@ -154,7 +154,6 @@
         };
         const app = initializeApp(firebaseConfig);
 
-        
         import { getAuth, signInWithRedirect, getRedirectResult, setPersistence,browserLocalPersistence, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
 
         const authen = getAuth();
@@ -162,7 +161,7 @@
         const mailid = [];
         authen.onAuthStateChanged((user)=>{
             if (user){
-                console.log(user);
+                // console.log(user);
                 if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
                     getdata(user.email);
                     mailid.push(user.email);
@@ -171,27 +170,23 @@
                 signOut(authen);
                 setuplogin();
                 }
-                // const loginmail = user.email;
             }
             else{
-                // signOut(authen);
                 setuplogin();
             }
         })
         
         const signoutbtn = document.getElementById('signout').addEventListener('click',e=>{
             signOut(authen);
-            // location.reload();
         })
 
         const setuplogin = ()=>{
             signInWithRedirect(authen,provider);
             getRedirectResult(auth)
                 .then((result) => {
-
                     // The signed-in user info.
                     const user = result.user;
-                    console.log(result);
+                    // console.log(result);
                     if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
                         setPersistence(authen, browserLocalPersistence);
                         getdata(user.email);
@@ -201,124 +196,117 @@
                         setuplogin();
                     }
                 }).catch((error) => {
-                    // Handle Errors here.
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    // The email of the user's account used.
-                    const email = error.email;
-                    // The AuthCredential type that was used.
-                    const credential = GoogleAuthProvider.credentialFromError(error);
-                    
+                    setuplogin();                    
                 });
         }
 
 
 
         
-    import {getStorage, ref as sRef,listAll, uploadBytesResumable, getDownloadURL, deleteObject} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
-    // import {getDatabase, ref, onValue, set, child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
-    import {getFirestore,query, where, doc, getDoc,getDocs , setDoc, collection, addDoc,updateDoc, deleteDoc, deleteField} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+        import {getStorage, ref as sRef,listAll, getDownloadURL, deleteObject} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
+        import {getFirestore,query, where, doc, getDoc,getDocs , setDoc, collection, addDoc,updateDoc, deleteDoc, deleteField} from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+            
+        const db = getFirestore();
+        const blogcontainer = document.getElementById("blogslist");
+        const projcontainer = document.getElementById("projectslist");
+        var tcout = 0;
+
+        function loadaccdata(data){
+            // console.log("recieved data");
+            const accimg = document.getElementById("accpic");
+            const accnm = document.getElementById("accname");
+            const accmail = document.getElementById("accmailid");
+
+            accimg.src = data.photoURL;
+            accnm.innerHTML = data.displayName;
+            accmail.innerHTML = data.email;
+        }
+
+
         
-    const db = getFirestore();
-    //Firebase database
-    // const realdb = getDatabase();
-    // const storage = getStorage();
-    const blogcontainer = document.getElementById("blogslist");
-    const projcontainer = document.getElementById("projectslist");
-
-
-    function loadaccdata(data){
-        console.log("recieved data");
-        const accimg = document.getElementById("accpic");
-        const accnm = document.getElementById("accname");
-        const accmail = document.getElementById("accmailid");
-
-        accimg.src = data.photoURL;
-        accnm.innerHTML = data.displayName;
-        accmail.innerHTML = data.email;
-    }
-
-
-    var tcout = 0;
-    
-    async function getdata(mail){
-        const data = query(collection(db,"Blogsthumb"),where("Mail","==",mail));
-        const docSnap = await getDocs(data);
-        docSnap.forEach(chsnap=>{
-            tcout += 1;
-            document.getElementById("blcnt").innerHTML = tcout;
-            let csnap = chsnap.data();
-            // console.log(csnap.data());
-            if ((blogcontainer.innerHTML.indexOf(`${csnap.UID}`)!= -1)||(projcontainer.innerHTML.indexOf(`${csnap.UID}`)!= -1)){
-                console.log("present");
-            }else{
-                let code = 
-                `   <div class="card" >
-                        <div class="cardcontent">
-                            <div class="imgBx">
-                                <img src="${csnap.ImageURLs.sback}" loading="lazy" alt="pic">
-                            </div>
-                            <div class="contentBx">
-                                <h3>${csnap.Title}</h3>
-                                <p>${csnap.Description}</p>
-                                <h1> <span> By- </span> ${csnap.AuthName}</h1>
-                            </div>
-                            <div class="controls">
-                                <a href='/blogs/${csnap.UID}' target="_blank">
-                                        Preview
-                                </a>
-                                <a  href="#" id = "deletetag">
-                                        Delete
-                                        <div class = "idval" hidden=true>${csnap.UID}</div>
-                                </a>
+        
+        async function getdata(mail){
+            const data = query(collection(db,"Blogsthumb"),where("Mail","==",mail));
+            const docSnap = await getDocs(data);
+            docSnap.forEach(chsnap=>{
+                tcout += 1;
+                document.getElementById("blcnt").innerHTML = tcout;
+                let csnap = chsnap.data();
+                // console.log(csnap.data());
+                if ((blogcontainer.innerHTML.indexOf(`${csnap.UID}`)!= -1)||(projcontainer.innerHTML.indexOf(`${csnap.UID}`)!= -1)){
+                    // console.log("present");
+                }else{
+                    var Status;
+                    if (csnap.Status == "approved" || csnap.Status == "rejected"){
+                        Status = csnap.Status;
+                    }else{
+                        Status = "waiting"
+                    }
+                    
+                    let code = 
+                    `   <div class="card" >
+                            <div class="cardcontent">
+                                <h3>Status : ${Status}</h3>
+                                <div class="imgBx">
+                                    <img src="${csnap.ImageURLs.sback}" loading="lazy" alt="">
+                                </div>
+                                <div class="contentBx">
+                                    <h3>${csnap.Title}</h3>
+                                    <h1> <span> By- </span> ${csnap.AuthName}</h1>
+                                </div>
+                                <div class="controls">
+                                    <a href='/blogs/${csnap.UID}' target="_blank">
+                                            Preview
+                                    </a>
+                                    <a  href="#" id = "deletetag">
+                                            Delete
+                                            <div class = "idval" hidden=true>${csnap.UID}</div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
-                if (csnap.Category == "2"){
-                    projcontainer.innerHTML += code;
-                }else{
-                    blogcontainer.innerHTML += code;
+                    `;
+                    if (csnap.Category == "2"){
+                        projcontainer.innerHTML += code;
+                    }else{
+                        blogcontainer.innerHTML += code;
+                    }
                 }
-            }
-        })
-    }
-
-    const storage = getStorage();
-
-    function proc(){
-        setTimeout(() => {
-            let dellisteners = document.querySelectorAll("#deletetag");
-            dellisteners.forEach((listener)=>{
-                listener.addEventListener("click",async ()=>{
-                    const tid = listener.querySelector(".idval").innerHTML;
-                    let dblog = await deleteDoc(doc(db,"Blogs",tid));
-                    let d = await deleteDoc(doc(db,"Blogsthumb",tid)).then(e=>{
-                        listener.parentElement.parentElement.parentElement.outerHTML = "";
-                        tcout -= 1;
-                        document.getElementById("blcnt").innerHTML = tcout;
-                    });
-                    
-                    const storageRef = sRef(storage,`Blogs/${tid}`);
-                    listAll(storageRef).then((listResults) => {
-                        const promises = listResults.items.map((item) => {
-                        return deleteObject(item);
-                        });
-                        Promise.all(promises).then(e=>{
-                            // deleteObject(storageRef);
-                        });
-                    });
-                    
-
-                })
             })
+        }
 
-        }, 3000);
-    }
+        const storage = getStorage();
 
-    window.onload = proc;
+        function proc(){
+            setTimeout(() => {
+                let dellisteners = document.querySelectorAll("#deletetag");
+                dellisteners.forEach((listener)=>{
+                    listener.addEventListener("click",async ()=>{
+                        const tid = listener.querySelector(".idval").innerHTML;
+                        let dblog = await deleteDoc(doc(db,"Blogs",tid));
+                        let d = await deleteDoc(doc(db,"Blogsthumb",tid)).then(e=>{
+                            listener.parentElement.parentElement.parentElement.outerHTML = "";
+                            tcout -= 1;
+                            document.getElementById("blcnt").innerHTML = tcout;
+                        });
+                        const storageRef = sRef(storage,`Blogs/${tid}`);
+                        listAll(storageRef).then((listResults) => {
+                            const promises = listResults.items.map((item) => {
+                            return deleteObject(item);
+                            });
+                            Promise.all(promises).then(e=>{
+                                // deleteObject(storageRef);
+                            });
+                        });
+                    })
+                })
+            }, 3000);
+        }
 
-    $(document).ready(
+        window.onload = proc;
+
+        // for account card
+        $(document).ready(
             function() {
                 $("#accreveal").click(function() {
                     $("#acmn").show();
@@ -330,16 +318,12 @@
             }
         });
        
-
+        // Preloader
         const prel = document.getElementById("preloader")
         setTimeout(()=>{
             prel.style.display = "none";
             window.scrollTo(0,0);
-        },3500);
+        },3000);
     </script>
-    
-    <!-- <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js" type="module"></script> -->
-
 </body>
 </html>
