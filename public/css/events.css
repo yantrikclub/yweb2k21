@@ -1,7 +1,11 @@
 body{
     overflow-x: hidden;
+    
 }
-
+main{
+    font-family: 'Noto Sans JP', sans-serif ;
+    
+}
 main .dummy {
     height: 25vh;
     color: black;
@@ -13,7 +17,11 @@ main .dummy {
 }
 main .section{
     text-align: center;
+    margin-top: 2em;
+    
+    
 }
+
 main .tit{
     background: black;
     height: 2px;
@@ -24,15 +32,23 @@ main .tit{
     margin-top: 1em;
     margin-bottom: 1em
 }
+main section{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    margin: 0 10vw;
+    width: 80vw;
+}
 
 main .event {
-    height: 100vh;
-    
+    height: 80vh;
+    width: 80vw;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 main .event .imgbx{
     position: absolute;
-    width: 100vw;
-    height: 90vh;
+    width: 80vw;
+    height: 80vh;
     overflow: hidden;
     z-index: -5;
 }
@@ -43,61 +59,92 @@ main .event .imgbx img{
     
 }
 
+
 main .event .lcard{
-    /* background: rgba(160, 160, 160, 0.1); */
-    /* background: #007eff29; */
-    background: #00000054;
+    background: #0000009f;
     backdrop-filter: blur(3px);
     color: white;
     float: left;
     width: 35vw;
-    height: 90vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: flex-start;
 }
 main .event .rcard{
-    /* background: rgba(160, 160, 160, 0.1); */
-    /* background: #007eff29; */
-    background: #00000054;
+    background: #0000009f;
     backdrop-filter: blur(3px);
     color: white;
-    float: right;
+    /* float: right; */
     width: 35vw;
-    height: 90vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    position: absolute;
+    justify-content: flex-start;
+    left: 55vw;
 }
 
 main .event h1{
-    font-size: 5vw;
+    font-size: 2.5em;
     color: white;
-    
+    padding:0.5em;
+    text-align: center;
+    margin-top: 1em;
+
 }
 main .event p{
     width: 25vw;
     flex-wrap: wrap;
     color: whitesmoke;
     padding: 2em 0;
-    font-size: 1.5vw;
+    font-size: 2.5vh;
+    word-spacing: 2px;
+    text-align: justify;
+}
+
+#moreevents{
+    padding: 0.5em;
+    border: none;
+    background: black;
+    color: white;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0/14%),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+    direction: ltr;
+    font-size: 1em;
+    margin: 5em 1em 1em 1em;
+}
+#moreevents:hover{
+    background-color: white;
+    color: black;
+}
+
+main .btnwrap{
+    display: flex;
+    justify-content: center;
 }
 
 
-@media screen and (max-width:900px) {
-    
+@media screen and (max-width:850px) {
+    main .event .rcard{
+        position: relative;
+    }
+    main section{
+        margin: 0;
+        gap: 0em;
+        width: 100vw;
+        overflow: hidden;
+    }
     main .event {
         width: 100vw;
-        height:40vh;
-        
+        height: 90vh;
     }
     main .event .imgbx{
         position: absolute;
         width: 100vw;
-        height: 30vh;
+        height: 60vw;
         overflow: hidden;
         z-index: -5;
     }
@@ -109,68 +156,27 @@ main .event p{
     }
 
     main .event .lcard{
-        background: #00000054;
-        backdrop-filter: blur(3px);
-        color: white;
         width: 100vw;
-        height: 15vh;
+        height: 40vh;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top:20vh;
-        
+        margin-top: 50vw;
     }
     main .event .rcard{
-        background: #00000054;
-        backdrop-filter: blur(3px);
-        color: white;
         width: 100vw;
-        height: 15vh;
+        height: 40vh;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top:20vh;
+        margin: 50vw 0 0 0;
+        left: 0;
     }
     main .event h1{
         font-size: 1.5em;
-        color: white;
-        
     }
     main .event p{
         width: 80vw;
         flex-wrap: wrap;
         color: whitesmoke;
         padding: 0.5em 0;
-        font-size: 1em;
+        font-size: 0.8em;
     }
     
-    
 }
-
-
-
-
-
-
-/* main .events .winners{
-    padding: 1em;
-}
-main .events .winners .winner{
-    background: red;
-    width: 8em;
-    height: 10em;
-}
-main .events .winners .winner .imgbx{
-
-}
-main .events .winners .winner .imbgx img{
-
-}
-main .events .winners .winner p{
-
-}
-main .events .winners .winner p span{
-
-} */

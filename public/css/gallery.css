@@ -1,8 +1,5 @@
 main {
-    /* background-image: url("../data/gallery/"); */
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: 100% ;
+    font-family: 'Noto Sans JP', sans-serif ;
     min-height: 300vh;
 }
 main .content{
@@ -26,8 +23,9 @@ main .dummy{
 main .content .container{
     
     display: flex;
-    max-width: 64em;
+    /* max-width: 64em; */
     flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.1);
     
 }
 
@@ -55,6 +53,8 @@ main .content .container .card .tit{
     height: 2px;
     background-color: black;
     border-radius: 1px;
+    width: 50%;
+    margin-left: 25%;
 }
 
 main .content .container .card .gal{
@@ -65,7 +65,7 @@ main .content .container .card .gal{
     align-items: stretch;
     min-height: 50vh;
     padding: 2em 0;
-    margin: 0 1em 1em 0;;
+    margin: 0 0em 1em 0;;
     gap: 1em;
 
 }
@@ -154,18 +154,49 @@ h2{
     text-align: center;
 }
 .card{
-    border-radius: 15px;
+    border-radius: 5px;
     margin-bottom: 20px;
 
 }
 .item{
     margin: 20px;
-    border-radius: 15px;
+    border-radius: 5px;
+    	 
+}
+
+.item .overlay{
+    height: 4em;
+    width: 4em;
+    background-color: white;
+    z-index: 5;
+    position: absolute;
+    margin: 4em 8em;
+    clip-path: polygon(0% 0%, 75% 50%, 0% 100%);
+}
+
+.item img:empty, .item video:empty{
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 80%
+    ),
+    lightgray;
+    background-repeat: repeat-y;
+    background-size: 50px 500px;
+    background-position: 0 0;
+    animation: shine 1s infinite;
 }
 iframe{
     margin: 20px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 .title{
     padding: 1.1rem 1.1rem 1.1rem 1.1rem;
+}
+
+@keyframes shine {
+    to {
+      background-position: 100% 0, /* move highlight to right */ 0 0;
+    }
 }

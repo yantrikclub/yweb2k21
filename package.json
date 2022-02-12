@@ -1,6 +1,9 @@
 {
   "name": "yantrikweb",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.13.0"
+  },
   "description": "Yantrik Club website for 2k21-22",
   "main": "server.js",
   "scripts": {
@@ -9,14 +12,15 @@
   "author": "Team Yantrik",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^3.1.6",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "express": "^4.17.2",
-    "express-fileupload": "^1.2.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.2",
     "express.js": "^1.0.0",
-    "firebase": "^9.6.3",
-    "firebaseui": "^6.0.0",
-    "iframe-resizer": "^4.3.2",
+    "method-override": "^3.0.0",
     "multer": "^1.4.4",
-    "nodemon": "^2.0.15"
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   }
 }

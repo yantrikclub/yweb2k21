@@ -1,7 +1,34 @@
 .content{
     margin:10vh 0 0 0;
+    
+}
+#popup{
+    top: 0;
+    z-index: 12;
+    display: none;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+#popup {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
+#popup .ipop{
+    background: white;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    font-family: 'Merriweather Sans', sans-serif;
+    padding: 1em;
+    max-width: 60vw;
+}
 .content .head {
     display: flex;
     flex-direction: column;
@@ -10,29 +37,32 @@
     display: flex;
     justify-content: space-between;
 }
-.content .head .tbar label{
-    font-size: 1.5em;
-    padding: 0.3em;
-}
-.content .head .tbar label i{
-    cursor: pointer;
-}
+
 #bgimgbox{
     position: relative;
     overflow: hidden;
     height:50vh;
     border: black;
     border-width: 3px;
+    margin: 1em;
+}
+#bgimgbox label{
+    position: absolute;
+    top: 87%;
+    left: 85%;
+    font-size: 2.5em;
+    cursor: pointer;
+    
 }
 
 #bgimg {
     top: 0;
-    left: 0;
+    /* left: 0; */
     width: 100%;
     height: 100%;
     position: absolute;
-    object-fit: cover;
-    object-position: top right;
+    object-fit: scale-down;
+    /* object-position: top right; */
 }
 
 #upbgimg {
@@ -45,15 +75,24 @@
 }
 
 #title{
-    font-size: 50px;
-    width: 200px;
-    margin : 1rem 0 0.5rem 1rem;
+    margin: 0.4em 0 0.4em 15vw;
+    font-size: 40px;
+    margin-left: 15vw;
+    width: 70vw;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #description {
-    font-size: 20px;
-    margin: 0 0 0 1rem;
-    min-height: min-content;
+    font-size: 18px;
+    margin: 0 0 0 15vw;
+    min-height: 100px;
+    width: 60vw;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-style: italic;
+    line-height: 25px;
 }
 .content .wrap{
     display: flex;
@@ -69,165 +108,122 @@
     width: fit-content;
     top: 10vh;
     display: none;
+
 }
 
 #inputs form{
     display: flex;
     gap: 0.2em;
+    background: #f4fbfe;
+    padding: 0.5em;
+    border-radius: .3em;
+    border:solid 1px black;
+}
+
+#inputs form select{
+    background: #f4fbfe;
+}
+#color-btn{
+    width: 1.8em;
+    height: 1.8em;
+    margin: 0.1em;
+    border: none;
+    background: #f4fbfe;
 }
 #inputs form button{
     padding: 0.5em;
+    background: #f4fbfe;
+    border: none;
 }
+#inputs form button:hover{
+    background-color: #dbdbdb;
+    border-radius: 15%;
+}
+#inputs .urlwrap{
+    display: flex;
+}
+#linkurl{
+    width: 80%;
+    font-family: inherit;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-style: italic;
+    display: none;
+    font-size: 0.8em;
+    padding:2px;
+    font-family: 'Noto Sans JP', sans-serif;
 
+}
+#linkurlok{
+    width: 20%;
+    display: none;
+    background-color: white;
+    border: none;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0/14%),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+    direction: ltr;
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
 
+}
 #data .stepcard{
     border: 1px solid black;
-    width: 80vw;
+    width: 70vw;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5em;
-    border-radius: 1em;
     margin: 2em 0;
 
 }
-#data .stepcard #steptitle{
+#content{
     width: 70vw;
-    text-align: center;
-    font-weight: bolder;
-    font-size: 1.5em;
-    margin: 1em 0 0 0;
-    border: none;
-}
-#data .stepcard .imgs{
-    background-color: rgb(218, 218, 218);
-    width: 70vw;
-    min-height: 4em;
-    border-radius: 1em;
-}
-#data .stepcard .imgs .gallerywrap{
-    display: flex;
-}
-#data .stepcard .imgs .gallerywrap .imgbx{
-    max-height: 18em;
-    width: 27em;
-    padding: 1em;
-
-}
-#data .stepcard .imgs .gallerywrap .imgbx img{
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-}
-#data .stepcard .imgs .gallerywrap .thumbls{
-    display: flex;
-    flex-wrap: wrap;
-    width: 25em;
-    gap: 1em;
-    padding: 1em 0 0 1em;
-    align-content: flex-start;
-    
-    
-}
-#data .stepcard .imgs .gallerywrap .thumbls .thumbbx{
-    width: 7vw;
-    height: 7vw;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-}
-#data .stepcard .imgs .gallerywrap .thumbls .thumbbx i{
-    position: absolute;
-    padding: 0.3em;
-    opacity: 0;
-}
-#data .stepcard .imgs .gallerywrap .thumbls .thumbbx:hover i{
-    opacity: 1;
-}
-#data .stepcard .imgs .gallerywrap .thumbls .thumbbx img{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    
-
+    margin: 0 15vw;
+    min-height: 25vh;
+    padding: 1em 2em;
+    font-family: 'Merriweather Sans', sans-serif !important;
+    font-weight: 300 !important;
+    font-size: 1.1em;
 }
 
-
-
-#data .stepcard .imgs .uploadt{
-    width: 100%;
-    text-align: right;
-}
-
-#data .stepcard .imgs .uploadt i{
-    cursor: pointer;
-    padding: 0.3em;
-    font-size: 1.5em;
-}
-#data .stepcard #content{
-    border: solid black 2px;
-    width: 70vw;
-    min-height: 5em;
-    box-sizing: border-box;
-    padding: 2em;
-}
-#data .stepcard .fileattach{
-    width: 70vw;
-    min-height: 2em;
-    /* background-color: gray; */
-    margin-bottom: 0.5em;
-}
-
-
-#data .stepcard .fileattach .attachfilels {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2em;
-}
-#data .stepcard .fileattach .attachfilels .file{
-    background-color: rgba(220,220,220,1);
-    border: solid black 1px;
-    border-radius: 0.1em;
-    padding: 0.5em;
-    display: flex;
-    justify-content: space-between;
-}
-#data .stepcard .fileattach .attachfilels .file i{
-    opacity: 0;
-    /* padding: 0.5em; */
-}
-#data .stepcard .fileattach .attachfilels .file:hover i{
-    opacity: 1;
-}
-#data .stepcard .fileattach .uploadt{
-    text-align: right;
-}
-#data .stepcard .fileattach .uploadt i{
-    font-size: 1.5em;
-    padding: 0.3em;
-    cursor: pointer;
-}
-.active{
-    border: 2px solid crimson;
-}
-
-
+/* #content > *{
+    margin-bottom: 10px;
+} */
 
 /* Author */
 .author{
+    
     display: flex;
-    flex-direction: column;
-    margin : 1rem 2rem 1rem 2rem;
+    /* flex-direction: column; */
+    margin : 1rem 2rem 1rem 15vw;
+    font-family: 'Merriweather Sans', sans-serif !important;
     gap: 1rem;
 }
-#authorimg {
-    height: 50px;
-    width: 50px;
+.author label{
+    font-size: 2em;
+    padding:0.1em;
+    cursor: pointer;
+    /* position: absolute; */
 }
 
+#authimgbox {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#authorimg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.author .wrap{
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5em;
+}
 #upauthimg {
     width: 30px;
     height: 30px;
@@ -236,15 +232,115 @@
     cursor: pointer;
 }
 
+
 #authorname{
     width: 200px;
+    font-family: 'Merriweather Sans', sans-serif !important;
+    font-size: inherit;
+    padding: 0.2em;
+
 }
 #authordesc{
-    width: 60vw;
+    width: 30vw;
     /* transform: translateX(10vw); */
+    font-family: 'Merriweather Sans', sans-serif !important;
+    font-size: inherit;
+    font-weight: 300;
+    padding: 0.2em;
+
 }
 
 #fupload{
-    transform: translateX(50vw);
+    /* transform: translateX(50vw); */
     cursor: pointer;
+    padding: 0.5em;
+    background: white;
+    border: none;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0/14%),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+    direction: ltr;
+    font-size: 1em;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+#fupload:hover{
+    transition: 0.3s ease-in;
+    background: black;
+    color: white;
+}
+
+
+
+blockquote{
+    border-left: 4px solid #00ab6b;
+    padding: 0 20px;
+    font-style: italic;
+    color: rgba(0, 0, 0, .5);
+}
+#imginsertbtn{
+    padding: 0!important;
+}
+#insertimglabel{
+    padding: 0.47em;
+}
+
+.cat{
+    margin-left: 15vw;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0;
+}
+.cat h3{
+    font-weight: normal;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.cat select{
+    width: fit-content;
+    padding: 0.5em;
+    margin: 0.5em;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+#ytembed{
+    width: 40vw;
+    height: 22.5vw;
+}
+
+@media  screen and (min-width:901px) {
+    #content img{
+        width: 40vw;
+        
+    }
+    
+}
+
+@media  screen and (max-width:900px) {
+    #content img{
+        width: 40vw;
+    }
+    #inputs{
+        max-width: 80vw;
+        
+    }
+    #inputs form{
+        flex-wrap: wrap;
+    }
+    
+    #authimgbox {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .author{
+        margin-left: 5vw;
+    }
+    #authordesc{
+        width: none;
+    }
+
+}
+.buttonwrap{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
 }

@@ -13,5 +13,5 @@ function getIdsOfImages() {
                 .replace("img", ""));
     });
       
-    console.log(values);
+    // console.log(values);
 }
