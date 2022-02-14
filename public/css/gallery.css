@@ -121,14 +121,27 @@ main .content .popup video{
     border-radius: 5px;
     object-fit: cover;
 }
-
-main .content .popup img{
+main .content .popup .imgbx{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 70vw;
+    height: 46vw;
     border-radius: 5px;
+    /* object-fit: cover; */
+    overflow: hidden;
+}
+main .content .popup img{
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 70vw; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -198,5 +211,13 @@ iframe{
 @keyframes shine {
     to {
       background-position: 100% 0, /* move highlight to right */ 0 0;
+    }
+}
+
+
+@media screen and (max-width:900px) {
+    main .content .popup .imgbx{
+        height: 53vw;
+        width: 70vw;
     }
 }
