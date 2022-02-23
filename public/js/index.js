@@ -44,7 +44,7 @@ function swapshow(){
     nextSlide2(1);
     setTimeout(() => {
         swapshow();
-    }, 6000);
+    }, 15000);
 }
 
 

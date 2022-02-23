@@ -109,6 +109,8 @@ main .content .author .authdata{
     gap: 1em;
 }
 #authordesc{
+	color: gray;
+	font-style: italic;
     
 }
 #pdfgen{
@@ -118,9 +120,17 @@ main .content .author .authdata{
    margin-left: 15vw;
    cursor: pointer;
 }
+#ytembed{
+    width: 40vw;
+    height: 22.5vw;
+}
 
-
-
+@media screen and (max-width:550px) {
+    #ytembed{
+        width: 100%;
+        height: 45vw;
+    }
+}
 @media screen and (min-width:401px) and (max-width:600px) {
     main .content .data img{
         width: 20em;
