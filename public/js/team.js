@@ -8,7 +8,7 @@
             let code = `
             <div class="card">
                 <div class="cardcontent">
-                    <div class="imgBx">
+                    <div class="imgBx" id="imgBxoutline">
                         <img src="${img}" alt="pic">
                     </div>
                     <div class="contentBx">
@@ -64,6 +64,12 @@
             })
         })
         
+        if (navigator.userAgent.match(/AppleWebKit/) && ! navigator.userAgent.match(/Chrome/)) {
+            ls = document.querySelectorAll(".imgBxoutline");
+            ls.forEach(box=>{
+                box.style.outline = "none";
+            });
+         }
         
 
         

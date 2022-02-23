@@ -115,7 +115,7 @@ main .dummy{
     height: 150px;
     border-radius: 50%;
     overflow: hidden;
-    /* border: 7px solid rgba(0, 0, 0, 0.25); */
+    outline: 7px solid rgba(0, 0, 0, 0.25);
     
     background-color: white;
 }

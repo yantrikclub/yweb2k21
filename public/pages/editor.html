@@ -425,7 +425,11 @@
                 }
                 if (cmd == "formatBlock"){
                     document.execCommand('formatBlock', false, '<blockquote>');
-                    content.innerHTML += "<br>";
+                    if (content.childNodes.length == 1){
+                        content.innerHTML += "<br>";
+                        
+                    }
+                    
                     
                     
                 }else if (cmd == "insertImage"){
@@ -448,7 +452,15 @@
             })
         }
 
-
+        window.addEventListener("keydown",(e)=>{
+            if (e.keyCode == "8"){
+                content.querySelectorAll("blockquote").forEach(quote=>{
+                    if (quote.innerHTML == "<br>"){
+                        quote.remove();
+                    }
+                })
+            }   
+        });
         content.addEventListener("paste",function(e){
             
             setTimeout(() => {
@@ -542,6 +554,7 @@
                                                         tc +=1;
                                                     }
                                                 }); 
+                                                
                                         }else{
                                             if (tc == result.items.length){
                                                 resolve("done");
@@ -616,7 +629,7 @@
                 Mail : authen.currentUser.email,
                 Category: cat.value
             }).then(()=>{
-                location.href = `/dashboard.html`;
+                location.href = `/pages/dashboard.html`;
                 })
             var reff = doc(db,"Blogsthumb",idnum);
             const docReff = await setDoc( reff,{
