@@ -93,6 +93,7 @@
     font-family: 'Merriweather Sans', sans-serif;
     font-style: italic;
     line-height: 25px;
+    resize: none;
 }
 .content .wrap{
     display: flex;
@@ -247,6 +248,8 @@
     font-size: inherit;
     font-weight: 300;
     padding: 0.2em;
+    color: gray;
+    resize: none;
 
 }
 
@@ -313,6 +316,7 @@ blockquote{
     
 }
 
+
 @media  screen and (max-width:900px) {
     #content img{
         width: 40vw;
@@ -344,3 +348,4 @@ blockquote{
     display: flex;
     justify-content: center;
 }
+

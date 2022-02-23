@@ -170,7 +170,7 @@
                                 </button>
                                 </form>
                                 <div class="urlwrap">
-                                    <input type="text" id="linkurl">
+                                    <input type="text" id="linkurl" placeholder="Enter the link here">
                                     <button id="linkurlok">Embed</button>
                                 </div>
                                 
@@ -425,7 +425,8 @@
                 }
                 if (cmd == "formatBlock"){
                     document.execCommand('formatBlock', false, '<blockquote>');
-                    document.execCommand("insertHTML", false, '<br>');
+                    content.innerHTML += "<br>";
+                    
                     
                 }else if (cmd == "insertImage"){
 
