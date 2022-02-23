@@ -64,12 +64,7 @@
             })
         })
         
-        if (navigator.userAgent.match(/AppleWebKit/) && ! navigator.userAgent.match(/Chrome/)) {
-            ls = document.querySelectorAll(".imgBxoutline");
-            ls.forEach(box=>{
-                box.style.outline = "none";
-            });
-         }
+        
         
 
         
