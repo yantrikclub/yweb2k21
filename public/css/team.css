@@ -185,3 +185,14 @@ main .dummy{
     }
     
 }
+
+@media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+        #teamcards .mem .card .cardcontent .imgBx {
+            outline: none;
+        }
+	body{
+	    background-image:none
+	}
+    }
+}
