@@ -5,9 +5,9 @@
     "node": "16.13.0"
   },
   "description": "Yantrik Club website for 2k21-22",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "author": "Team Yantrik",
   "license": "ISC",

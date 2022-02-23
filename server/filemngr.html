@@ -83,7 +83,9 @@
         form{
             margin: 1em 1em 1em 80vw;
         }
-
+        #filelist{
+            display: none;
+        }
         #statuslist{
             display: flex;
             flex-direction: column;
@@ -207,8 +209,8 @@
                 </div>
                 <div class="fwrap2">
                     <div>Rows format:</div>
-                    <div class="code">&lt;Title&gt;;&lt;image_../data/gallery/<span>filenm(with ext)</span>&gt;;&lt;video_../data/gallery/<span>filenm(with ext)</span>&gt;;&lt;youtube_<span>YTvideo code</span>&gt;</div>
-                    For yt video "https://www.youtube.com/watch?v=1gH98MopyXg" the code is 1gH98MopyXg . Add items acc to codes in a row seperated by ";"
+                    <div class="code">&lt;Title&gt;;&lt;image_../data/gallery/<span>filenm(with ext)</span>&gt;,&lt;video_../data/gallery/<span>filenm(with ext)</span>&gt;,&lt;youtube_<span>YTvideo code</span>&gt;</div>
+                    For yt video "https://www.youtube.com/watch?v=1gH98MopyXg" the code is 1gH98MopyXg . Add items acc to codes in a row seperated by ","
                 </div>                
             </div>
             <div class="wrap">

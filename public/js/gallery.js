@@ -26,7 +26,7 @@ function createcard([event,data]){
         }
         else if(format == "image") {
             // console.log(format,fsrc);
-            icode = `<div class="item"><img src="${fsrc}" alt=""></div>`;
+            icode = `<div class="item"><img src="${fsrc}" loading="lazy" alt=""></div>`;
         }
         else if (format == 'youtube'){
             icode = `<iframe src="https://www.youtube.com/embed/${fsrc}?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen  id="youtubevid"></iframe>`;
@@ -79,7 +79,9 @@ var promise = new Promise(function(resolve, reject) {
         reject()
     })
   });
-     
+
+  var presentitem ;
+
   promise.
       then(function () {
 
@@ -90,20 +92,29 @@ var promise = new Promise(function(resolve, reject) {
                 document.querySelector('.popup').style.display = 'block';
                 document.querySelector('.popup video').disablePictureInPicture = true;
                 document.querySelector('.popup video').src = vid.getAttribute('src');
-                document.querySelector('.popup img').src = "";
+                document.querySelector('.popup .imgbx img').src = "";
+                presentitem = vid.parentNode;
             }
         
         });
+        document.querySelectorAll('.item .overlay').forEach(ov =>{
+    
+            ov.onclick = () =>{
+                var vid = ov.parentNode.querySelector("video");
+                document.querySelector('.popup').style.display = 'block';
+                document.querySelector('.popup video').disablePictureInPicture = true;
+                document.querySelector('.popup video').src = vid.getAttribute('src');
+                document.querySelector('.popup .imgbx img').src = "";
+            }
         
+        });
         document.querySelectorAll('.item img').forEach(im =>{
         
             im.onclick = () =>{
                 document.querySelector('.popup').style.display = 'block';
-                document.querySelector('.popup img').src = im.getAttribute('src');
+                document.querySelector('.popup .imgbx img').src = im.getAttribute('src');
                 document.querySelector('.popup video').src = "";
-                // console.log("detected esc");
-                
-        
+                presentitem = im.parentNode;               
             }
         
         });
@@ -111,7 +122,7 @@ var promise = new Promise(function(resolve, reject) {
         document.querySelector('.popup span').onclick = () => {
             document.querySelector('.popup').style.display = 'none';
             document.querySelector('.popup video').src = "";
-            document.querySelector('.popup img').src = "";
+            document.querySelector('.popup .imgbx img').src = "";
         }
         
         
@@ -119,7 +130,27 @@ var promise = new Promise(function(resolve, reject) {
             if (event.keyCode == 27) {
                 document.querySelector('.popup').style.display = 'none';
                 document.querySelector('.popup video').src = "";
-                document.querySelector('.popup img').src = "";
+                document.querySelector('.popup .imgbx img').src = "";
+            }// left
+            else if (event.keyCode == 37) {
+                var tls = presentitem.parentNode.querySelectorAll(".item");
+                var num = Array.prototype.indexOf.call(tls, presentitem);
+                try {
+                    var templs = tls[num-1].childNodes;
+                    templs[templs.length-1].click();
+                } catch (error) {
+                    
+                }
+            }// right
+            else if (event.keyCode == 39) {
+                var tls = presentitem.parentNode.querySelectorAll(".item");
+                var num = Array.prototype.indexOf.call(tls, presentitem);
+                try {
+                    var templs = tls[num+1].childNodes;
+                    templs[templs.length-1].click();
+                } catch (error) {
+                    
+                }
             }
         }
 
