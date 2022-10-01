@@ -1,9 +1,14 @@
-
-        function createCard([id,img,name,designition,fb,insta,linkedin,mobile]){
+// 
+// id,img,name,designition,fb,insta,linkedin,mobile
+        function createCard([name,id,img,designition,insta,linkedin,fb,mobile]){
             const mem = document.getElementById(id);
             if (mobile == "javascript:void(0);"){
             }else{
                 mobile = `tel:${mobile}`;
+                linkedin = `linkedin:${linkedin}`;
+                insta = `insta:${insta}`;
+                fb = `fb:${fb}`;
+
             }
             let code = `
             <div class="card">
@@ -19,17 +24,17 @@
                 </div>
                 <ul class="sci">
                     <li style="--i:1">
-                        <a href="${fb}"  >
+                        <a target="_blank" href="${fb}"  >
                             <i class="fa fa-facebook-official" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li style="--i:2">
-                        <a href="${insta}" >
+                        <a target="_blank"  href="${insta}" >
                             <i class="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li style="--i:3">
-                        <a href="${linkedin}" >
+                        <a target="_blank"  href="${linkedin}" >
                             <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                         </a>
                     </li>
@@ -53,9 +58,9 @@
                     return e.split(",");
                 }
             )
-            // console.log(result);
+            console.log(result);
             result.forEach(e =>{
-                // console.log(e);
+                console.log(e);
                 if (e.length > 2){
                     createCard(e);
                 }else{
