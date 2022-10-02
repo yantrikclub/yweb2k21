@@ -2,13 +2,37 @@
 // id,img,name,designition,fb,insta,linkedin,mobile
         function createCard([name,id,img,designition,insta,linkedin,fb,mobile]){
             const mem = document.getElementById(id);
-            if (mobile == "javascript:void(0);"){
-            }else{
-                mobile = `tel:${mobile}`;
-                linkedin = `linkedin:${linkedin}`;
-                insta = `insta:${insta}`;
-                fb = `fb:${fb}`;
-
+            let codem = ""
+            let codei = ""
+            let codel = ""
+            let codef = ""
+            if (mobile != "javascript:void(0);"){
+                codem = ` <li style="--i:4">
+                <a href="${mobile}"  >
+                    <i class="fa fa-phone-square" aria-hidden="true"></i>
+                </a>
+            </li>`
+            }
+            if (linkedin != "javascript:void(0);"){
+                codel = `<li style="--i:3">
+                <a target="_blank"  href="${linkedin}" >
+                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                </a>
+            </li>`
+            }
+            if (insta != "javascript:void(0);"){
+                codei = `<li style="--i:2">
+                <a target="_blank"  href="${insta}" >
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+            </li>`
+            }
+            if (fb != "javascript:void(0);"){
+                codef = `  <li style="--i:1">
+                        <a target="_blank" href="${fb}"  >
+                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                        </a>
+                    </li>`
             }
             let code = `
             <div class="card">
@@ -23,30 +47,15 @@
                     </div>
                 </div>
                 <ul class="sci">
-                    <li style="--i:1">
-                        <a target="_blank" href="${fb}"  >
-                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li style="--i:2">
-                        <a target="_blank"  href="${insta}" >
-                            <i class="fa fa-instagram" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li style="--i:3">
-                        <a target="_blank"  href="${linkedin}" >
-                            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li style="--i:4">
-                        <a href="${mobile}"  >
-                            <i class="fa fa-phone-square" aria-hidden="true"></i>
-                        </a>
-                    </li>
+                    ${codef}
+                    ${codei}
+                    ${codel}
+                    ${codem}
                 </ul>
             </div>`;
 
             mem.innerHTML += code;
+            console.log(code)
 
         }
 
