@@ -41,8 +41,8 @@
                         <img src="${img}" alt="pic">
                     </div>
                     <div class="contentBx">
-                        <h3>
-                            ${name}<br><span>${designition}</span>
+                        <h3 style="text-transform:uppercase;">
+                            ${name}<br><span style="text-transform:uppercase;" >${designition}</span>
                         </h3>
                     </div>
                 </div>
