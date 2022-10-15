@@ -6,13 +6,13 @@
             let codei = ""
             let codel = ""
             let codef = ""
-            if (mobile != "javascript:void(0);"){
-                codem = ` <li style="--i:4">
-                <a href="${mobile}"  >
-                    <i class="fa fa-phone-square" aria-hidden="true"></i>
-                </a>
-            </li>`
-            }
+            // if (mobile != "javascript:void(0);"){
+            //     codem = `<li style="--i:4">
+            //     <a href="${mobile}"  >
+            //         <i class="fa fa-phone-square" aria-hidden="true"></i>
+            //     </a>
+            // </li>`
+            // }
             if (linkedin != "javascript:void(0);"){
                 codel = `<li style="--i:3">
                 <a target="_blank"  href="${linkedin}" >
@@ -41,8 +41,8 @@
                         <img src="${img}" alt="pic">
                     </div>
                     <div class="contentBx">
-                        <h3>
-                            ${name}<br><span>${designition}</span>
+                        <h3 style="text-transform:uppercase;">
+                            ${name}<br><span style="text-transform:uppercase;" >${designition}</span>
                         </h3>
                     </div>
                 </div>

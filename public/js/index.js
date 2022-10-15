@@ -104,6 +104,10 @@ function upeveload(){
         )
         result.forEach(e =>{
             if (e.length > 2){
+                // e[0] for immage
+                // e[1] for about
+                // e[2] for data
+                // e[3] for time
                 let code = `
                 <div class="card">
                     <div class="imgbx"><img src="${e[0]}" alt=""></div>
@@ -116,8 +120,8 @@ function upeveload(){
                 `;
                 upevents.innerHTML += code;
             } else{
-                
-            }
+                let code = `<h3>Updating Soon...</h3>`
+                upevents.innerHTML = code;            }
             
         })
     })
