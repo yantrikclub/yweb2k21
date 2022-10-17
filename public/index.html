@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="icon" href="data/index/logobgr.png" type="image/icon type">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
+        integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Yantrik IIT Mandi</title>
 </head>
+
 <body>
     <script>
-        function showmenu(){
+        function showmenu() {
             var menbar = document.querySelector(".mnoptions");
             const cs = window.getComputedStyle(menbar).display;
-            if (cs === "flex"){
+            if (cs === "flex") {
                 menbar.style.display = "none";
                 const btn = document.querySelector(".ham");
                 btn.innerHTML = `<a onclick="showmenu()"><i class="fa fa-bars" aria-hidden="true"></i></a>`
             }
-            else if (cs === "none"){
+            else if (cs === "none") {
                 menbar.style.display = "flex";
                 const btn = document.querySelector(".ham");
                 btn.innerHTML = `<a onclick="showmenu()"><i class="fa fa-times" aria-hidden="true"></i></a>`
             }
 
         }
-          
+
     </script>
     <div class="wrapper">
         <div class="innerwrapper">
@@ -54,7 +58,7 @@
                     </li>
                     <li>
                         <a href="pages/team.html">Team</a>
-                    </li>   
+                    </li>
                 </ul>
                 <div class="ham"><a onclick="showmenu()"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
             </header>
@@ -62,18 +66,39 @@
                 <div class="content">
                     <div class="cont1" id="intro" tabindex="1">
                         <div class="glass">
-                    
+
                             <h2>Who we are ?</h2>
-                            <p>Yantrik is one of the amazing student clubs of IIT Mandi. Under the Science and Technology Council,
-                                the club is showing it's charm. Yantrik conducts various interesting events, make amazing projects,
+                            <p>Yantrik is one of the amazing student clubs of IIT Mandi. Under the Science and
+                                Technology Council,
+                                the club is showing it's charm. Yantrik conducts various interesting events, make
+                                amazing projects,
                                 teaches a lot to get the learnings into action.
                                 With the contribution of new members, the family of Yantrik is growing :)</p>
                         </div>
                         <h1>Yantrik Club <br><span>IIT&nbsp;Mandi</span></h1>
                     </div>
 
+                    <hr class="tit"></hr>
+                    <div class="contain">
+                        <div class="counter">
+                            <h3>Total Events</h3>
+                            <div class="sec">
+                                <span class="counter-val" data-val="50">50</span>
+                                <span>+</span>
+                            </div>
+                        </div>
+                        
+                        <div class="counter">
+                            <h3>Total Participation</h3>
+                            <div class="sec">
+                                <span class="counter-val" data-val="1000">1000+</span>
+                                <span>+</span>
+                            </div>
+                        </div>
 
-                    <div class = "cont1" id="glimpse">
+                    </div>
+
+                    <div class="cont1" id="glimpse">
                         <h1>Life with Yantrik</h1>
                         <hr class="tit">
                         <div class="activitywrap">
@@ -87,10 +112,13 @@
                                             <img src="data/index/planning.jpg" alt="">
                                         </div>
                                         <h1 id="activitytit">Learn a Lot to put them into action</h1>
-                                        <p id="activityinfo">To make something remarkable, the plan should be clear. So we believe,
-                                            learning the concepts, analysing the challenges results in proper planning which clears majority of 
+                                        <p id="activityinfo">To make something remarkable, the plan should be clear. So
+                                            we believe,
+                                            learning the concepts, analysing the challenges results in proper planning
+                                            which clears majority of
                                             the problems while implementing the idea.
-                                            <a href="pages/blog.html" target="_blank" rel="noopener noreferrer" >Explore our blog page</a>
+                                            <a href="pages/blog.html" target="_blank" rel="noopener noreferrer">Explore
+                                                our blog page</a>
                                         </p>
                                     </div>
                                     <div class="butns">
@@ -106,12 +134,15 @@
                                             <img src="data/index/events.jpg" alt="">
                                         </div>
                                         <h1 id="activitytit">Show the skill in Events</h1>
-                                        <p id="activityinfo">Testing our skill is as important as learning the skill, because we will get to know
-                                             our strengths and weakness. Apart from this, participating in events increases our socializing skills,
-                                             give you a oppurtunity
-                                            <a href="pages/events.html" target="_blank" rel="noopener noreferrer" >Explore the past events</a>
+                                        <p id="activityinfo">Testing our skill is as important as learning the skill,
+                                            because we will get to know
+                                            our strengths and weakness. Apart from this, participating in events
+                                            increases our socializing skills,
+                                            give you a oppurtunity
+                                            <a href="pages/events.html" target="_blank"
+                                                rel="noopener noreferrer">Explore the past events</a>
                                         </p>
-                                        
+
                                     </div>
                                     <div class="butns">
                                         <div id="rightcnt"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
@@ -126,9 +157,11 @@
                                             <img src="data/index/memories.jpg" alt="">
                                         </div>
                                         <h1 id="activitytit">Make memorable experiences</h1>
-                                        <p id="activityinfo">When we look back to our student life, the memorable experiences are the only
+                                        <p id="activityinfo">When we look back to our student life, the memorable
+                                            experiences are the only
                                             ones which put a smile on your face. They depict what you achieved.
-                                            <a href="pages/gallery.html" target="_blank" rel="noopener noreferrer" >Explore</a>
+                                            <a href="pages/gallery.html" target="_blank"
+                                                rel="noopener noreferrer">Explore</a>
                                         </p>
                                     </div>
                                     <div class="butns">
@@ -144,9 +177,11 @@
                                             <img src="data/index/team.jpg" alt="">
                                         </div>
                                         <h1 id="activitytit">A part of Family</h1>
-                                        <p id="activityinfo">The club can only function if everyone plays thier roles. With the effort of every member
+                                        <p id="activityinfo">The club can only function if everyone plays thier roles.
+                                            With the effort of every member
                                             we are here right now.
-                                            <a href="pages/team.html" target="_blank" rel="noopener noreferrer" >Meet the Team</a>
+                                            <a href="pages/team.html" target="_blank" rel="noopener noreferrer">Meet the
+                                                Team</a>
                                         </p>
                                     </div>
                                     <div class="butns">
@@ -161,50 +196,64 @@
                         <div class="projects">
                             <div class="wrap">
                                 <div class="c-header c-header--archive c-header--project-list">
-                                    <div class="c-mouse-vertical-carousel js-carousel u-media-wrapper u-media-wrapper--16-9">
+                                    <div
+                                        class="c-mouse-vertical-carousel js-carousel u-media-wrapper u-media-wrapper--16-9">
                                         <ul class="c-mouse-vertical-carousel__list js-carousel-list">
-                                            <li class="c-mouse-vertical-carousel__list-item js-carousel-list-item" data-item-id="0">
+                                            <li class="c-mouse-vertical-carousel__list-item js-carousel-list-item"
+                                                data-item-id="0">
                                                 <div class="dum">
                                                     <p class="c-mouse-vertical-carousel__title u-a5">
                                                         RC Plane
                                                     </p>
                                                     <p class="c-mouse-vertical-carousel__eyebrow u-b4">
-                                                        An RC plane is a simple, small flying object which is basically controlled in the air using a 
+                                                        An RC plane is a simple, small flying object which is basically
+                                                        controlled in the air using a
                                                         hand-held transmitter operated from the ground base.
-                                                        The main aim of this project was to design, analyses and build an RC plane.
+                                                        The main aim of this project was to design, analyses and build
+                                                        an RC plane.
                                                     </p>
                                                 </div>
                                             </li>
-                                            <li class="c-mouse-vertical-carousel__list-item js-carousel-list-item" data-item-id="1">
+                                            <li class="c-mouse-vertical-carousel__list-item js-carousel-list-item"
+                                                data-item-id="1">
                                                 <div class="dum">
                                                     <p class="c-mouse-vertical-carousel__title u-a5">
                                                         RC Nitro Car
                                                     </p>
                                                     <p class="c-mouse-vertical-carousel__eyebrow u-b4">
-                                                        An advanced model RC car built with similar working of a regular car with some modifications. 
-                                                        Nitro-powered cars operate like full-sized fuel vehicles more than their electric counterparts do,
-                                                         making use of a two stroke engine rather than an electric motor
+                                                        An advanced model RC car built with similar working of a regular
+                                                        car with some modifications.
+                                                        Nitro-powered cars operate like full-sized fuel vehicles more
+                                                        than their electric counterparts do,
+                                                        making use of a two stroke engine rather than an electric motor
                                                     </p>
                                                 </div>
                                             </li>
-                                            <li class="c-mouse-vertical-carousel__list-item js-carousel-list-item" data-item-id="2">
+                                            <li class="c-mouse-vertical-carousel__list-item js-carousel-list-item"
+                                                data-item-id="2">
                                                 <div class="dum">
                                                     <p class="c-mouse-vertical-carousel__title u-a5">
                                                         RC Hovercraft
                                                     </p>
                                                     <p class="c-mouse-vertical-carousel__eyebrow u-b4">
-                                                        Hovercraft is an amphibious vehicle which travels over the lands with different terrain and water. 
-                                                        Its working is hugely guided by the principles of lift and propulsion.
-                                                        Where boats are slowed by hulls that drag deep in the water, hovercraft ride fully clear
+                                                        Hovercraft is an amphibious vehicle which travels over the lands
+                                                        with different terrain and water.
+                                                        Its working is hugely guided by the principles of lift and
+                                                        propulsion.
+                                                        Where boats are slowed by hulls that drag deep in the water,
+                                                        hovercraft ride fully clear
                                                     </p>
                                                 </div>
                                             </li>
                                         </ul>
-                                    
-                                        
-                                        <i class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img" style="background-image: url(data/index/rcplane.jpg)"></i>
-                                        <i class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img" style="background-image: url(data/index/rccar.png)"></i>
-                                        <i class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img" style="background-image: url(data/index/rchovercraft.jpg)"></i>
+
+
+                                        <i class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
+                                            style="background-image: url(data/index/rcplane.jpg)"></i>
+                                        <i class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
+                                            style="background-image: url(data/index/rccar.png)"></i>
+                                        <i class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
+                                            style="background-image: url(data/index/rchovercraft.jpg)"></i>
                                         <i class="c-gradient-overlay"></i>
                                     </div>
                                 </div>
@@ -220,7 +269,8 @@
                                         </div>
                                         <h1 id="projtit">RC Plane</h1>
                                         <p id="projinfo">
-                                            An RC plane is a simple, small flying object which is basically controlled in the air using a 
+                                            An RC plane is a simple, small flying object which is basically controlled
+                                            in the air using a
                                             hand-held transmitter operated from the ground base.
                                             The main aim of this project was to design, analyses and build an RC plane.
                                             <!-- <a href="pages/blog.html" target="_blank" rel="noopener noreferrer" >Explore our blog page</a> -->
@@ -240,12 +290,14 @@
                                         </div>
                                         <h1 id="projtit">RC Car</h1>
                                         <p id="projinfo">
-                                            An advanced model RC car built with similar working of a regular car with some modifications. 
-                                            Nitro-powered cars operate like full-sized fuel vehicles more than their electric counterparts do,
-                                                making use of a two stroke engine rather than an electric motor
+                                            An advanced model RC car built with similar working of a regular car with
+                                            some modifications.
+                                            Nitro-powered cars operate like full-sized fuel vehicles more than their
+                                            electric counterparts do,
+                                            making use of a two stroke engine rather than an electric motor
                                             <!-- <a href="pages/events.html" target="_blank" rel="noopener noreferrer" >Explore the past events</a> -->
                                         </p>
-                                        
+
                                     </div>
                                     <div class="butns2">
                                         <div id="rightcnt2"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
@@ -260,9 +312,11 @@
                                             <img src="data/index/rchovercraft.jpg" alt="">
                                         </div>
                                         <h1 id="projtit">RC Hovercraft</h1>
-                                        <p id="projinfo">Hovercraft is an amphibious vehicle which travels over the lands with different terrain and water. 
+                                        <p id="projinfo">Hovercraft is an amphibious vehicle which travels over the
+                                            lands with different terrain and water.
                                             Its working is hugely guided by the principles of lift and propulsion.
-                                            Where boats are slowed by hulls that drag deep in the water, hovercraft ride fully clear
+                                            Where boats are slowed by hulls that drag deep in the water, hovercraft ride
+                                            fully clear
                                             <!-- <a href="pages/gallery.html" target="_blank" rel="noopener noreferrer" >Explore</a> -->
                                         </p>
                                     </div>
@@ -270,7 +324,7 @@
                                         <div id="rightcnt2"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
                                     </div>
                                 </div>
-                                
+
                             </section>
                         </div>
                     </div>
@@ -285,20 +339,27 @@
                     <div class="imgbx">
                         <img src="../data/index/logobgr.png" alt="">
                     </div>
-                    
+
                     <div class="contact">
                         <p>Reach Us On</p>
                         <ul>
-                            <li><a href="https://discord.com/invite/7HxRhM5wFF"><i class="fa fa-discord" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.instagram.com/yantrik_club/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.facebook.com/groups/1643392312602100"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.youtube.com/channel/UChsq9TRLeyPJwahs9x3EzUA"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            <li><a href="https://github.com/YantrikIITMandi"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                            <li><a href="https://wiki.iitmandi.co.in/p/Yantrik_Club"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                            <li><a href="https://discord.com/invite/7HxRhM5wFF"><i class="fa fa-discord"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/yantrik_club/"><i class="fa fa-instagram"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.facebook.com/groups/1643392312602100"><i
+                                        class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UChsq9TRLeyPJwahs9x3EzUA"><i
+                                        class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href="https://github.com/YantrikIITMandi"><i class="fa fa-github"
+                                        aria-hidden="true"></i></a></li>
+                            <li><a href="https://wiki.iitmandi.co.in/p/Yantrik_Club"><i class="fa fa-wikipedia-w"
+                                        aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                     <div class="data">
-                        <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
+                        <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope"
+                                    aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
                         <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kamand (H.P.)- 175005</p>
                     </div>
                 </div>
@@ -358,7 +419,7 @@
                 });
 
                 this.listItems = this.getListItems().length - 1;
-                
+
                 this.listOpacityController(0);
             }
 
@@ -441,20 +502,47 @@
         }
         new VerticalMouseDrivenCarousel();
 
-        function introreveal(){
-            TweenMax.to('.glass', 2, {scaleY: 1, height:'100vh', ease: Circ.easeOut });
-            TweenMax.to('.glass p', 1, {opacity: 1, delay: 1.4});
-            TweenMax.to('.glass h2', 1, {opacity: 1, delay: 1.4});
+        function introreveal() {
+            TweenMax.to('.glass', 2, { scaleY: 1, height: '100vh', ease: Circ.easeOut });
+            TweenMax.to('.glass p', 1, { opacity: 1, delay: 1.4 });
+            TweenMax.to('.glass h2', 1, { opacity: 1, delay: 1.4 });
         }
-        window.onload = e=>{
+        window.onload = e => {
             introreveal();
             swapshow();
             upeveload();
         }
         document.getElementById('intro').focus();
     </script>
+
+    <!-- script for counter -->
+    <script>
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach((element) => {
+                if (element.isIntersecting) {
+                    $(element.target).prop('Counter', 0).animate({
+                        Counter: $(element.target).data('val')
+                    }, {
+                        duration: 3500,
+                        easing: 'swing',
+                        step: function (now) {
+                            $(element.target).text(Math.ceil(now));
+                        }
+                    });
+                }
+                else {
+                    $(element.target).stop();
+                }
+            })
+        });
+
+        const box = document.getElementsByClassName('counter-val');
+        for (let i = 0; i < box.length; i++) {
+            observer.observe(box[i])
+        }
+    </script>
+
     <script src="js/index.js"></script>
 </body>
+
 </html>
-
-
