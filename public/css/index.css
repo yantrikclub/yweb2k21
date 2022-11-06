@@ -9,7 +9,7 @@ body {
 
 #intro {
   min-height: 100vh;
-  background: url("../data/index/1.jpg") center no-repeat fixed;
+  background: url("https://img.freepik.com/free-vector/3d-style-gears-symbols-black-design_1017-25662.jpg?w=740&t=st=1667728900~exp=1667729500~hmac=21c3b359c935a98d54dead9a858baf842130d9135afdfb499a087550474a10cd") center no-repeat fixed;
   background-size: cover;
   position: relative;
   overflow: hidden;
@@ -171,9 +171,9 @@ main .content {
 }
 
 .content .upevents .card .info .name {
-  font-size: 1.2em;
-  padding: 1em;
-  height: 4em;
+  font-size: 15px;
+  padding: 6px;
+  /* height: 4em; */
   text-transform: uppercase;
 }
 
@@ -544,13 +544,13 @@ main .content {
 
 }
 
-@media only screen and (max-width:600px){
-  #intro h1{
+@media only screen and (max-width:600px) {
+  #intro h1 {
     font-size: 3rem;
   }
-}*
+}
 
-
+*
 /* for counter */
 
 .contain {
@@ -581,13 +581,13 @@ main .content {
   text-transform: uppercase;
 }
 
-.sec{
+.sec {
   font-size: 40px;
 }
 
 
-@media only screen and (max-width:630px){
-  .contain{
+@media only screen and (max-width:630px) {
+  .contain {
     flex-direction: column;
   }
 }
