@@ -156,11 +156,6 @@ app.use((req,res)=>{
     res.sendFile(path.join(initial_path,"pages/missing.html"));
 })
 
-
-
-
-
-
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
       return next()
