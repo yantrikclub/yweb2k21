@@ -1,6 +1,5 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const fs = require('fs');
-require('dotenv').config({path:"./config/config.env"})
 const doc = new GoogleSpreadsheet(process.env.SHEETID)
 const credentials = JSON.parse(fs.readFileSync('./config/credentials_yantrik.json'))
 const getrows = async () => {

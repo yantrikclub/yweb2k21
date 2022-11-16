@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
+require('dotenv').config({path:"./config/config.env"})
 
 // const fs = require('fs');
 const multer = require('multer');
@@ -21,9 +22,9 @@ initializePassport(
 
 
 
-const users = [{id:"yantrik2k21-22", email:"yantrik.web@gmail.com", password:"$2a$10$4f9IdbSSbOjkzLjvt7LlI.b5ElmsAL7eCASHo7xINR0zC9NWs3b0C"}]
+const users = [{id:process.env.ID, email:process.env.EMAIL, password:process.env.PASSWORD}]
 
-let initial_path = path.join(__dirname, "public");
+// let initial_path = path.join(__dirname, "public");
 
 const app = express();
 app.use(express.urlencoded({extended:true}));
@@ -31,7 +32,7 @@ app.use(compression())
 app.use(flash())
 app.use(session({
     // secret: process.env.SESSION_SECRET,
-    secret : "iloveyantrik",
+    secret : process.env.SECRET,
     resave:false,
     saveUninitialized:false
 }))
@@ -47,7 +48,7 @@ app.set('view engine','ejs') //*************** */
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(path.join(__dirname,"server")));
 app.get('/webauthlogin',checkNotAuthenticated,(req,res)=>{
-    res.sendFile(path.join(__dirname,"server/login.html"));
+    res.sendFile(path.join(__dirname,"server/login.ejs"));
 })
 app.post('/webauthlogin',checkNotAuthenticated,passport.authenticate('local',{
     successRedirect: '/webauth',
@@ -62,7 +63,7 @@ const sheetdata = require('./googlesheet.js')
 app.get('/',async(req,res)=>{
     let data  = await sheetdata();
     let updata = data.sort((p1, p2) => (p1.status < p2.status) ? 1 : (p1.status > p2.status) ? -1 : 0);
-    console.log(updata);
+    
     let context = {
         upevent : updata
     }
@@ -125,9 +126,9 @@ app.get('/blog',(req,res)=>{
 // const upload3 = multer({ storage: storage3});
 // const upload4 = multer({ storage: storage4});
 
-// app.get('/webauth',checkAuthenticated,(req,res)=>{
-//     res.sendFile(path.join(__dirname,"server/filemngr.html"))
-// })
+app.get('/webauth',checkAuthenticated,(req,res)=>{
+    res.sendFile(path.join(__dirname,"server/filemngr.ejs"))
+})
 
 
 
