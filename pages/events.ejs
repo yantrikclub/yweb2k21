@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../data/index/logobgr.png" type="image/icon type">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/events.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Yantrik Events</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;1,400&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <%- include('partials/navbar.ejs') %>
+            
+            <main>
+                <div class="dummy">
+                    <h2>Yantrik Events</h2>
+                </div>
+
+                <h1 class="section">Fun-Events</h1>
+                <hr class="tit">
+                <section class="workshops" id="fun">
+
+                </section>
+                <h1 class="section">Workshops</h1>
+                <hr class="tit">
+                <section class="workshops" id="workshops">
+
+                </section>
+                <h1 class="section">Workshops</h1>
+                <hr class="tit">
+                <section class="workshops" id="workshops">
+
+                </section>
+                <h1 class="section">Talks n Webinars</h1>
+                <hr class="tit">
+                <section class="talks" id="talks">
+
+                </section>
+                <h1 class="section">Events</h1>
+                <hr class="tit">
+                <section class="events" id="events">
+                    
+                </section>
+                <div class="btnwrap">
+                    <button id="moreevents">Load more</button>
+                </div>
+                
+                
+            </main>
+            <%- include('partials/footer.ejs') %>
+        </div>
+    </div>
+
+    
+    <script src="../js/events.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

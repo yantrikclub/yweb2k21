@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../data/index/logobgr.png" type="image/icon type">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yantrik Team</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../css/team.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;1,400&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <%- include('partials/navbar.ejs') %>
+            
+           
+           
+            <main>
+                <div class="dummy">
+                    <h2>Yantrik Club Team</h2>
+                </div>
+                <div class="content" id="teamcards">
+                    <div class="container">
+                        <h1>Coordinators</h1>
+                        <hr class="tit">
+                        <div class="mem" id="Coordinator">
+                            
+                        </div>
+                        <h1>Senior Advisors</h1>
+                        <hr class="tit">
+                        <div class="mem" id="senioradv">
+
+                        </div>
+                        <h1>Faculty Advisor</h1>
+                        <hr class="tit">
+                        <div class="mem" id="facultyadv">
+
+                        </div>
+                        <h1>Team Members</h1>
+                        <hr class="tit">
+                        <div class="mem" id="mem">
+
+                        </div>
+                        <h1>Alumni</h1>
+                        <hr class="tit">
+                        <div class="mem" id="Alumni">
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <%- include('partials/footer.ejs') %>
+        </div>
+    </div>
+    <script src="../js/team.js"></script>
+</body>
+</html>
+

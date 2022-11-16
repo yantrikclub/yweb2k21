@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../data/index/logobgr.png" type="image/icon type">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../css/gallery.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Yantrik Gallery</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;1,400&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <%- include('partials/navbar.ejs') %>
+            
+            <main>
+                <div class="dummy">
+                    <h2>Gallery <span>Yantrik</span></h2>
+                </div>
+                <div class="content" >
+                    <div class="container" id="container">
+                        <!-- <div class="card">
+                            <div class="title"><h2>Seak the DC</h2></div>
+                            <hr class="tit">
+                            <div class="gal">
+                                <div class="item"><video preload muted src="../data/gallery/vid1.mp4"></video></div>
+                                <div class="item"><video preload muted src="../data/gallery/vid2.mp4"></video></div>
+                                <div class="item"><img src="../data/gallery/pic1.jpg" alt=""></div>
+                                <div class="item"><video preload muted src="../data/gallery/vid3.mp4"></video></div>
+                                <div class="item"><img src="../data/gallery/pic2.jpg" alt=""></div>
+                                <div class="item"><img src="../data/gallery/pic3.jpg" alt=""></div> 
+                                <div class="item"><img src="../data/gallery/pic4.jpg" alt=""></div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="popup">
+                        <span>&times;</span>
+                        <video src="" unmuted autoplay controls></video>
+                        <div class="imgbx">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <%- include('partials/footer.ejs') %>
+            
+        </div>
+    </div>
+
+    <script src="../js/gallery.js"></script>
+</body>
+</html>

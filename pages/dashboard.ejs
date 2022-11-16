@@ -24,23 +24,7 @@
 </head>
 <body>
     <script>
-        function showmenu(){
-            var menbar = document.querySelector(".mnoptions");
-            const cs = window.getComputedStyle(menbar).display;
-            if (cs === "flex"){
-                menbar.style.display = "none";
-                const btn = document.querySelector(".ham");
-                btn.innerHTML = `<a onclick="showmenu()"><i class="fa fa-bars" aria-hidden="true"></i></a>`
-            }
-            else if (cs === "none"){
-                menbar.style.display = "flex";
-                const btn = document.querySelector(".ham");
-                btn.innerHTML = `<a onclick="showmenu()"><i class="fa fa-times" aria-hidden="true"></i></a>`
-            }
-
-        }
-
-        
+            
         function accountmenu(){
             const accountmn = document.querySelector("#acmn");
             const csacc = window.getComputedStyle(accountmn).display;
@@ -56,33 +40,8 @@
     </script>
     <div class="wrapper">
         <div class="innerwrapper">
-            <header>
-                <a href="../index.html"><img src="../data/index/logobgr.png" alt=""></a>
-                <ul class="mnoptions">
-                    <li>
-                        <a href="../index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="blog.html">Blogs</a>
-                    </li>
-                    <li>
-                        <a href="events.html">Events</a>
-                    </li>
-                    <li>
-                        <a href="gallery.html">Gallery</a>
-                    </li>
-                    <li>
-                        <a href="team.html">Team</a>
-                    </li>   
-                    <li>
-                        <a target="_blank" rel="noopener noreferrer" href="editor.html">Write a Blog</a>
-                    </li>
-                    <li>
-                        <a id="accreveal" onclick="accountmenu()" href="#">My Account</a>
-                    </li>
-                </ul>
-                <div class="ham"><a onclick="showmenu()"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
-            </header>
+            <%- include('partials/navabr.ejs') %>
+            
             <main>
                 <section id="preloader">
                     <div class="container">
@@ -111,33 +70,7 @@
                 <h1 id="cathead">Projects</h1>
                 <div id="projectslist">
             </main>
-            <footer>
-                <div class="wrap">
-                    <div class="imgbx">
-                        <img src="../data/index/logobgr.png" alt="">
-                    </div>
-                    
-                    <div class="contact">
-                        <p>Reach Us On</p>
-                        <ul>
-                            <li><a href="https://discord.com/invite/7HxRhM5wFF"><i class="fa fa-discord" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.instagram.com/yantrik_club/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.facebook.com/groups/1643392312602100"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.youtube.com/channel/UChsq9TRLeyPJwahs9x3EzUA"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            <li><a href="https://github.com/YantrikIITMandi"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                            <li><a href="https://wiki.iitmandi.co.in/p/Yantrik_Club"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="data">
-                        <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
-                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kamand (H.P.)- 175005</p>
-                    </div>
-                </div>
-
-                <div class="copyright">
-                    <p>© 2022. YantrikClub-IIT&nbsp;Mandi. All&nbsp;Rights&nbsp;Reserved</p>
-                </div>
-            </footer>
+            <%- include('partials/footer.ejs') %>
         </div>
     </div>
     
