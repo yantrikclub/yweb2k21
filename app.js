@@ -71,117 +71,31 @@ app.get('/',async(req,res)=>{
     res.render('index.ejs',context)
 })
 
-app.get('/events',(req,res)=>{
-    res.render('events.ejs')
-})
-
-app.get('/gallery',(req,res)=>{
-    res.render('gallery.ejs')
-})
-
-app.get('/ourteam',(req,res)=>{
-    res.render('team.ejs')
-})
-
-app.get('/blog',(req,res)=>{
-    res.render('blog.ejs')
-})
-// =============================================================================================
-// const storage1 = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, path.join(initial_path,"data/index"));
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, file.originalname);
-//     }
-// });
-// const storage2 = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, path.join(initial_path,"data/events"));
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, file.originalname);
-//     }
-// });
-// const storage3 = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, path.join(initial_path,"data/gallery"));
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, file.originalname);
-//     }
-// });
-// const storage4 = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, path.join(initial_path,"data/team"));
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, file.originalname);
-//     }
-// });
-
-
-// const upload1 = multer({ storage: storage1});
-// const upload2 = multer({ storage: storage2});
-// const upload3 = multer({ storage: storage3});
-// const upload4 = multer({ storage: storage4});
-
-app.get('/webauth',checkAuthenticated,(req,res)=>{
-    res.sendFile(path.join(__dirname,"server/filemngr.ejs"))
-})
-
-
-
-// app.post('/single/upeve', upload1.single('file'), (req, res)=> {
-//     res.redirect('/webauth');
-// });
-// app.post('/single/eve', upload2.single('file'), (req, res) => {
-//     res.redirect('/webauth');
-// });
-// app.post('/single/gal', upload3.single('file'), (req, res) => {
-//     res.redirect('/webauth');
-// });
-// app.post('/single/team', upload4.single('file'), (req, res) => {
-//     res.redirect('/webauth');
-// });
-
-
-
-
-
-// ------------------------------------------------------------------------------------
-// let getrows = require('./googlesheet.js');
-// app.get('/',async(req,res)=>{
-//     let data = await getrows()
-//     console.log(data)
-//     // console.log(1000000)
-//     res.send("hi there");
-// })
-
-app.get('/admin',(req,res)=>{
+app.get('/dashboard',(req,res)=>{
     // res.sendFile(path.join(initial_path,"pages/dashboard.html"));
     res.render('dashboard.ejs')
 })
 
-app.get('/blogs/blogs.html',(req,res)=>{
+app.get('/blog',(req,res)=>{
     // res.sendFile(path.join(initial_path,"pages/blogs.html"));
     res.render('blog.ejs');
 })
-app.get('/blogs/events.html',(req,res)=>{
+app.get('/events',(req,res)=>{
     // res.sendFile(path.join(initial_path,"pages/events.html"));
     res.render('events.ejs')
 })
-app.get('/blogs/gallery.html',(req,res)=>{
+app.get('/gallery',(req,res)=>{
     // res.sendFile(path.join(initial_path,"pages/gallery.html"));
     res.render('gallery.ejs')
 })
-app.get('/blogs/team.html',(req,res)=>{
+app.get('/team',(req,res)=>{
     // res.sendFile(path.join(initial_path,"pages/team.html"));
+    // console.log("hi lakshay")
     res.render('team.ejs')
 
 })
 
-app.get('/edit/:blog',(req,res)=>{
+app.get('/editor',(req,res)=>{
     // res.sendFile(path.join(initial_path,"pages/editor.html"));
     res.render('editor.ejs')
 
@@ -191,6 +105,65 @@ app.get('/blogs/:blog',(req,res)=>{
     res.render('iblog.ejs')
 
 })
+// =============================================================================================
+const storage1 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(initial_path,"data/index"));
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+const storage2 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(initial_path,"data/events"));
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+const storage3 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(initial_path,"data/gallery"));
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+const storage4 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(initial_path,"data/team"));
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+
+
+const upload1 = multer({ storage: storage1});
+const upload2 = multer({ storage: storage2});
+const upload3 = multer({ storage: storage3});
+const upload4 = multer({ storage: storage4});
+
+app.get('/webauth',checkAuthenticated,(req,res)=>{
+    res.sendFile(path.join(__dirname,"server/webauth.ejs"))
+})
+
+app.post('/single/upeve', upload1.single('file'), (req, res)=> {
+    res.redirect('/webauth');
+});
+app.post('/single/eve', upload2.single('file'), (req, res) => {
+    res.redirect('/webauth');
+});
+app.post('/single/gal', upload3.single('file'), (req, res) => {
+    res.redirect('/webauth');
+});
+app.post('/single/team', upload4.single('file'), (req, res) => {
+    res.redirect('/webauth');
+});
+
+
+
 app.delete('/logout', (req, res) => {
     req.logOut();
     res.redirect('/webauthlogin');

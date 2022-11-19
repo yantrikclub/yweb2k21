@@ -565,7 +565,7 @@
                 Mail : authen.currentUser.email,
                 Category: cat.value
             }).then(()=>{
-                location.href = `/pages/dashboard.html`;
+                location.href = `dashboard.ejs`;
                 })
             var reff = doc(db,"Blogsthumb",idnum);
             const docReff = await setDoc( reff,{
@@ -605,7 +605,7 @@
 
 
         var parser = new DOMParser();
-        if (blogid != "editor.html"){
+        if (blogid != "editor.ejs"){
             
             loaddata();
         }
