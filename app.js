@@ -1,6 +1,7 @@
 // require("dotenv").config();
 const express = require('express');
 const path = require('path');
+const port  = process.env.PORT||8005;
 const compression = require('compression');
 require('dotenv').config({path:"./config/config.env"})
 
@@ -67,7 +68,6 @@ app.get('/',async(req,res)=>{
     let context = {
         upevent : updata
     }
-    console.log(context)
     res.render('index.ejs',context)
 })
 
@@ -88,7 +88,7 @@ app.get('/gallery',(req,res)=>{
     // res.sendFile(path.join(initial_path,"pages/gallery.html"));
     res.render('gallery.ejs')
 })
-app.get('/team',(req,res)=>{
+app.get('/ourteam',(req,res)=>{
     // res.sendFile(path.join(initial_path,"pages/team.html"));
     // console.log("hi lakshay")
     res.render('team.ejs')
@@ -195,6 +195,6 @@ function checkAuthenticated(req, res, next) {
 
 
 
-app.listen("8005",()=>{
-    console.log('listening at port 8005');
+app.listen(port,()=>{
+    console.log(`listening at port ${port}`);
 })
