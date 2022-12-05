@@ -1,9 +1,9 @@
 // require("dotenv").config();
 const express = require('express');
 const path = require('path');
-const port  = process.env.PORT||8005;
+const port = process.env.PORT || 8005;
 const compression = require('compression');
-require('dotenv').config({path:"./config/config.env"})
+require('dotenv').config({ path: "./config/config.env" })
 
 // const fs = require('fs');
 const multer = require('multer');
@@ -18,40 +18,40 @@ initializePassport(
     passport,
     email => users.find(user => user.email === email),
     id => users.find(user => user.id === id),
-    
+
 );
 
 
 
-const users = [{id:process.env.ID, email:process.env.EMAIL, password:process.env.PASSWORD}]
+const users = [{ id: process.env.ID, email: process.env.EMAIL, password: process.env.PASSWORD }]
 
 // let initial_path = path.join(__dirname, "public");
 
 const app = express();
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: false }));
 app.use(compression())
 app.use(flash())
 app.use(session({
     // secret: process.env.SESSION_SECRET,
-    secret : process.env.SECRET,
-    resave:false,
-    saveUninitialized:false
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
 }))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
 
-app.set('views',"pages") //********** */
-app.set('view engine','ejs') //*************** */
+app.set('views', "pages") //********** */
+app.set('view engine', 'ejs') //*************** */
 
 
 app.use(express.static(__dirname + "/public"));
-app.use(express.static(path.join(__dirname,"server")));
-app.get('/webauthlogin',checkNotAuthenticated,(req,res)=>{
-    res.sendFile(path.join(__dirname,"server/login.ejs"));
+app.use(express.static(path.join(__dirname, "server")));
+app.get('/webauthlogin', checkNotAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "server/login.ejs"));
 })
-app.post('/webauthlogin',checkNotAuthenticated,passport.authenticate('local',{
+app.post('/webauthlogin', checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/webauth',
     failureRedirect: "/webauthlogin",
     failureFlash: true
@@ -61,54 +61,55 @@ app.post('/webauthlogin',checkNotAuthenticated,passport.authenticate('local',{
 
 // =========================================
 const sheetdata = require('./googlesheet.js')
-app.get('/',async(req,res)=>{
-    let data  = await sheetdata();
+app.get('/', async (req, res) => {
+    let data = await sheetdata();
     let updata = data.sort((p1, p2) => (p1.status < p2.status) ? 1 : (p1.status > p2.status) ? -1 : 0);
-    
+
     let context = {
-        upevent : updata
+        upevent: updata
     }
-    res.render('index.ejs',context)
+    res.render('index.ejs', context)
 })
 
-app.get('/dashboard',(req,res)=>{
+app.get('/dashboard', (req, res) => {
     // res.sendFile(path.join(initial_path,"pages/dashboard.html"));
     res.render('dashboard.ejs')
 })
 
-app.get('/blog',(req,res)=>{
+app.get('/blog', (req, res) => {
     // res.sendFile(path.join(initial_path,"pages/blogs.html"));
     res.render('blog.ejs');
 })
-app.get('/events',(req,res)=>{
+app.get('/events', (req, res) => {
     // res.sendFile(path.join(initial_path,"pages/events.html"));
     res.render('events.ejs')
 })
-app.get('/gallery',(req,res)=>{
+app.get('/gallery', (req, res) => {
     // res.sendFile(path.join(initial_path,"pages/gallery.html"));
     res.render('gallery.ejs')
 })
-app.get('/ourteam',(req,res)=>{
+app.get('/ourteam', (req, res) => {
     // res.sendFile(path.join(initial_path,"pages/team.html"));
     // console.log("hi lakshay")
     res.render('team.ejs')
 
 })
 
-app.get('/editor',(req,res)=>{
+app.get('/editor', (req, res) => {
     // res.sendFile(path.join(initial_path,"pages/editor.html"));
     res.render('editor.ejs')
-
 })
-app.get('/blogs/:blog',(req,res)=>{
-    // res.sendFile(path.join(initial_path,"pages/iblog.html"));
-    res.render('iblog.ejs')
 
-})
-// =============================================================================================
+    // })
+    // app.get('/blogs/:blog',(req,res)=>{
+    //     // res.sendFile(path.join(initial_path,"pages/iblog.html"));
+    //     res.render('iblog.ejs')
+
+    // })
+    // =============================================================================================
 const storage1 = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(initial_path,"data/index"));
+        cb(null, path.join(initial_path, "data/index"));
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -116,7 +117,7 @@ const storage1 = multer.diskStorage({
 });
 const storage2 = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(initial_path,"data/events"));
+        cb(null, path.join(initial_path, "data/events"));
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -124,7 +125,7 @@ const storage2 = multer.diskStorage({
 });
 const storage3 = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(initial_path,"data/gallery"));
+        cb(null, path.join(initial_path, "data/gallery"));
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -132,7 +133,7 @@ const storage3 = multer.diskStorage({
 });
 const storage4 = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(initial_path,"data/team"));
+        cb(null, path.join(initial_path, "data/team"));
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -140,16 +141,16 @@ const storage4 = multer.diskStorage({
 });
 
 
-const upload1 = multer({ storage: storage1});
-const upload2 = multer({ storage: storage2});
-const upload3 = multer({ storage: storage3});
-const upload4 = multer({ storage: storage4});
+const upload1 = multer({ storage: storage1 });
+const upload2 = multer({ storage: storage2 });
+const upload3 = multer({ storage: storage3 });
+const upload4 = multer({ storage: storage4 });
 
-app.get('/webauth',checkAuthenticated,(req,res)=>{
-    res.sendFile(path.join(__dirname,"server/webauth.ejs"))
+app.get('/webauth', checkAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "server/webauth.ejs"))
 })
 
-app.post('/single/upeve', upload1.single('file'), (req, res)=> {
+app.post('/single/upeve', upload1.single('file'), (req, res) => {
     res.redirect('/webauth');
 });
 app.post('/single/eve', upload2.single('file'), (req, res) => {
@@ -164,14 +165,40 @@ app.post('/single/team', upload4.single('file'), (req, res) => {
 
 
 
+// =============================================================
+// app.get('/admin',(req,res)=>{
+//     res.sendFile(path.join(initial_path,"pages/dashboard.html"));
+// })
+
+// app.get('/blogs/blogs.html',(req,res)=>{
+//     res.sendFile(path.join(initial_path,"pages/blogs.html"));
+// })
+// app.get('/blogs/events.html',(req,res)=>{
+//     res.sendFile(path.join(initial_path,"pages/events.html"));
+// })
+// app.get('/blogs/gallery.html',(req,res)=>{
+//     res.sendFile(path.join(initial_path,"pages/gallery.html"));
+// })
+// app.get('/blogs/team.html',(req,res)=>{
+//     res.sendFile(path.join(initial_path,"pages/team.html"));
+// })
+
+// app.get('/edit/:blog',(req,res)=>{
+//     res.sendFile(path.join(initial_path,"pages/editor.html"));
+// })
+// app.get('/blogs/:blog',(req,res)=>{
+//     res.sendFile(path.join(initial_path,"pages/iblog.html"));
+// })
+
+
 app.delete('/logout', (req, res) => {
     req.logOut();
     res.redirect('/webauthlogin');
-  })
+})
 
 
 
-app.use((req,res)=>{
+app.use((req, res) => {
     // res.sendFile(path.join(initial_path,"pages/missing.html"));
     res.render('missing.ejs')
 
@@ -179,22 +206,22 @@ app.use((req,res)=>{
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return next()
+        return next()
     }
-  
+
     res.redirect('/webauthlogin')
-  }
-  
-  function checkNotAuthenticated(req, res, next) {
+}
+
+function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return res.redirect('/webauth')
+        return res.redirect('/webauth')
     }
     next()
-  }
+}
 
 
 
 
-app.listen(port,()=>{
+app.listen(port, () => {
     console.log(`listening at port ${port}`);
 })
