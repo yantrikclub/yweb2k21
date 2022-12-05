@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="../data/index/logobgr.png" type="image/icon type">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
+        integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/editor.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css"
+        integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link href=“https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css” rel=“stylesheet”>
+
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js">
+    </script>
+
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js">
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;1,400&family=Noto+Sans+JP&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <%- include('partials/navbar.ejs') %>
+
+                <main>
+                    <div id="popup">
+                        <div class="ipop">
+                            Uploading Image
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="head">
+                            <div id="bgimgbox">
+                                <img id="bgimg" alt="" src="../data/blogs/coverpic.jpg">
+                                <label for="backgroundimgup"><i class="fa fa-arrow-circle-up"
+                                        aria-hidden="true"></i></label>
+                            </div>
+                            <input type="file" accept="image/*" id="backgroundimgup" hidden>
+
+                            <div class="tbar">
+                                <input type="text" id="title" placeholder="Title"></input>
+                                <!-- <label for="backgroundimgup"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></label> -->
+                            </div>
+                            <textarea id="description" placeholder="Description"></textarea>
+                        </div>
+                        <div class="wrap">
+                            <div id="inputs">
+                                <form>
+                                    <select name="fsize" id="fsize">
+                                        <option value="1">H1</option>
+                                        <option value="2">H2</option>
+                                        <option value="3" selected>H3</option>
+                                        <option value="4">H4</option>
+                                        <option value="5">H5</option>
+                                        <option value="6">H6</option>
+                                    </select>
+                                    <label for="fsize">
+                                        <button type="button" data-cmd="fontSize">
+                                            A<small>A</small>
+                                        </button>
+                                    </label>
+
+
+                                    <button type="button" data-cmd="justifyLeft">
+                                        <i class="fa fa-align-left" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="justifyCenter">
+                                        <i class="fa fa-align-center" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="justifyFull">
+                                        <i class="fa fa-align-justify" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="justifyRight">
+                                        <i class="fa fa-align-right" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="bold">
+                                        <i class="fa fa-bold" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="italic">
+                                        <i class="fa fa-italic" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="underline">
+                                        <i class="fa fa-underline" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="strikeThrough">
+                                        <i class="fa fa-strikethrough" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="insertOrderedList">
+                                        <i class="fa fa-list-ol" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" data-cmd="insertUnorderedList">
+                                        <i class="fa fa-list-ul" aria-hidden="true"></i>
+                                    </button>
+
+                                    <input id="color-btn" type="color" class="control-btn" value="#ff0000">
+                                    <button type="button" data-cmd="foreColor">
+                                        <span style="color:#ff0000;" id="foregnd">A</span>
+                                        <!-- A -->
+                                    </button>
+                                    <button type="button" data-cmd="backColor">
+                                        <span style="background-color: #ff0000;" id="backgnd">&nbsp;A&nbsp;</span>
+                                        <!-- A -->
+                                    </button>
+                                    <button type="button" data-cmd="removeFormat">
+                                        <i class="fa fa-eraser" aria-hidden="true"></i>
+
+                                    </button>
+                                    <button type="button" data-cmd="formatBlock">
+                                        <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                    </button>
+                                    <input type="file" accept="image/*" id="imageadd" hidden>
+                                    <button type="button" data-cmd="insertImage" id="imginsertbtn">
+                                        <label for="imageadd" id="insertimglabel">
+                                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                        </label>
+                                    </button>
+                                    <button type="button" id="embedlink">
+                                        <i class="fa fa-link" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                                <div class="urlwrap">
+                                    <input type="text" id="linkurl" placeholder="Enter the link here">
+                                    <button id="linkurlok">Embed</button>
+                                </div>
+
+
+                            </div>
+                            <div class="data" id="data">
+                                <div class="stepcard">
+                                    <div id="content" contenteditable="true" name="field"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="author">
+                            <div id="authimgbox">
+                                <img src="../data/blogs/profile.png" alt="" id="authorimg">
+                                <input type="file" accept="image/*" id="authorimgup" hidden>
+                            </div>
+                            <label for="authorimgup"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></label>
+                            <div class="wrap">
+                                <input type="text" id="authorname" placeholder="Author Name"></input>
+                                <textarea id="authordesc" placeholder="About author"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="cat">
+                            <h3>Select the category</h3>
+                            <select name="category" id="category">
+                                <option value="1">Blog</option>
+                                <option value="2">Project</option>
+                            </select>
+                        </div>
+
+                        <div class="buttonwrap">
+                            <button id="fupload">Upload Blog</button>
+                        </div>
+                    </div>
+                </main>
+                <%- include('partials/footer.ejs') %>
+        </div>
+    </div>
+
+
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyCo5jZ9wyNSP401q5X8-BH-gM7uxUnhuro",
+            authDomain: "web2k21-99ffd.firebaseapp.com",
+            projectId: "web2k21-99ffd",
+            storageBucket: "web2k21-99ffd.appspot.com",
+            messagingSenderId: "616040662732",
+            appId: "1:616040662732:web:ac36b18f3ccff8c246a469"
+        };
+        const app = initializeApp(firebaseConfig);
+
+        import { getStorage, deleteObject, listAll, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js";
+        import { getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+        const db = getFirestore();
+        const storage = getStorage();
+
+
+
+
+        import { getAuth, signInWithRedirect, getRedirectResult, setPersistence,browserLocalPersistence, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
+
+        const authen = getAuth();
+        const provider = new GoogleAuthProvider();
+        
+        authen.onAuthStateChanged((user)=>{
+            if (user){
+                if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
+                    filldata(user);
+                    // console.log("present");
+                } else{
+                setuplogin();
+                }
+            }
+            else{
+                setuplogin();
+            }
+        })
+        
+        
+        const setuplogin = ()=>{
+            signInWithRedirect(authen,provider);
+            getRedirectResult(auth)
+                .then((result) => {
+
+                    // The signed-in user info.
+                    const user = result.user;
+                    // console.log(result);
+                    if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
+                        setPersistence(authen, browserLocalPersistence);
+                        getdata(user.email);
+                        loadaccdata(user);
+                        mailid.push(user.email);
+                    } else{
+                        setuplogin();
+                    }
+                }).catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // The email of the user's account used.
+                    const email = error.email;
+                    // The AuthCredential type that was used.
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                    
+                });
+        }
+
+
+        var images = { sback: { file: "", lurl: "", uurl: "" }, sauth: { file: "", lurl: "", uurl: "" } };
+        var files = [];
+
+        var bgimage = document.getElementById("bgimg");
+        var title = document.getElementById("title");
+        var descrip = document.getElementById("description");
+        var data = document.getElementById("data");
+        var authimg = document.getElementById("authorimg");
+        var authnm = document.getElementById("authorname");
+        var authdesc = document.getElementById("authordesc");
+        var commit = document.getElementById("fupload");
+        var cat = document.getElementById("category");
+        var tcount = 0;
+
+
+        const bgimgup = document.getElementById("backgroundimgup");
+        const authimgup = document.getElementById("authorimgup");
+        const imageadd = document.getElementById("imageadd");
+        const poploader = document.getElementById("popup");
+        const lembed = document.getElementById("embedlink");
+
+        var content = document.getElementById("content");
+        let blogid = decodeURI(location.pathname.split("/").pop());
+        var turl = document.getElementById("linkurl");
+        const turlok = document.getElementById("linkurlok");
+        lembed.addEventListener("click", () => {
+            turl.style.display = "block";
+            turlok.style.display = "block";
+        })
+        turlok.addEventListener("click", () => {
+            var tturl = turl.value;
+            content.focus();
+            if (tturl.length > 0) {
+                if (tturl.indexOf("youtu") == -1) {
+                    document.execCommand("createLink", false, tturl);
+                } else {
+                    let fcodels = tturl.split("=");
+                    if (fcodels.length > 1) {
+                        var tyls = tturl.split("=");
+                        var fsrc = tyls[tyls.length - 1];
+                    } else {
+                        var tyls = tturl.split("/");
+                        var fsrc = tyls[tyls.length - 1];
+                    }
+                    var embedcode = `<iframe src="https://www.youtube.com/embed/${fsrc}?rel=0" id="ytembed" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen  id="youtubevid"></iframe>`
+                    document.execCommand("insertHTML", false, embedcode);
+                    try {
+
+
+                    } catch (err) {
+                        console.log(err);
+                        document.execCommand("createLink", false, tturl);
+                    }
+
+                }
+
+            } else {
+
+            }
+
+            turl.style.display = "none";
+            turlok.style.display = "none";
+            setTimeout(() => {
+                turl.value = ""
+            }, 1000);
+        })
+
+
+        bgimgup.addEventListener('change', () => {
+            loadfile(bgimgup, "sback");
+        })
+        authimgup.addEventListener('change', () => {
+            loadfile(authimgup, "sauth");
+        })
+        imageadd.addEventListener('change', () => {
+            loadfile(imageadd, "sbody");
+        })
+
+        // "sback","sauth","sbody"
+        function loadfile(upfile, nm) {
+            var dfile = [];
+            var read = new FileReader();
+            dfile = upfile.files[0];
+            read.readAsDataURL(dfile);
+            if (dfile.size <= 3145728) {
+                read.onload = function () {
+                    if (nm == "sback") {
+                        bgimage.src = read.result;
+                        images.sback.file = dfile;
+                        // images.sback.lurl = read.result;
+                    }
+                    else if (nm == "sauth") {
+                        authimg.src = read.result;
+                        images.sauth.file = dfile;
+                        // images.sauth.lurl = read.result;
+                    }
+                    else {
+                        const prom = new Promise((resolve, reject) => {
+                            poploader.style.display = "flex";
+                            poploader.innerHTML = `<div class="ipop"> Uploading Image </div>`;
+                            const nm = "img" + String(tcount);
+
+                            var titlenm = title.value;
+                            const midnm = authen.currentUser.email.split("@")[0];
+                            var idnum = titlenm + midnm;
+
+                            firebaseimg(idnum, dfile.name, dfile, "mtdata").then(url => {
+                                content.focus();
+
+                                document.execCommand("insertImage", false, url);
+                                resolve("ok");
+                            })
+
+                        })
+
+                        prom.then(() => {
+                            const imgs = field.querySelectorAll('img');
+                            imgs.forEach(item => {
+                                // item.style.maxWidth = "80vw";
+                            })
+
+                        }).then(e => {
+                            setTimeout(() => {
+                                poploader.style.display = "none";
+                            }, 1000);
+
+                        })
+
+                    }
+                }
+            } else {
+                poploader.style.display = "flex";
+                poploader.innerHTML = `<div class="ipop"> Please select an image with size less than 3 MB </div>`;
+                setTimeout(() => {
+                    poploader.style.display = "none";
+                }, 1500);
+            }
+
+        }
+
+        let show = false;
+        const buttons = document.querySelectorAll('#inputs button');
+        // console.log(buttons)
+        let field = document.getElementById("content");
+        const clrbtn = document.getElementById("color-btn");
+        const fsize = document.getElementById("fsize");
+
+        const fclr = document.getElementById("foregnd");
+        const bclr = document.getElementById("backgnd");
+        fsize.addEventListener('change', () => {
+            document.execCommand("fontSize", false, fsize.value);
+
+        })
+        clrbtn.addEventListener('change', () => {
+            fclr.style.color = clrbtn.value;
+            bclr.style.background = clrbtn.value;
+        })
+        // textField.document.designMode = "On";
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', () => {
+                let cmd = buttons[i].getAttribute('data-cmd');
+                if (buttons[i].name === "active") {
+                    buttons[i].classList.toggle('active');
+                }
+                if (cmd == "formatBlock") {
+                    document.execCommand('formatBlock', false, '<blockquote>');
+                    if (content.childNodes.length == 1) {
+                        content.innerHTML += "<br>";
+
+                    }
+
+
+
+                } else if (cmd == "insertImage") {
+
+                } else if (cmd == "foreColor") {
+                    document.execCommand(cmd, false, clrbtn.value);
+                } else if (cmd == "backColor") {
+                    document.execCommand(cmd, false, clrbtn.value);
+                } else if (cmd == "fontSize") {
+                    document.execCommand(cmd, false, fsize.value);
+                } else if (cmd == "createLink") {
+
+                } else if (cmd == "null") {
+
+                } else {
+                    document.execCommand(cmd, false, null);
+                }
+
+                // console.log(cmd)
+            })
+        }
+
+        window.addEventListener("keydown", (e) => {
+            if (e.keyCode == "8") {
+                content.querySelectorAll("blockquote").forEach(quote => {
+                    if (quote.innerHTML == "<br>") {
+                        quote.remove();
+                    }
+                })
+            }
+        });
+        content.addEventListener("paste", function (e) {
+
+            setTimeout(() => {
+                content.childNodes.forEach(e => {
+                    try {
+                        let lss = e.classList;
+                        if (lss.contains("fcng")) {
+
+                        } else {
+                            const s = window.getComputedStyle(e).getPropertyValue("font-size");
+                            e.style.lineHeight = `calc(0.4em + ${s})`;
+                            e.style.margin = "0.5em 0";
+                            e.style.fontFamily = "'Merriweather Sans', sans-serif";
+                            lss.add("fcng")
+                        }
+                    } catch {
+
+                    }
+
+                })
+            }, 2000);
+
+        })
+
+
+        function firebaseimg(titnm, name, image, mtdata) {
+            return new Promise((resolve, reject) => {
+                if (name) {
+                    const storageRef = sRef(storage, `Blogs/${titnm}/` + name);
+                    const uploadTask = uploadBytesResumable(storageRef, image, mtdata);
+                    uploadTask.on('state-changed', (snapshot) => {
+                        var progess = (snapshot.bytesTransferred / snapshot.totalByets) * 100;
+                    }, (error) => {
+                        alert("Image failed to upload");
+                    }, () => {
+                        getDownloadURL(uploadTask.snapshot.ref).then((downloadurl) => {
+                            // DBupload(downloadurl);
+                            resolve(downloadurl);
+                        })
+                    })
+                } else {
+                    resolve("nofile");
+                }
+
+            })
+
+        }
+
+        function UploadProcess(idnum) {
+            poploader.style.display = "flex";
+            poploader.innerHTML = `<div class="ipop"> Uploading Blog, you will be redirected </div>`;
+
+            var baindicator = "0"
+            var imgtoUpload = images["sback"].file;
+            var imgName = imgtoUpload.name;
+            const metadata = { contentType: imgtoUpload.type };
+            firebaseimg(idnum, imgName, imgtoUpload, metadata).then(burl => {
+                if (burl != "nofile") {
+                    images["sback"].uurl = burl;
+                    baindicator += 1;
+                } else {
+                    images["sback"].uurl = "../data/blogs/coverpicplace-01.jpg";
+                    burl = "../data/blogs/coverpicplace-01.jpg";
+                }
+                var imgtoUpload = images["sauth"].file;
+                var imgName = imgtoUpload.name;
+                const metadata = { contentType: imgtoUpload.type };
+                firebaseimg(idnum, imgName, imgtoUpload, metadata).then(aurl => {
+                    if (aurl != "nofile") {
+                        images["sauth"].uurl = aurl;
+                        baindicator += 1;
+
+                    } else {
+                        images["sback"].uurl = "../data/blogs/coverpicplace-01.jpg";
+                        aurl = "../data/blogs/profile.png";
+                    }
+
+                    var articaldata = field.innerHTML;
+                    var tc = 1;
+
+                    const storageRef = sRef(storage, `Blogs/${idnum}`);
+                    const deletions = new Promise((resolve, reject) => {
+                        listAll(storageRef).then(result => {
+                            if (result.items.length > baindicator) {
+                                result.items.forEach(e => {
+                                    const fref = sRef(storage, e._location.path);
+                                    getDownloadURL(fref).then(url => {
+                                        if ((articaldata.indexOf(url) == -1) && (url != aurl) && (url != burl)) {
+                                            deleteObject(fref).then(() => {
+                                                if (tc == result.items.length) {
+                                                    resolve("done");
+                                                } else {
+                                                    tc += 1;
+                                                }
+                                            });
+
+                                        } else {
+                                            if (tc == result.items.length) {
+                                                resolve("done");
+                                            } else {
+                                                tc += 1;
+                                            }
+                                        }
+
+                                    })
+                                })
+                            } else {
+                                resolve("done");
+                            }
+
+                        })
+                    })
+                    deletions.then(msg => {
+                        DBupload(idnum, { sback: burl, sauth: aurl });
+                    })
+                })
+            })
+        }
+        function shorten(txt) {
+            var ls1 = txt.split(".");
+            var dtxt = "";
+            if (ls1[0].split(" ").length < 19) {
+                dtxt += ls1[0];
+            }
+            else {
+                const tls = ls1[0].split(" ").slice(0, 19);
+                tls.forEach(e => {
+                    dtxt += e + " ";
+                })
+
+            }
+            return dtxt + " ...";
+        }
+        function fontclean(txt) {
+            const ttxt = txt.replaceAll("font-family", "y-family");
+            return ttxt
+        }
+
+
+        async function DBupload(idnum, urldata) {
+            //    console.log("trig");
+            //    console.log(urldata);
+            var vtitlenm = title.value;
+            var desc = descrip.value;
+            var authname = authnm.value;
+            var authdes = authdesc.value;
+            var shortdesc = shorten(desc);
+            let current = new Date();
+            let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+            let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+            let dateTime = cDate + ' ' + cTime;
+            const tstamp = dateTime;
+
+
+            var articaldata = field.innerHTML;
+
+            var reference = doc(db, "Blogs", idnum);
+
+            const docRef = await setDoc(reference, {
+                UID: idnum,
+                Title: vtitlenm,
+                ImageURLs: urldata,
+                Description: desc,
+                Data: fontclean(articaldata),
+                AuthName: authname,
+                Authbio: authdes,
+                Timestamp: tstamp,
+                Mail: authen.currentUser.email,
+                Category: cat.value
+            }).then(() => {
+                location.href = `dashboard`;
+            })
+            var reff = doc(db, "Blogsthumb", idnum);
+            const docReff = await setDoc(reff, {
+                UID: idnum,
+                Title: vtitlenm,
+                ImageURLs: urldata,
+                Description: shortdesc,
+                AuthName: authname,
+                Mail: authen.currentUser.email,
+                Category: cat.value
+            });
+
+        }
+
+
+        commit.onclick = e => {
+            var articaldata = field.innerHTML;
+            console.log(articaldata)
+            if (title.value.length > 0 && articaldata.length > 0 && authnm.value.length > 0) {
+                var titlenm = title.value;
+                const midnm = authen.currentUser.email.split("@")[0];
+                var idnum = titlenm + midnm;
+                UploadProcess(idnum);
+            } else {
+                poploader.style.display = "flex";
+                poploader.innerHTML = `<div class="ipop"> Please fill the required fields. (Title, Content, Author Name) </div>`;
+                setTimeout(() => {
+                    poploader.style.display = "none";
+                }, 3000);
+            }
+
+        };
+
+
+
+
+
+
+
+        var parser = new DOMParser();
+        if (blogid != "editor.ejs") {
+
+            loaddata();
+        }
+        let obgurls = {}
+        function loaddata() {
+            // console.log("loading");
+
+            var dbref = ref(realdb);
+            get(child(dbref, "Blogs/" + blogid)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    // console.log("hi");
+                    const urldata = snapshot.val().ImageURLs;
+                    bgimg.src = urldata.sback;
+                    title.value = snapshot.val().Title;
+                    document.title = "Editor " + snapshot.val().Title;
+                    descrip.value = snapshot.val().Description;
+                    content.innerHTML = parser.parseFromString(snapshot.val().Data, "text/html").body.innerHTML;
+                    authimg.src = urldata.sauth;
+                    authnm.value = snapshot.val().AuthName;
+                    authdesc.value = snapshot.val().Authbio;
+                    obgurls = urldata;
+
+                }
+            })
+        }
+
+
+
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"
+        integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(function () {
+            $("#thumbls").sortable({
+                update: function (event, ui) {
+                    getIdsOfImages();
+                }//end update         
+            });
+        });
+
+        function getIdsOfImages() {
+            var values = [];
+            $('.thumbbx').each(function (index) {
+                values.push($(this).attr("id")
+                    .replace("img", ""));
+            });
+
+            // console.log(values);
+        }
+
+        // Display for input active
+        $(document).ready(
+            function () {
+                $("#content").click(function () {
+                    $("#inputs").show();
+                });
+            });
+        $(document).mouseup(function (e) {
+            if ($(e.target).closest("#content").length === 0 && $(e.target).closest("#inputs").length === 0) {
+                $("#inputs").hide();
+            }
+        });
+
+    </script>
+</body>
+
+</html>

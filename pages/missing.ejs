@@ -319,28 +319,8 @@ footer .copyright p{
     </style>
     <div class="wrapper">
         <div class="innerwrapper">
-            <header>
-                <a href="../index.html"><img src="../data/index/logobgr.png" alt=""></a>
-                
-                <ul class="mnoptions">
-                    <li>
-                        <a href="../index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="/pages/blog.html">Blogs</a>
-                    </li>
-                    <li>
-                        <a href="/pages/events.html">Events</a>
-                    </li>
-                    <li>
-                        <a href="/pages/gallery.html">Gallery</a>
-                    </li>
-                    <li>
-                        <a href="/pages/team.html">Team</a>
-                    </li>   
-                </ul>
-                <div class="ham"><a onclick="showmenu()"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
-            </header>
+            <%- include('partials/navbar.ejs') %>
+
             <main>
                 <div class="text">
                     404
@@ -407,33 +387,8 @@ footer .copyright p{
             
             </main>
             
-            <footer>
-                <div class="wrap">
-                    <div class="imgbx">
-                        <img src="../data/index/logobgr.png" alt="">
-                    </div>
-                    
-                    <div class="contact">
-                        <p>Reach Us On</p>
-                        <ul>
-                            <li><a href=""><i class="fa fa-discord" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                            <li><a href=""><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="data">
-                        <p><a href="mailto:yantrik_club@students.iitmandi.ac.in"><i class="fa fa-envelope" aria-hidden="true"></i> yantrik_club@students.iitmandi.ac.in</a></p>
-                        <p><i class="fa fa-map-marker text-dark p-3"></i> IIT Mandi, <br>Kamand (H.P.)- 175005</p>
-                    </div>
-                </div>
-
-                <div class="copyright">
-                    <p>© 2022. YantrikClub-IIT&nbsp;Mandi. All&nbsp;Rights&nbsp;Reserved</p>
-                </div>
-            </footer>
+            <%- include('partials/footer.ejs') %>
+            
         </div>
     </div>
     <script>

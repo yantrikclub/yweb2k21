@@ -91,39 +91,39 @@ displaySlides2(slide_index2);
 
 
 
-const upevents = document.getElementById("upevents");
+// const upevents = document.getElementById("upevents");
 
-function upeveload(){
-    fetch("data/index/upevents.csv").then(res =>{
-        return res.text()
-    }).then(data => {
-        let result = data.split(/\r?\n|\r/).map(
-            e => {
-                return e.split(",");
-            }
-        )
-        result.forEach(e =>{
-            if (e.length > 0){
-                // e[0] for image
-                // e[1] for about
-                // e[2] for date
-                // e[3] for time
-                let code = `
-                <div class="card">
-                    <div class="imgbx"><img src="${e[0]}" alt=""></div>
-                    <div class="info">
-                        <div class="name">${e[1]}</div>
-                        <div class="name">${e[4]}</div>
-                        <p><i class="fa fa-calendar" aria-hidden="true"></i> Date: ${String(e[2])}
-                        <br><i class="fa fa-clock-o" aria-hidden="true"></i> Time: ${String(e[3])} </p>
-                    </div>
-                </div>
-                `;
-                upevents.innerHTML += code;
-            } else{
-                let code = `<h3>Updating Soon...</h3>`
-                upevents.innerHTML = code;            }
+// function upeveload(){
+//     fetch("data/index/upevents.csv").then(res =>{
+//         return res.text()
+//     }).then(data => {
+//         let result = data.split(/\r?\n|\r/).map(
+//             e => {
+//                 return e.split(",");
+//             }
+//         )
+//         result.forEach(e =>{
+//             if (e.length > 0){
+//                 // e[0] for image
+//                 // e[1] for about
+//                 // e[2] for date
+//                 // e[3] for time
+//                 let code = `
+//                 <div class="card">
+//                     <div class="imgbx"><img src="${e[0]}" alt=""></div>
+//                     <div class="info">
+//                         <div class="name">${e[1]}</div>
+//                         <div class="name">${e[4]}</div>
+//                         <p><i class="fa fa-calendar" aria-hidden="true"></i> Date: ${String(e[2])}
+//                         <br><i class="fa fa-clock-o" aria-hidden="true"></i> Time: ${String(e[3])} </p>
+//                     </div>
+//                 </div>
+//                 `;
+//                 upevents.innerHTML += code;
+//             } else{
+//                 let code = `<h3>Updating Soon...</h3>`
+//                 upevents.innerHTML = code;            }
             
-        })
-    })
-}
+//         })
+//     })
+// }
