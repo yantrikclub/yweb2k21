@@ -29,7 +29,7 @@ const users = [{ id: process.env.ID, email: process.env.EMAIL, password: process
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
-app.use(compression())
+// app.use(compression())
 app.use(flash())
 app.use(session({
     // secret: process.env.SESSION_SECRET,
