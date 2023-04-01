@@ -25,7 +25,7 @@ initializePassport(
 
 const users = [{ id: process.env.ID, email: process.env.EMAIL, password: process.env.PASSWORD }]
 
-// let initial_path = path.join(__dirname, "public");
+let initial_path = path.join(__dirname);
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
@@ -166,29 +166,29 @@ app.post('/single/team', upload4.single('file'), (req, res) => {
 
 
 // =============================================================
-// app.get('/admin',(req,res)=>{
-//     res.sendFile(path.join(initial_path,"pages/dashboard.html"));
-// })
+app.get('/admin',(req,res)=>{
+    res.render("dashboard.ejs");
+})
 
-// app.get('/blogs/blogs.html',(req,res)=>{
-//     res.sendFile(path.join(initial_path,"pages/blogs.html"));
-// })
-// app.get('/blogs/events.html',(req,res)=>{
-//     res.sendFile(path.join(initial_path,"pages/events.html"));
-// })
-// app.get('/blogs/gallery.html',(req,res)=>{
-//     res.sendFile(path.join(initial_path,"pages/gallery.html"));
-// })
-// app.get('/blogs/team.html',(req,res)=>{
-//     res.sendFile(path.join(initial_path,"pages/team.html"));
-// })
+app.get('/blogs/blogs.ejs',(req,res)=>{
+    res.render("blogs.ejs");
+})
+app.get('/blogs/events.ejs',(req,res)=>{
+    res.render("events.ejs");
+})
+app.get('/blogs/gallery.ejs',(req,res)=>{
+    res.render("gallery.ejs");
+})
+app.get('/blogs/team.ejs',(req,res)=>{
+    res.render("team.ejs");
+})
 
-// app.get('/edit/:blog',(req,res)=>{
-//     res.sendFile(path.join(initial_path,"pages/editor.html"));
-// })
-// app.get('/blogs/:blog',(req,res)=>{
-//     res.sendFile(path.join(initial_path,"pages/iblog.html"));
-// })
+app.get('/edit/:blog',(req,res)=>{
+    res.render("editor.ejs");
+})
+app.get('/blogs/:blog',(req,res)=>{
+    res.render("iblog.ejs");
+})
 
 
 app.delete('/logout', (req, res) => {
