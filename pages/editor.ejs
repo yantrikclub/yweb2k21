@@ -201,40 +201,40 @@
 
 
 
-        import { getAuth, signInWithRedirect, getRedirectResult, setPersistence,browserLocalPersistence, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
+        import { getAuth, signInWithRedirect, getRedirectResult, setPersistence, browserLocalPersistence, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
 
         const authen = getAuth();
         const provider = new GoogleAuthProvider();
-        
-        authen.onAuthStateChanged((user)=>{
-            if (user){
-                if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
+
+        authen.onAuthStateChanged((user) => {
+            if (user) {
+                if (["students.iitmandi.ac.in", "iitmandi.ac.in"].includes(user.email.split('@')[1])) {
                     filldata(user);
                     // console.log("present");
-                } else{
-                setuplogin();
+                } else {
+                    setuplogin();
                 }
             }
-            else{
+            else {
                 setuplogin();
             }
         })
-        
-        
-        const setuplogin = ()=>{
-            signInWithRedirect(authen,provider);
+
+
+        const setuplogin = () => {
+            signInWithRedirect(authen, provider);
             getRedirectResult(auth)
                 .then((result) => {
 
                     // The signed-in user info.
                     const user = result.user;
                     // console.log(result);
-                    if (["students.iitmandi.ac.in","iitmandi.ac.in"].includes(user.email.split('@')[1])){
+                    if (["students.iitmandi.ac.in", "iitmandi.ac.in"].includes(user.email.split('@')[1])) {
                         setPersistence(authen, browserLocalPersistence);
                         getdata(user.email);
                         loadaccdata(user);
                         mailid.push(user.email);
-                    } else{
+                    } else {
                         setuplogin();
                     }
                 }).catch((error) => {
@@ -245,7 +245,7 @@
                     const email = error.email;
                     // The AuthCredential type that was used.
                     const credential = GoogleAuthProvider.credentialFromError(error);
-                    
+
                 });
         }
 
