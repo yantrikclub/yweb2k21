@@ -22,6 +22,7 @@ initializePassport(
 );
 
 
+// new coder
 
 const users = [{ id: process.env.ID, email: process.env.EMAIL, password: process.env.PASSWORD }]
 
