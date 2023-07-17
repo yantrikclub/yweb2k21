@@ -294,24 +294,7 @@
                             </section>
                         </div>
                     </div>
-                    <h1 id="upeve">Events</h1>
-                    <hr class="tit">
-                    <div class="upevents" id="upevents">
-                        <% for (let i=0;i<upevent.length;i++){%>
-                            <div class="card">
-                                <div class="imgbx"><img src="<%=upevent[i].image%>" alt=""></div>
-                                <div class="info">
-                                    <div class="name"><%=upevent[i].title%></div>
-                                    <div class="name"><%=upevent[i].venue%></div>
-                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> Date: <%=upevent[i].date%>
-                                    <br><i class="fa fa-clock-o" aria-hidden="true"></i> Time: <%=upevent[i].time%> </p>
-                                    <div class="name"><%=upevent[i].status%></div>
-                                    
-                                </div>
-
-                            </div>
-                            <%}%>
-                    </div>
+                    
                 </div>
             </main>
             <%- include('partials/footer.ejs') %>

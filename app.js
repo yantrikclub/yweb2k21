@@ -61,13 +61,12 @@ app.post('/webauthlogin', checkNotAuthenticated, passport.authenticate('local', 
 // =========================================
 const sheetdata = require('./googlesheet.js')
 app.get('/', async (req, res) => {
-    let data = await sheetdata();
-    let updata = data.sort((p1, p2) => (p1.status < p2.status) ? 1 : (p1.status > p2.status) ? -1 : 0);
-
-    let context = {
-        upevent: updata
-    }
-    res.render('index.ejs', context)
+    // let data = {};
+    // // let updata = data.sort((p1, p2) => (p1.status < p2.status) ? 1 : (p1.status > p2.status) ? -1 : 0);
+    // let context = {
+    //     upevent: data
+    // }
+    res.render('index.ejs')
 })
 
 app.get('/dashboard', (req, res) => {
